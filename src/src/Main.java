@@ -1,3 +1,10 @@
+/**
+ * Spillet er opbygget af forskellige rum i form af .fxml-filer.
+ * Hvert rum er tildelt sin egen controller som styrer deres individuelle metoder.
+ * Et rum skal associeres med sin controller, så når spiller skifter rum, bruges den korrekte controller.
+ * Spilleren skal kunne interagere med genstand ved at stille sig op ad den og trykke på en knap.
+ */
+
 package src;
 
 import javafx.animation.AnimationTimer;
@@ -13,6 +20,7 @@ import src.controllers.MarketController;
 import src.enums.CropType;
 import src.enums.ItemType;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,30 +28,28 @@ import java.util.stream.Collectors;
 public class Main extends Application {
   private FXController current;
   private Character character;
+  private HashMap<String, FXController> fxControllers;
+  private StackPane root;
+  private Stage window;
 
   @Override
   public void start(Stage stage) throws Exception {
+    window = stage;
+
     createCharacter("Anders");
 
     stage.setTitle("Hunger Game");
-    stage.setResizable(false);
-
-    // Create container for all the scenes
-    StackPane root = new StackPane();
-    stage.setScene(new Scene(root, 500, 600));
+    window.setResizable(false);
 
     // Create a hashmap of all fxml and corresponding controllers
-    HashMap<String, FXController> fxControllers = new HashMap<>();
-    fxControllers.put("market", new MarketController(character));
-    fxControllers.put("hometown", new HometownController(character));
-    fxControllers.put("field", new FieldController(character));
+    fxControllers = new HashMap<>();
+    fxControllers.put("market", new MarketController(this));
+    fxControllers.put("hometown", new HometownController( this));
+    fxControllers.put("field", new FieldController( this));
 
-    current = fxControllers.get("market");
+    setView("market");
 
-    root.getChildren().add(current.getParent());
-
-    stage.show();
-
+    window.show();
 
     // Key-array for checking if pressed (avoiding delay)
     boolean[] keys = new boolean[4];
@@ -55,14 +61,15 @@ public class Main extends Application {
 
       @Override
       public void handle(long l) {
-        Node player = stage.getScene().getRoot().lookup("#player");
+        Node player = window.getScene().getRoot().lookup("#player");
+        player.toFront();
 
         current.update();
 
         int x = character.getX();
         int y = character.getY();
 
-        List<Node> nodes = stage.getScene().getRoot().getChildrenUnmodifiable().stream()
+        List<Node> nodes = window.getScene().getRoot().getChildrenUnmodifiable().stream()
             .filter(node -> !node.equals(player)).collect(Collectors.toList());
 
         // Check what should be processed
@@ -78,17 +85,16 @@ public class Main extends Application {
 
         processName = intersect ? processName : null;
 
-        stage.getScene().setOnKeyPressed(keyEvent -> {
+        window.getScene().setOnKeyPressed(keyEvent -> {
           switch(keyEvent.getCode()) {
             case D -> keys[0] = true;
             case A -> keys[1] = true;
             case S -> keys[2] = true;
             case W -> keys[3] = true;
-            case F -> process(processName);
           }
         });
 
-        stage.getScene().setOnKeyReleased(keyEvent -> {
+        window.getScene().setOnKeyReleased(keyEvent -> {
           switch(keyEvent.getCode()) {
             case D -> keys[0] = false;
             case A -> keys[1] = false;
@@ -98,10 +104,12 @@ public class Main extends Application {
         });
 
 
-        if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < stage.getScene().getWidth()) character.setX(x + 4);
+        // Collision detection
+
+        if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < window.getScene().getWidth()) character.setX(x + 4);
         if(keys[1] && player.getTranslateX() > 0) character.setX(x - 4);
-        if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < stage.getScene() .getHeight()) character.setY(y + 4);
-        if(keys[3] && player.getTranslateY() > 0) character.setY(y - 4);;
+        if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < window.getScene() .getHeight()) character.setY(y + 4);
+        if(keys[3] && player.getTranslateY() > 0) character.setY(y - 4);
 
         player.setTranslateX(x);
         player.setTranslateY(y);
@@ -127,6 +135,47 @@ public class Main extends Application {
   private void process(Node node) {
     if(node == null) return;
     System.out.println(node.getId());
+  }
+
+  public FXController getCurrent() {
+    return current;
+  }
+
+  public void setCurrent(FXController current) {
+    this.current = current;
+  }
+
+  public Character getCharacter() {
+    return character;
+  }
+
+  public FXController getFxControllers(String key) {
+    return fxControllers.get(key);
+  }
+
+  public void setView(String name) {
+    // TODO skal optimers så hver fil ikke bliver loaded igen og igen
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/fxml/"+ name +".fxml"));
+
+      Scene scene = new Scene(loader.load(), 960, 540);
+
+      setCurrent(getFxControllers(name));
+
+      loader.setController(getCurrent());
+
+      getWindow().setScene(scene);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public Scene getView() {
+    return window.getScene();
+  }
+
+  public Stage getWindow() {
+    return window;
   }
 
   public static void main(String[] args) {

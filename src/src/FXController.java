@@ -1,19 +1,16 @@
 package src;
 
-import javafx.scene.Parent;
-import javafx.scene.layout.Pane;
 
 public abstract class FXController {
-  private final Character character;
+  private final Main main;
 
-  public FXController(Character character) {
-    this.character = character;
+  public FXController(Main main) {
+    this.main = main;
   }
 
   public abstract void update();
-  public abstract Parent getParent();
 
-  public Character getCharacter() {
-    return character;
+  public Main getMain() {
+    return main;
   }
 }

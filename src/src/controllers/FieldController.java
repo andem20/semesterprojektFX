@@ -3,20 +3,18 @@ package src.controllers;
 import javafx.scene.Parent;
 import src.Character;
 import src.FXController;
+import src.Main;
+
+import java.io.IOException;
 
 public class FieldController extends FXController {
 
-  public FieldController(Character character) {
-    super(character);
+  public FieldController(Main main) {
+    super(main);
   }
 
   @Override
   public void update() {
 
-  }
-
-  @Override
-  public Parent getParent() {
-    return null;
   }
 }
