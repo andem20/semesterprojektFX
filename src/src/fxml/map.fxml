@@ -3,7 +3,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
 
 
 <Pane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"  style="-fx-background-color: #6bb226;" >
@@ -236,6 +235,11 @@
         <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="/images/tiles/straight.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="hometown" fitHeight="100.0" fitWidth="100.0" layoutX="517.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="/images/hometown.png" />
             </image>
         </ImageView>
     </children>

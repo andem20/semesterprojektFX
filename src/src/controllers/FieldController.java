@@ -1,11 +1,8 @@
 package src.controllers;
 
-import javafx.scene.Parent;
-import src.Character;
+import javafx.scene.input.KeyCode;
 import src.FXController;
 import src.Main;
-
-import java.io.IOException;
 
 public class FieldController extends FXController {
 
@@ -15,6 +12,11 @@ public class FieldController extends FXController {
 
   @Override
   public void update() {
+
+  }
+
+  @Override
+  public void onKeyPressed(KeyCode keyCode) {
 
   }
 }

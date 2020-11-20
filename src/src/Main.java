@@ -7,7 +7,7 @@
 
 package src;
 
-import javafx.animation.AnimationTimer;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,9 +31,10 @@ public class Main extends Application {
   private HashMap<String, FXController> fxControllers;
   private Stage window;
   private int VELOCITY = 3;
+  private StackPane root;
 
   @Override
-  public void start(Stage stage) throws Exception {
+  public void start(Stage stage) {
     window = stage;
 
     createCharacter("Anders");
@@ -63,24 +64,24 @@ public class Main extends Application {
 
       @Override
       public void handle(long l) {
-        Node player = window.getScene().getRoot().lookup("#player");
+        Node player = getView().lookup("#player");
         player.toFront();
-
-        current.update();
 
         int x = character.getX();
         int y = character.getY();
 
-        window.getScene().setOnKeyPressed(keyEvent -> {
+        getView().setOnKeyPressed(keyEvent -> {
           switch(keyEvent.getCode()) {
             case D -> keys[0] = true;
             case A -> keys[1] = true;
             case S -> keys[2] = true;
             case W -> keys[3] = true;
           }
+
+          getCurrent().onKeyPressed(keyEvent.getCode());
         });
 
-        window.getScene().setOnKeyReleased(keyEvent -> {
+        getView().setOnKeyReleased(keyEvent -> {
           switch(keyEvent.getCode()) {
             case D -> keys[0] = false;
             case A -> keys[1] = false;
@@ -90,7 +91,7 @@ public class Main extends Application {
         });
 
         // TODO could be more efficient. Maybe only checking area around player
-        List<Node> nodes = window.getScene().getRoot().getChildrenUnmodifiable().stream()
+        List<Node> nodes = getView().getRoot().getChildrenUnmodifiable().stream()
             .filter(node -> !node.equals(player) && player.getBoundsInParent().intersects(node.getBoundsInParent())).collect(Collectors.toList());
 
         for(Node node : nodes) {
@@ -141,11 +142,6 @@ public class Main extends Application {
     character.addItem(CropType.RICE.toString(), new src.Crop(0, CropType.RICE));
     character.addItem(CropType.SORGHUM.toString(), new src.Crop(0, CropType.SORGHUM));
     character.addItem(ItemType.FERTILIZER.toString(), new src.Item(ItemType.FERTILIZER.toString(), 1, 50));
-  }
-
-  private void process(Node node) {
-    if(node == null) return;
-    System.out.println(node.getId());
   }
 
   public FXController getCurrent() {
