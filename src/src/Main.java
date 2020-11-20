@@ -29,8 +29,8 @@ public class Main extends Application {
   private FXController current;
   private Character character;
   private HashMap<String, FXController> fxControllers;
-  private StackPane root;
   private Stage window;
+  private int VELOCITY = 3;
 
   @Override
   public void start(Stage stage) throws Exception {
@@ -95,19 +95,23 @@ public class Main extends Application {
 
         for(Node node : nodes) {
           if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < (node.getLayoutX() + node.getBoundsInLocal().getWidth())) {
-            character.setX(x + 2);
+            character.setX(x + VELOCITY);
+            player.setRotate(90);
           }
 
           if(keys[1] && player.getTranslateX() > node.getLayoutX()) {
-            character.setX(x - 2);
+            character.setX(x - VELOCITY);
+            player.setRotate(90);
           }
 
           if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < (node.getLayoutY() + node.getBoundsInLocal().getHeight())) {
-            character.setY(y + 2);
+            character.setY(y + VELOCITY);
+            player.setRotate(0);
           }
 
           if(keys[3] && player.getTranslateY() > node.getLayoutY()) {
-            character.setY(y - 2);
+            character.setY(y - VELOCITY);
+            player.setRotate(0);
           }
         }
 

@@ -19,30 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MapController extends FXController implements Initializable {
-  private final Market market;
+public class MapController extends FXController {
   private Scene scene;
 
   public MapController(Main main) {
     super(main);
-
-    this.market = new Market("Market");
-  }
-
-
-  public void buy() {
-      String success = "added to";
-
-    getMain().getCharacter().trade(market.getNPC(), "beans", success);
-  }
-
-  public String showStock() {
-    return "hej";
-
-  }
-
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
   }
 
   @Override
