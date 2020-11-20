@@ -5,9 +5,9 @@ import javafx.scene.input.KeyCode;
 import src.FXController;
 import src.Main;
 
-public class HometownController extends FXController {
+public class VillageController extends FXController {
 
-  public HometownController(Main main) {
+  public VillageController(Main main) {
     super(main);
   }
 

@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import src.controllers.FieldController;
-import src.controllers.HometownController;
+import src.controllers.VillageController;
 import src.controllers.MapController;
 import src.enums.CropType;
 import src.enums.ItemType;
@@ -45,7 +45,7 @@ public class Main extends Application {
     // Create a hashmap of all fxml and corresponding controllers
     fxControllers = new HashMap<>();
     fxControllers.put("map", new MapController(this));
-    fxControllers.put("hometown", new HometownController( this));
+    fxControllers.put("village", new VillageController( this));
     fxControllers.put("field", new FieldController( this));
 
     setView("map");
@@ -89,6 +89,8 @@ public class Main extends Application {
             case W -> keys[3] = false;
           }
         });
+
+        getCurrent().update();
 
         List<Node> nodes = getView().getRoot().getChildrenUnmodifiable().stream()
             .filter(node -> !node.equals(player) && player.getBoundsInParent().intersects(node.getBoundsInParent())).collect(Collectors.toList());
