@@ -222,10 +222,9 @@
                 <Image url="/images/tiles/straight.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="/images/tiles/straight.png" />
-            </image>
+        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="480.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <Image url="/images/tiles/straight.png"/>
         </ImageView>
         <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
             <image>
