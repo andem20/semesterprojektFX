@@ -16,7 +16,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import src.controllers.FieldController;
 import src.controllers.HometownController;
-import src.controllers.MarketController;
+import src.controllers.MapController;
 import src.enums.CropType;
 import src.enums.ItemType;
 
@@ -43,13 +43,15 @@ public class Main extends Application {
 
     // Create a hashmap of all fxml and corresponding controllers
     fxControllers = new HashMap<>();
-    fxControllers.put("market", new MarketController(this));
+    fxControllers.put("map", new MapController(this));
     fxControllers.put("hometown", new HometownController( this));
     fxControllers.put("field", new FieldController( this));
 
-    setView("market");
+    setView("map");
 
     window.show();
+
+    character.setY(120);
 
     // Key-array for checking if pressed (avoiding delay)
     boolean[] keys = new boolean[4];
@@ -69,22 +71,6 @@ public class Main extends Application {
         int x = character.getX();
         int y = character.getY();
 
-        List<Node> nodes = window.getScene().getRoot().getChildrenUnmodifiable().stream()
-            .filter(node -> !node.equals(player)).collect(Collectors.toList());
-
-        // Check what should be processed
-        for(Node node : nodes){
-          if(player.getBoundsInParent().intersects(node.getBoundsInParent())) {
-            processName = node;
-            intersect = true;
-            break;
-          } else {
-            intersect = false;
-          }
-        }
-
-        processName = intersect ? processName : null;
-
         window.getScene().setOnKeyPressed(keyEvent -> {
           switch(keyEvent.getCode()) {
             case D -> keys[0] = true;
@@ -103,13 +89,34 @@ public class Main extends Application {
           }
         });
 
+        // TODO could be more efficient. Maybe only checking area around player
+        List<Node> nodes = window.getScene().getRoot().getChildrenUnmodifiable().stream()
+            .filter(node -> !node.equals(player) && player.getBoundsInParent().intersects(node.getBoundsInParent())).collect(Collectors.toList());
+
+        for(Node node : nodes) {
+          if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < (node.getLayoutX() + node.getBoundsInLocal().getWidth())) {
+            character.setX(x + 2);
+          }
+
+          if(keys[1] && player.getTranslateX() > node.getLayoutX()) {
+            character.setX(x - 2);
+          }
+
+          if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < (node.getLayoutY() + node.getBoundsInLocal().getHeight())) {
+            character.setY(y + 2);
+          }
+
+          if(keys[3] && player.getTranslateY() > node.getLayoutY()) {
+            character.setY(y - 2);
+          }
+        }
 
         // Collision detection
+//        if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < window.getScene().getWidth()) character.setX(x + 2);
+//        if(keys[1] && player.getTranslateX() > 0) character.setX(x - 2);
+//        if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < window.getScene() .getHeight()) character.setY(y + 2);
+//        if(keys[3] && player.getTranslateY() > 0) character.setY(y - 2);
 
-        if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < window.getScene().getWidth()) character.setX(x + 4);
-        if(keys[1] && player.getTranslateX() > 0) character.setX(x - 4);
-        if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < window.getScene() .getHeight()) character.setY(y + 4);
-        if(keys[3] && player.getTranslateY() > 0) character.setY(y - 4);
 
         player.setTranslateX(x);
         player.setTranslateY(y);

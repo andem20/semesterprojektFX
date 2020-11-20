@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MarketController extends FXController implements Initializable {
+public class MapController extends FXController implements Initializable {
   private final Market market;
   private Scene scene;
 
-  public MarketController(Main main) {
+  public MapController(Main main) {
     super(main);
 
     this.market = new Market("Market");
