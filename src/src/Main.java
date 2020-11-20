@@ -90,7 +90,6 @@ public class Main extends Application {
           }
         });
 
-        // TODO could be more efficient. Maybe only checking area around player
         List<Node> nodes = getView().getRoot().getChildrenUnmodifiable().stream()
             .filter(node -> !node.equals(player) && player.getBoundsInParent().intersects(node.getBoundsInParent())).collect(Collectors.toList());
 
