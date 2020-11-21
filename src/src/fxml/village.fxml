@@ -7,6 +7,7 @@
 
 
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
 <Pane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #6bb226;" >
    <children>
       <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -14,6 +15,7 @@
             <Image url="/images/player/moving1.png" />
          </image>
       </ImageView>
+      <Label fx:id="help" style="-fx-background-color: #333333; -fx-text-fill: #FFFFFF; -fx-background-radius: 10; -fx-padding: 5" />
       <StackPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('/images/cobblestone.png'); -fx-background-repeat: repeat;">
          <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
             <image>

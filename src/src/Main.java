@@ -21,6 +21,7 @@ import src.enums.CropType;
 import src.enums.ItemType;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,8 +31,8 @@ public class Main extends Application {
   private Character character;
   private HashMap<String, FXController> fxControllers;
   private Stage window;
-  private int VELOCITY = 3;
-  private StackPane root;
+  private final int VELOCITY = 3;
+  private final boolean[] keys = new boolean[4];
 
   @Override
   public void start(Stage stage) {
@@ -54,9 +55,6 @@ public class Main extends Application {
 
     character.setY(120);
 
-    // Key-array for checking if pressed (avoiding delay)
-    boolean[] keys = new boolean[4];
-
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
       private Node processName = null;
@@ -70,31 +68,13 @@ public class Main extends Application {
         int x = character.getX();
         int y = character.getY();
 
-        getView().setOnKeyPressed(keyEvent -> {
-          switch(keyEvent.getCode()) {
-            case D -> keys[0] = true;
-            case A -> keys[1] = true;
-            case S -> keys[2] = true;
-            case W -> keys[3] = true;
-          }
-
-          getCurrent().onKeyPressed(keyEvent.getCode());
-        });
-
-        getView().setOnKeyReleased(keyEvent -> {
-          switch(keyEvent.getCode()) {
-            case D -> keys[0] = false;
-            case A -> keys[1] = false;
-            case S -> keys[2] = false;
-            case W -> keys[3] = false;
-          }
-        });
 
         getCurrent().update();
 
         List<Node> nodes = getView().getRoot().getChildrenUnmodifiable().stream()
             .filter(node -> !node.equals(player) && player.getBoundsInParent().intersects(node.getBoundsInParent())).collect(Collectors.toList());
 
+        // TODO fix collision. Player can get stuck
         for(Node node : nodes) {
           if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < (node.getLayoutX() + node.getBoundsInLocal().getWidth())) {
             character.setX(x + VELOCITY);
@@ -117,25 +97,20 @@ public class Main extends Application {
           }
         }
 
-        // Collision detection
-//        if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < window.getScene().getWidth()) character.setX(x + 2);
-//        if(keys[1] && player.getTranslateX() > 0) character.setX(x - 2);
-//        if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < window.getScene() .getHeight()) character.setY(y + 2);
-//        if(keys[3] && player.getTranslateY() > 0) character.setY(y - 2);
-
-
+        // Update player position
         player.setTranslateX(x);
         player.setTranslateY(y);
       }
     };
 
+    // Start gameloop
     timer.start();
   }
 
   private void createCharacter(String name) {
     character = new Character(name, 100);
 
-    // Inventory
+    // Create player's inventory
     character.addItem(CropType.BEANS.toString(), new src.Crop(0, CropType.BEANS));
     character.addItem(CropType.MAIZE.toString(), new src.Crop(5, CropType.MAIZE));
     character.addItem(CropType.WHEAT.toString(), new src.Crop(10, CropType.WHEAT));
@@ -173,6 +148,9 @@ public class Main extends Application {
       loader.setController(getCurrent());
 
       getWindow().setScene(scene);
+
+      // Key-array for checking if pressed (avoiding delay)
+      setKeyInput();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -184,6 +162,29 @@ public class Main extends Application {
 
   public Stage getWindow() {
     return window;
+  }
+
+  public void setKeyInput() {
+
+    getView().setOnKeyPressed(keyEvent -> {
+      switch(keyEvent.getCode()) {
+        case D -> keys[0] = true;
+        case A -> keys[1] = true;
+        case S -> keys[2] = true;
+        case W -> keys[3] = true;
+      }
+
+      getCurrent().onKeyPressed(keyEvent.getCode());
+    });
+
+    getView().setOnKeyReleased(keyEvent -> {
+      switch(keyEvent.getCode()) {
+        case D -> keys[0] = false;
+        case A -> keys[1] = false;
+        case S -> keys[2] = false;
+        case W -> keys[3] = false;
+      }
+    });
   }
 
   public static void main(String[] args) {

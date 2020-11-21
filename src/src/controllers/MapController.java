@@ -17,15 +17,14 @@ public class MapController extends FXController {
   public void update() {
     Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
     Bounds villageBounds = getMain().getView().lookup("#village").getBoundsInParent();
+    Bounds farmBounds = getMain().getView().lookup("#farm").getBoundsInParent();
 
     Label help = (Label) getMain().getView().lookup("#help");
 
     if(playerBounds.intersects(villageBounds)) {
-      help.setTranslateX(getMain().getCharacter().getX());
-      help.setTranslateY(getMain().getCharacter().getY() - 30);
-      help.toFront();
-      help.setText("Press 'F' to enter village.");
-      help.setVisible(true);
+      helpMessage("Press 'F' to enter village.", help);
+    } else if(playerBounds.intersects(farmBounds)) {
+      helpMessage("Press 'F' to enter farm.", help);
     } else {
       help.setVisible(false);
     }
@@ -39,5 +38,13 @@ public class MapController extends FXController {
     if(keyCode == KeyCode.F && playerBounds.intersects(villageBounds)) {
       getMain().setView("village");
     }
+  }
+
+  public void helpMessage(String msg, Label label) {
+    label.setTranslateX(getMain().getCharacter().getX());
+    label.setTranslateY(getMain().getCharacter().getY() - 30);
+    label.toFront();
+    label.setText(msg);
+    label.setVisible(true);
   }
 }
