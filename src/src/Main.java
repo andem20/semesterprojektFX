@@ -12,8 +12,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import src.controllers.FieldController;
 import src.controllers.VillageController;
 import src.controllers.MapController;
@@ -21,6 +23,7 @@ import src.enums.CropType;
 import src.enums.ItemType;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Main extends Application {
@@ -33,6 +36,7 @@ public class Main extends Application {
   private final boolean[] keys = new boolean[4];
   private final int TILESIZE = 60;
   private Node[][] grid;
+  private Timeline playerAnimation;
 
   @Override
   public void start(Stage stage) {
@@ -119,6 +123,8 @@ public class Main extends Application {
 
       setKeyInput();
       setGrid();
+      setPlayerAnimation();
+
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -164,6 +170,20 @@ public class Main extends Application {
         grid[row][col] = node;
       }
     });
+  }
+
+  public void setPlayerAnimation() {
+    playerAnimation = new Timeline();
+    Collection<KeyFrame> frames = playerAnimation.getKeyFrames();
+    Duration frameGap = Duration.millis(250);
+    Duration frameTime = Duration.ZERO;
+    frameTime = frameTime.add(frameGap);
+    frames.add(new KeyFrame(frameTime, e -> ((ImageView) getView().lookup("#player")).setImage(new Image("/images/player/moving2.png"))));
+    frameTime = frameTime.add(frameGap);
+    frames.add(new KeyFrame(frameTime, e -> ((ImageView) getView().lookup("#player")).setImage(new Image("/images/player/moving1.png"))));
+    playerAnimation.setCycleCount(Timeline.INDEFINITE);
+    playerAnimation.stop();
+    ((ImageView) getView().lookup("#player")).setImage(new Image("/images/player/still.png"));
   }
 
   public void checkCollision(Node player) {
@@ -234,6 +254,16 @@ public class Main extends Application {
           }
         }
       }
+    }
+
+    if((keys[0] || keys[1] || keys[2] || keys[3]) && playerAnimation.getStatus() == Animation.Status.STOPPED) {
+      playerAnimation.play();
+      ((ImageView) player).setImage(new Image("/images/player/moving1.png"));
+    }
+
+    if(!(keys[0] || keys[1] || keys[2] || keys[3]) && playerAnimation.getStatus() == Animation.Status.RUNNING) {
+      playerAnimation.stop();
+      ((ImageView) player).setImage(new Image("/images/player/still.png"));
     }
 
     // Update character position
