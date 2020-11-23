@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import src.controllers.FarmController;
 import src.controllers.FieldController;
 import src.controllers.VillageController;
 import src.controllers.MapController;
@@ -23,7 +23,6 @@ import src.enums.CropType;
 import src.enums.ItemType;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class Main extends Application {
@@ -52,8 +51,9 @@ public class Main extends Application {
     fxControllers.put("map", new MapController(this));
     fxControllers.put("village", new VillageController( this));
     fxControllers.put("field", new FieldController( this));
+    fxControllers.put("farm", new FarmController( this));
 
-    setView("map");
+    setView("village");
 
     window.show();
 
@@ -62,11 +62,17 @@ public class Main extends Application {
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
+      long start = System.nanoTime();
+
       @Override
       public void handle(long l) {
         // Find player and bring it to the front
         Node player = getView().lookup("#player");
         player.toFront();
+
+        // Animating player model every 250 ms
+        double loopTimer = ((l - start) / 1e9) % 0.5;
+        animatePlayer(loopTimer, (ImageView) player, 0.25);
 
         // Call current controller update method
         getCurrent().update();
@@ -123,7 +129,6 @@ public class Main extends Application {
 
       setKeyInput();
       setGrid();
-      setPlayerAnimation();
 
     } catch (IOException e) {
       e.printStackTrace();
@@ -172,18 +177,18 @@ public class Main extends Application {
     });
   }
 
-  public void setPlayerAnimation() {
-    playerAnimation = new Timeline();
-    Collection<KeyFrame> frames = playerAnimation.getKeyFrames();
-    Duration frameGap = Duration.millis(250);
-    Duration frameTime = Duration.ZERO;
-    frameTime = frameTime.add(frameGap);
-    frames.add(new KeyFrame(frameTime, e -> ((ImageView) getView().lookup("#player")).setImage(new Image("/images/player/moving2.png"))));
-    frameTime = frameTime.add(frameGap);
-    frames.add(new KeyFrame(frameTime, e -> ((ImageView) getView().lookup("#player")).setImage(new Image("/images/player/moving1.png"))));
-    playerAnimation.setCycleCount(Timeline.INDEFINITE);
-    playerAnimation.stop();
-    ((ImageView) getView().lookup("#player")).setImage(new Image("/images/player/still.png"));
+  public void animatePlayer(double timer, ImageView player, double duration) {
+    if((keys[0] || keys[1] || keys[2] || keys[3])) {
+      if(timer < duration) {
+        player.setImage(new Image("/images/player/moving1.png"));
+      } else {
+        player.setImage(new Image("/images/player/moving2.png"));
+      }
+    }
+
+    if(!(keys[0] || keys[1] || keys[2] || keys[3])) {
+      player.setImage(new Image("/images/player/still.png"));
+    }
   }
 
   public void checkCollision(Node player) {
@@ -254,16 +259,6 @@ public class Main extends Application {
           }
         }
       }
-    }
-
-    if((keys[0] || keys[1] || keys[2] || keys[3]) && playerAnimation.getStatus() == Animation.Status.STOPPED) {
-      playerAnimation.play();
-      ((ImageView) player).setImage(new Image("/images/player/moving1.png"));
-    }
-
-    if(!(keys[0] || keys[1] || keys[2] || keys[3]) && playerAnimation.getStatus() == Animation.Status.RUNNING) {
-      playerAnimation.stop();
-      ((ImageView) player).setImage(new Image("/images/player/still.png"));
     }
 
     // Update character position

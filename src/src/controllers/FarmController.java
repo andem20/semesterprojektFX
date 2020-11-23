@@ -6,9 +6,9 @@ import javafx.scene.input.KeyCode;
 import src.FXController;
 import src.Main;
 
-public class FieldController extends FXController {
+public class FarmController extends FXController {
 
-  public FieldController(Main main) {
+  public FarmController(Main main) {
     super(main);
   }
 
@@ -34,8 +34,8 @@ public class FieldController extends FXController {
 
     if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
       getMain().setView("map");
-      getMain().getCharacter().setX((int) getMain().getView().lookup("#farm").getLayoutX());
-      getMain().getCharacter().setY((int) getMain().getView().lookup("#farm").getLayoutY());
+      getMain().getCharacter().setX(9 * 60);
+      getMain().getCharacter().setY(120);
     }
   }
 }

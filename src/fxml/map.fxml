@@ -1,252 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
-<?import javafx.scene.control.Label?>
-<Pane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #6bb226;" >
-    <children>
-        <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/player/moving1.png" />
-            </image>
-        </ImageView>
-        <Label fx:id="help" style="-fx-background-color: #333333; -fx-text-fill: #FFFFFF; -fx-background-radius: 10; -fx-padding: 5" />
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/leftupper.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/rightupper.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/rightupper.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/leftlower.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/rightupper.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="900.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/leftlower.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/rightupper.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/leftlower.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/rightupper.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/leftlower.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="480.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@../images/tiles/straight.png"/>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/rightlower.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/tiles/straight.png" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="village" fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/village.png" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="farm" fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../images/farm.png" />
-            </image>
-        </ImageView>
-    </children>
+<Pane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #6bb226;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player/moving1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/leftupper.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/rightupper.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/rightupper.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/leftlower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/rightupper.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="900.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/leftlower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/rightupper.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/leftlower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/rightupper.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/leftlower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/rightlower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tiles/straight.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="farm" fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/farm.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="village" fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/village.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="help" style="-fx-background-color: #333333; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+   </children>
 </Pane>

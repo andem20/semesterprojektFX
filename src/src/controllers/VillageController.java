@@ -34,16 +34,8 @@ public class VillageController extends FXController {
 
     if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
       getMain().setView("map");
-      getMain().getCharacter().setX(9 * 60);
-      getMain().getCharacter().setY(120);
+      getMain().getCharacter().setX((int) getMain().getView().lookup("#village").getLayoutX());
+      getMain().getCharacter().setY((int) getMain().getView().lookup("#village").getLayoutY());
     }
-  }
-
-  public void helpMessage(String msg, Label label) {
-    label.setTranslateX(getMain().getCharacter().getX());
-    label.setTranslateY(getMain().getCharacter().getY() - 30);
-    label.toFront();
-    label.setText(msg);
-    label.setVisible(true);
   }
 }

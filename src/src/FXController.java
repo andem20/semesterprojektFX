@@ -1,6 +1,7 @@
 package src;
 
 
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 
 public abstract class FXController {
@@ -16,5 +17,13 @@ public abstract class FXController {
 
   public Main getMain() {
     return main;
+  }
+
+  public void helpMessage(String msg, Label label) {
+    label.setTranslateX(getMain().getCharacter().getX());
+    label.setTranslateY(getMain().getCharacter().getY() - 30);
+    label.toFront();
+    label.setText(msg);
+    label.setVisible(true);
   }
 }

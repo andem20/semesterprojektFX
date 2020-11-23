@@ -34,17 +34,18 @@ public class MapController extends FXController {
   public void onKeyPressed(KeyCode keyCode) {
     Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
     Bounds villageBounds = getMain().getView().lookup("#village").getBoundsInParent();
+    Bounds farmBounds = getMain().getView().lookup("#farm").getBoundsInParent();
 
     if(keyCode == KeyCode.F && playerBounds.intersects(villageBounds)) {
       getMain().setView("village");
+      getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
+      getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
     }
-  }
 
-  public void helpMessage(String msg, Label label) {
-    label.setTranslateX(getMain().getCharacter().getX());
-    label.setTranslateY(getMain().getCharacter().getY() - 30);
-    label.toFront();
-    label.setText(msg);
-    label.setVisible(true);
+    if(keyCode == KeyCode.F && playerBounds.intersects(farmBounds)) {
+      getMain().setView("field");
+      getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
+      getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
+    }
   }
 }
