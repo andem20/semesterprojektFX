@@ -107,7 +107,7 @@ public class Main extends Application {
   public void setView(String name) {
     // TODO skal optimers så hver fil ikke bliver loaded igen og igen
     try {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/fxml/"+ name +".fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + name +".fxml"));
 
       Scene scene = new Scene(loader.load(), 960, 540);
 
