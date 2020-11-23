@@ -12,7 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import src.controllers.FieldController;
 import src.controllers.VillageController;
@@ -21,10 +21,7 @@ import src.enums.CropType;
 import src.enums.ItemType;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Main extends Application {
   private FXController current;
@@ -32,7 +29,10 @@ public class Main extends Application {
   private HashMap<String, FXController> fxControllers;
   private Stage window;
   private final int VELOCITY = 3;
+  // Key-array for checking if pressed (avoiding delay)
   private final boolean[] keys = new boolean[4];
+  private final int TILESIZE = 60;
+  private Node[][] grid;
 
   @Override
   public void start(Stage stage) {
@@ -53,53 +53,21 @@ public class Main extends Application {
 
     window.show();
 
-    character.setY(120);
+    // Positioning player on the path
+    getCharacter().setY(120);
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
-      private Node processName = null;
-      private boolean intersect = false;
-
       @Override
       public void handle(long l) {
+        // Find player and bring it to the front
         Node player = getView().lookup("#player");
         player.toFront();
 
-        int x = character.getX();
-        int y = character.getY();
-
-
+        // Call current controller update method
         getCurrent().update();
 
-        List<Node> nodes = getView().getRoot().getChildrenUnmodifiable().stream()
-            .filter(node -> !node.equals(player) && player.getBoundsInParent().intersects(node.getBoundsInParent())).collect(Collectors.toList());
-
-        // TODO fix collision. Player can get stuck
-        for(Node node : nodes) {
-          if(keys[0] && player.getTranslateX() + player.getBoundsInLocal().getWidth() < (node.getLayoutX() + node.getBoundsInLocal().getWidth())) {
-            character.setX(x + VELOCITY);
-            player.setRotate(90);
-          }
-
-          if(keys[1] && player.getTranslateX() > node.getLayoutX()) {
-            character.setX(x - VELOCITY);
-            player.setRotate(90);
-          }
-
-          if(keys[2] && player.getTranslateY() + player.getBoundsInLocal().getHeight() < (node.getLayoutY() + node.getBoundsInLocal().getHeight())) {
-            character.setY(y + VELOCITY);
-            player.setRotate(0);
-          }
-
-          if(keys[3] && player.getTranslateY() > node.getLayoutY()) {
-            character.setY(y - VELOCITY);
-            player.setRotate(0);
-          }
-        }
-
-        // Update player position
-        player.setTranslateX(x);
-        player.setTranslateY(y);
+        checkCollision(player);
       }
     };
 
@@ -149,8 +117,8 @@ public class Main extends Application {
 
       getWindow().setScene(scene);
 
-      // Key-array for checking if pressed (avoiding delay)
       setKeyInput();
+      setGrid();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -165,7 +133,6 @@ public class Main extends Application {
   }
 
   public void setKeyInput() {
-
     getView().setOnKeyPressed(keyEvent -> {
       switch(keyEvent.getCode()) {
         case D -> keys[0] = true;
@@ -185,6 +152,96 @@ public class Main extends Application {
         case W -> keys[3] = false;
       }
     });
+  }
+
+  public void setGrid() {
+    // Collect all nodes in an 2d array
+    grid = new Node[(int) getView().getHeight() / TILESIZE][(int) getView().getWidth() / TILESIZE];
+    getView().getRoot().getChildrenUnmodifiable().forEach(node -> {
+      if((node.getId() == null || !node.getId().equals("player")) && node instanceof ImageView) {
+        int row = (int) node.getLayoutY() / TILESIZE;
+        int col = (int) node.getLayoutX() / TILESIZE;
+        grid[row][col] = node;
+      }
+    });
+  }
+
+  public void checkCollision(Node player) {
+    // Reference for the player coordinates
+    int x = getCharacter().getX();
+    int y = getCharacter().getY();
+
+    int playerWidth = (int) player.getBoundsInLocal().getWidth();
+    int playerHeight = (int) player.getBoundsInLocal().getHeight();
+
+    int viewWidth = (int) getView().getWidth();
+    int viewHeight = (int) getView().getHeight();
+
+    // Players current tile
+    int colLeft = Math.max((x - x % TILESIZE) / TILESIZE, 0);
+    int rowTop = Math.max((y - y % TILESIZE) / TILESIZE, 0);
+    int colRight = Math.min((x + playerWidth % TILESIZE) / TILESIZE, grid[0].length - 1);
+    int rowBottom = Math.min((y + playerHeight % TILESIZE) / TILESIZE, grid.length-1);
+    // Neighbour tiles
+    int right = Math.min(colLeft+1, grid[0].length-1);
+    int left = Math.max(colLeft-1, 0);
+    int top = Math.max(rowTop-1, 0);
+    int bottom = Math.min(rowTop+1, grid.length-1);
+
+    // Right
+    if(keys[0]) {
+      for(int i = 0; i < VELOCITY; i++) {
+        if((grid[rowTop][right] != null && grid[rowBottom][right] != null) || (x + playerWidth) % TILESIZE < TILESIZE - 1) {
+          if(x + playerWidth < viewWidth) {
+            x++;
+            player.setRotate(90);
+          }
+        }
+      }
+    }
+
+    // Left
+    if(keys[1]) {
+      for(int i = 0; i < VELOCITY; i++) {
+        if((grid[rowTop][left] != null && grid[rowBottom][left] != null) || x % TILESIZE > 0) {
+          if(x > 0) {
+            x--;
+            player.setRotate(90);
+          }
+        }
+      }
+    }
+
+    // Down
+    if(keys[2]) {
+      for(int i = 0; i < VELOCITY; i++) {
+        if((grid[bottom][colLeft] != null && grid[bottom][colRight] != null) || (y + playerHeight) % TILESIZE < TILESIZE - 1) {
+          if(y + playerHeight < viewHeight) {
+            y++;
+            player.setRotate(0);
+          }
+        }
+      }
+    }
+
+    // Up
+    if(keys[3]) {
+      for(int i = 0; i < VELOCITY; i++) {
+        if((grid[top][colLeft] != null && grid[top][colRight] != null) || y % TILESIZE > 0) {
+          if(y > 0) {
+            y--;
+            player.setRotate(0);
+          }
+        }
+      }
+    }
+
+    // Update character position
+    getCharacter().setX(x);
+    getCharacter().setY(y);
+    // Update rendered player's position
+    player.setTranslateX(x);
+    player.setTranslateY(y);
   }
 
   public static void main(String[] args) {
