@@ -3,6 +3,7 @@
  * Hvert rum er tildelt sin egen controller som styrer deres individuelle metoder.
  * Et rum skal associeres med sin controller, så når spiller skifter rum, bruges den korrekte controller.
  * Spilleren skal kunne interagere med genstand ved at stille sig op ad den og trykke på en knap.
+ * Alle baner er opdelt i 60x60px felter. Hele vinduet er 960x540 = 16x9 felter
  */
 
 package src;
@@ -51,11 +52,11 @@ public class Main extends Application {
     fxControllers.put("farm", new FarmController( this));
     fxControllers.put("school", new SchoolController(this));
 
-    setView("village");
+    setView("field");
 
     window.show();
 
-    // Positioning player on the path
+    // Positioning player the right place on "map"
     getCharacter().setY(120);
 
     // Gameloop
