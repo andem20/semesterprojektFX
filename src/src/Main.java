@@ -15,10 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import src.controllers.FarmController;
-import src.controllers.FieldController;
-import src.controllers.VillageController;
-import src.controllers.MapController;
+import src.controllers.*;
 import src.enums.CropType;
 import src.enums.ItemType;
 
@@ -52,6 +49,7 @@ public class Main extends Application {
     fxControllers.put("village", new VillageController( this));
     fxControllers.put("field", new FieldController( this));
     fxControllers.put("farm", new FarmController( this));
+    fxControllers.put("school", new SchoolController(this));
 
     setView("village");
 
