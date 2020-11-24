@@ -33,7 +33,6 @@ public class Main extends Application {
   private final boolean[] keys = new boolean[4];
   private final int TILESIZE = 60;
   private Node[][] grid;
-  private Timeline playerAnimation;
 
   @Override
   public void start(Stage stage) {
@@ -52,7 +51,7 @@ public class Main extends Application {
     fxControllers.put("farm", new FarmController( this));
     fxControllers.put("school", new SchoolController(this));
 
-    setView("field");
+    setView("school");
 
     window.show();
 
