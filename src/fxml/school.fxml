@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: src\images;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="doorNorth" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/schoolDoor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="doorWest" fitHeight="60.0" fitWidth="60.0" layoutY="240.0" pickOnBounds="true" rotate="270.0">
+         <image>
+            <Image url="@../images/schoolDoor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="doorSouth" fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="480.0" pickOnBounds="true" rotate="180.0">
+         <image>
+            <Image url="@../images/schoolDoor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="60.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="180.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="240.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="300.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="360.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/floor.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
