@@ -53,7 +53,7 @@ public class Main extends Application {
     fxControllers.put("field", new FieldController( this));
     fxControllers.put("farm", new FarmController( this));
 
-    setView("village");
+    setView("map");
 
     window.show();
 
