@@ -26,7 +26,7 @@ public class SchoolController extends FXController {
             help.setVisible(false);
         }
     }
-
+//TO DO: exitbounds for market, hometown and farm (doorSouth, doorNorth and doorEast) - find exitBounds
 
     @Override
     public void onKeyPressed(KeyCode keyCode) {

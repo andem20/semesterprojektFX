@@ -6,6 +6,11 @@
 
 <Pane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: src\images;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player/moving1.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="doorNorth" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
          <image>
             <Image url="@../images/schoolDoor.png" />
