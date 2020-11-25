@@ -1,6 +1,6 @@
 package src.controllers;
+
 import javafx.geometry.Bounds;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import src.FXController;
