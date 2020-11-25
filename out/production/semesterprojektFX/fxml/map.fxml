@@ -65,10 +65,10 @@
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/tiles/rightupper.png" />
+            <Image url="@../images/tiles/leftlower.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tiles/leftlower.png" />
          </image>
@@ -140,7 +140,7 @@
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/tiles/leftlower.png" />
+            <Image url="@../images/tiles/rightupper.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
@@ -253,6 +253,11 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
+      <ImageView fx:id="market" fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="420.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Market.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="school" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/house.png" />
