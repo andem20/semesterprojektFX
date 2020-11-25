@@ -1,7 +1,7 @@
 package src.controllers;
 
 import javafx.geometry.Bounds;
-
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import src.FXController;
@@ -26,7 +26,8 @@ public class SchoolController extends FXController {
             help.setVisible(false);
         }
     }
-
+//TO DO: exitbounds for market, hometown and farm (doorSouth, doorNorth and doorEast) - find exitBounds
+    // going into school from map does not function - FIX!
 
     @Override
     public void onKeyPressed(KeyCode keyCode) {
