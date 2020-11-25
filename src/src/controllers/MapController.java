@@ -18,6 +18,7 @@ public class MapController extends FXController {
     Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
     Bounds villageBounds = getMain().getView().lookup("#village").getBoundsInParent();
     Bounds farmBounds = getMain().getView().lookup("#farm").getBoundsInParent();
+    Bounds marketBounds = getMain().getView().lookup("#market").getBoundsInParent();
 
     Label help = (Label) getMain().getView().lookup("#help");
 
@@ -25,6 +26,8 @@ public class MapController extends FXController {
       helpMessage("Press 'F' to enter village.", help);
     } else if(playerBounds.intersects(farmBounds)) {
       helpMessage("Press 'F' to enter farm.", help);
+    } else if (playerBounds.intersects(marketBounds)) {
+      helpMessage("Press 'F' to enter market", help);
     } else {
       help.setVisible(false);
     }
@@ -35,6 +38,7 @@ public class MapController extends FXController {
     Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
     Bounds villageBounds = getMain().getView().lookup("#village").getBoundsInParent();
     Bounds farmBounds = getMain().getView().lookup("#farm").getBoundsInParent();
+    Bounds marketBounds = getMain().getView().lookup("#market").getBoundsInParent();
 
     if(keyCode == KeyCode.F && playerBounds.intersects(villageBounds)) {
       getMain().setView("village");
@@ -44,6 +48,11 @@ public class MapController extends FXController {
 
     if(keyCode == KeyCode.F && playerBounds.intersects(farmBounds)) {
       getMain().setView("field");
+      getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
+      getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
+    }
+    if (keyCode == KeyCode.F && playerBounds.intersects(marketBounds)) {
+      getMain().setView("market");
       getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
       getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
     }

@@ -50,8 +50,9 @@ public class Main extends Application {
     fxControllers.put("field", new FieldController( this));
     fxControllers.put("farm", new FarmController( this));
     fxControllers.put("school", new SchoolController(this));
+    fxControllers.put("market", new MarketController(this));
 
-    setView("school");
+    setView("map");
 
     window.show();
 
