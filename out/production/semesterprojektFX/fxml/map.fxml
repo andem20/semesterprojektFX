@@ -63,12 +63,12 @@
             <Image url="@../images/tiles/straight.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tiles/leftlower.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tiles/leftlower.png" />
          </image>
@@ -138,7 +138,7 @@
             <Image url="@../images/tiles/straight.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tiles/rightupper.png" />
          </image>
