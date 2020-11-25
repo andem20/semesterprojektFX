@@ -53,6 +53,7 @@ public class Main extends Application {
     fxControllers.put("school", new SchoolController(this));
 
     setView("field");
+    setView("school");
 
     window.show();
 

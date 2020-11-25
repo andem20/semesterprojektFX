@@ -26,7 +26,7 @@ public class MapController extends FXController {
       helpMessage("Press 'F' to enter village.", help);
     } else if(playerBounds.intersects(farmBounds)) {
       helpMessage("Press 'F' to enter farm.", help);
-    }  else if(playerBounds.intersects(schoolBounds)) {
+    } else if(playerBounds.intersects(schoolBounds)) {
       helpMessage("Press 'F' to enter school.", help);
     } else {
       help.setVisible(false);

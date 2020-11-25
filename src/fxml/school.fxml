@@ -3,15 +3,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
 
-<Pane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: src\images;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url('/images/schoolBackground.png');" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player/moving1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="doorNorth" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
+      <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
          <image>
             <Image url="@../images/schoolDoor.png" />
          </image>
@@ -26,6 +28,11 @@
             <Image url="@../images/schoolDoor.png" />
          </image>
       </ImageView>
+      <Label fx:id="help" layoutX="1.0" layoutY="1.0" style="-fx-background-color: #333333; -fx-background-radius: 10;" text="Label" textFill="WHITE">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true">
          <image>
             <Image url="@../images/floor.png" />
