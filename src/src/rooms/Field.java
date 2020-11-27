@@ -53,7 +53,7 @@ public class Field extends Room {
             return;
         }
 
-        if(!Timer.timers.contains(timer)) {
+        if(isReadyCrops()) {
             int yield = (int) ((SEED_AMOUNT * prevYield.yield) * fieldHealth);
             prevYield.setAmount(prevYield.getAmount() + yield);
             System.out.println("You harvested " + yield + " " + prevYield.getName());
@@ -82,6 +82,14 @@ public class Field extends Room {
 
     public boolean isSowed() {
         return sowed;
+    }
+
+    public boolean isReadyCrops() {
+        return !Timer.timers.contains(timer);
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 }
 

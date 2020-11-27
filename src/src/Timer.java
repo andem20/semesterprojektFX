@@ -25,4 +25,8 @@ public class Timer {
     public int getTime() {
         return time;
     }
+
+    public double getCurrentTime() {
+        return Math.min((System.currentTimeMillis() - startTime) / 1000.0, time);
+    }
 }
