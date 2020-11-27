@@ -258,10 +258,26 @@
             <Image url="@../images/Market.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="school" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/house.png" />
+            <Image url="@../images/school_02.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/school_01.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/school_04.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/school_03.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="school" layoutX="240.0" layoutY="360.0" prefHeight="120.0" prefWidth="120.0" />
    </children>
 </Pane>

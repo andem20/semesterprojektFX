@@ -76,7 +76,15 @@ public class Main extends Application {
         // Call current controller update method
         getCurrent().update();
 
+        // Collision detection
         checkCollision(player);
+
+        // Updating timers
+        if(Timer.timers.iterator().hasNext()) {
+          Timer.timers.iterator().next().updateTimer();
+        }
+
+
       }
     };
 
@@ -165,6 +173,7 @@ public class Main extends Application {
   }
 
   public void setGrid() {
+    // Could be calculated after how many tiles an imageview takes up
     // Collect all nodes in an 2d array
     grid = new Node[(int) getView().getHeight() / TILESIZE][(int) getView().getWidth() / TILESIZE];
     getView().getRoot().getChildrenUnmodifiable().forEach(node -> {

@@ -23,6 +23,7 @@ public class Field extends Room {
         // Check if field is occupied
         if(sowed) {
             System.out.println("You have to harvest your crops before you can sow again.");
+            Timer.timers.remove(timer);
             return;
         }
 
@@ -77,6 +78,10 @@ public class Field extends Room {
 
     public double getFieldHealth() {
         return fieldHealth;
+    }
+
+    public boolean isSowed() {
+        return sowed;
     }
 }
 
