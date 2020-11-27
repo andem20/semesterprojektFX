@@ -15,6 +15,7 @@ import src.rooms.Field;
 public class FieldController extends FXController {
 
   private Field field;
+  private Image cropsSowed = new Image("/images/fieldpart1crops.png");
 
   public FieldController(Main main) {
     super(main);
@@ -31,18 +32,17 @@ public class FieldController extends FXController {
     Bounds field3 = getMain().getView().lookup("#field3").getBoundsInParent();
 
     Label help = (Label) getMain().getView().lookup("#help");
+    help.setVisible(false);
 
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
-    } else {
-      help.setVisible(false);
     }
 
     if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
       helpMessage("Press 'F' to sow seeds.", help);
-    } else {
-      help.setVisible(false);
     }
+
+    if(field.isSowed()) setCropsImage();
   }
 
 
@@ -58,25 +58,25 @@ public class FieldController extends FXController {
     if(keyCode == KeyCode.F) {
       if(playerBounds.intersects(exitBounds)) {
         getMain().setView("map");
-        getMain().getCharacter().setX((int) getMain().getView().lookup("#farm").getLayoutX());
-        getMain().getCharacter().setY((int) getMain().getView().lookup("#farm").getLayoutY());
+        getMain().getCharacter().setX((int) getMain().getView().lookup("#field").getLayoutX());
+        getMain().getCharacter().setY((int) getMain().getView().lookup("#field").getLayoutY());
       }
 
       if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
         // TODO show crops are growing
-        if(!field.isSowed()) setCropsImage("fieldpart1crops.png");
+        if(!field.isSowed()) setCropsImage();
 
         field.sow(new Crop(5, CropType.MAIZE), new Timer(10, "Your crops are ready"));
       }
     }
   }
 
-  private void setCropsImage(String path) {
+  private void setCropsImage() {
     getMain().getView().getRoot().getChildrenUnmodifiable().stream().filter(node ->
         node instanceof ImageView && node.getId() == null
     ).forEach(node -> {
       ImageView imageView = (ImageView) node;
-      if(imageView.getImage() != null) imageView.setImage(new Image("/images/" + path));
+      if(imageView.getImage() != null) imageView.setImage(cropsSowed);
     });
   }
 }

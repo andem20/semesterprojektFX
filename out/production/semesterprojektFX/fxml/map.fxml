@@ -238,7 +238,7 @@
             <Image url="@../images/tiles/straight.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="farm" fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="180.0" pickOnBounds="true">
+      <ImageView fx:id="field" fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="180.0" pickOnBounds="true">
          <image>
             <Image url="@../images/farm.png" />
          </image>
