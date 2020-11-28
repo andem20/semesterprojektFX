@@ -78,7 +78,7 @@ public class Main extends Application {
       clip.open(audioInputStream);
       FloatControl gainControl =
           (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-      gainControl.setValue(-23.0f);
+      gainControl.setValue(-17.0f);
 
       clip.loop(Clip.LOOP_CONTINUOUSLY);
     } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
