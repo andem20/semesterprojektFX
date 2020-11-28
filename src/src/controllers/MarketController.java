@@ -6,10 +6,17 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import src.FXController;
 import src.Main;
+import src.rooms.Market;
 
 public class MarketController extends FXController {
 
-    public MarketController(Main main) { super(main); }
+    private Market market;
+
+    public MarketController(Main main) {
+        super(main);
+
+        market = new Market("Market");
+    }
 
     @Override
     public void update() {
@@ -38,5 +45,4 @@ public class MarketController extends FXController {
         }
 
     }
-
 }

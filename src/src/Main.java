@@ -15,11 +15,15 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import src.controllers.*;
 import src.enums.CropType;
 import src.enums.ItemType;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -32,7 +36,9 @@ public class Main extends Application {
   // Key-array for checking if pressed (avoiding delay)
   private final boolean[] keys = new boolean[4];
   private final int TILESIZE = 60;
+  // Array for the graphical elements position
   private Node[][] grid;
+  private Status status;
 
   @Override
   public void start(Stage stage) {
@@ -59,6 +65,26 @@ public class Main extends Application {
     // Positioning player the right place on "map"
     getCharacter().setY(120);
 
+    status = new Status(100);
+
+    // Load music
+    // TODO make play/pause
+    try {
+      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/music/soundtrack.wav").getAbsoluteFile());
+      // create clip reference
+      Clip clip = AudioSystem.getClip();
+
+      // open audioInputStream to the clip
+      clip.open(audioInputStream);
+      FloatControl gainControl =
+          (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+      gainControl.setValue(-23.0f);
+
+      clip.loop(Clip.LOOP_CONTINUOUSLY);
+    } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+      e.printStackTrace();
+    }
+
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
       long start = System.nanoTime();
@@ -84,7 +110,8 @@ public class Main extends Application {
           Timer.timers.iterator().next().updateTimer();
         }
 
-
+        // Check win / lose condition
+        status.checkStatus();
       }
     };
 
