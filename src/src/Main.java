@@ -13,8 +13,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -39,6 +42,7 @@ public class Main extends Application {
   // Array for the graphical elements position
   private Node[][] grid;
   private Status status;
+  private Audio audio;
 
   @Override
   public void start(Stage stage) {
@@ -68,22 +72,8 @@ public class Main extends Application {
     status = new Status(100);
 
     // Load music
-    // TODO make play/pause
-    try {
-      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/music/soundtrack.wav").getAbsoluteFile());
-      // create clip reference
-      Clip clip = AudioSystem.getClip();
-
-      // open audioInputStream to the clip
-      clip.open(audioInputStream);
-      FloatControl gainControl =
-          (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-      gainControl.setValue(-17.0f);
-
-      clip.loop(Clip.LOOP_CONTINUOUSLY);
-    } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-      e.printStackTrace();
-    }
+    audio = new Audio("soundtrack.wav");
+    audio.setVolume(-15);
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
@@ -164,6 +154,16 @@ public class Main extends Application {
       setKeyInput();
       setGrid();
 
+      // Game overlay
+      AnchorPane pane = (AnchorPane) scene.getRoot();
+      ImageView musicLabel = new ImageView(new Image("/images/music_on.png"));
+      musicLabel.setId("music");
+      musicLabel.setFitHeight(40);
+      musicLabel.setFitWidth(40);
+      musicLabel.preserveRatioProperty();
+      musicLabel.setOnMouseClicked(mouseEvent -> playPause());
+      AnchorPane.setRightAnchor(musicLabel, 0.0);
+      pane.getChildren().add(musicLabel);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -184,6 +184,7 @@ public class Main extends Application {
         case A -> keys[1] = true;
         case S -> keys[2] = true;
         case W -> keys[3] = true;
+        case P -> playPause();
       }
 
       getCurrent().onKeyPressed(keyEvent.getCode());
@@ -302,6 +303,17 @@ public class Main extends Application {
     // Update rendered player's position
     player.setTranslateX(x);
     player.setTranslateY(y);
+  }
+
+  public void playPause() {
+    // TODO cache images
+    if(audio.isPlaying()) {
+      audio.pause();
+      ((ImageView) getView().getRoot().lookup("#music")).setImage(new Image("/images/music_off.png"));
+    } else {
+      audio.play();
+      ((ImageView) getView().getRoot().lookup("#music")).setImage(new Image("/images/music_on.png"));
+    }
   }
 
   public static void main(String[] args) {

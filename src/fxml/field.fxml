@@ -6,7 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #c7cd6c;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #c7cd6c;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -495,4 +496,4 @@
       <ImageView fx:id="field2" fitHeight="180.0" fitWidth="240.0" layoutX="480.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="field3" fitHeight="180.0" fitWidth="240.0" layoutX="480.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
    </children>
-</Pane>
+</AnchorPane>
