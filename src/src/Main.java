@@ -13,20 +13,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import src.controllers.*;
 import src.enums.CropType;
 import src.enums.ItemType;
 
-import javax.sound.sampled.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -42,13 +35,18 @@ public class Main extends Application {
   // Array for the graphical elements position
   private Node[][] grid;
   private Status status;
-  private Audio audio;
+  private GameOverlay gameOverlay;
+  // Player animation images
+  private final Image moving1 = new Image("/images/player/moving1.png");
+  private final Image moving2 = new Image("/images/player/moving2.png");
+  private final Image still = new Image("/images/player/still.png");
 
   @Override
   public void start(Stage stage) {
     window = stage;
 
     createCharacter("Anders");
+    status = new Status(100);
 
     stage.setTitle("Hunger Game");
     window.setResizable(false);
@@ -62,18 +60,15 @@ public class Main extends Application {
     fxControllers.put("school", new SchoolController(this));
     fxControllers.put("market", new MarketController(this));
 
+    // Gameoverlay
+    gameOverlay = new GameOverlay(this);
+
     setView("map");
 
     window.show();
 
     // Positioning player the right place on "map"
     getCharacter().setY(120);
-
-    status = new Status(100);
-
-    // Load music
-    audio = new Audio("soundtrack.wav");
-    audio.setVolume(-15);
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
@@ -102,6 +97,8 @@ public class Main extends Application {
 
         // Check win / lose condition
         status.checkStatus();
+
+        gameOverlay.setStatusText(status.getPopulation(), status.getHungerLevel());
       }
     };
 
@@ -155,15 +152,7 @@ public class Main extends Application {
       setGrid();
 
       // Game overlay
-      AnchorPane pane = (AnchorPane) scene.getRoot();
-      ImageView musicLabel = new ImageView(new Image("/images/music_on.png"));
-      musicLabel.setId("music");
-      musicLabel.setFitHeight(40);
-      musicLabel.setFitWidth(40);
-      musicLabel.preserveRatioProperty();
-      musicLabel.setOnMouseClicked(mouseEvent -> playPause());
-      AnchorPane.setRightAnchor(musicLabel, 0.0);
-      pane.getChildren().add(musicLabel);
+      gameOverlay.setContainer(getView().getRoot());
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -184,7 +173,7 @@ public class Main extends Application {
         case A -> keys[1] = true;
         case S -> keys[2] = true;
         case W -> keys[3] = true;
-        case P -> playPause();
+        case P -> gameOverlay.playPause();
       }
 
       getCurrent().onKeyPressed(keyEvent.getCode());
@@ -216,14 +205,14 @@ public class Main extends Application {
   public void animatePlayer(double timer, ImageView player, double duration) {
     if((keys[0] || keys[1] || keys[2] || keys[3])) {
       if(timer < duration) {
-        player.setImage(new Image("/images/player/moving1.png"));
+        player.setImage(moving1);
       } else {
-        player.setImage(new Image("/images/player/moving2.png"));
+        player.setImage(moving2);
       }
     }
 
     if(!(keys[0] || keys[1] || keys[2] || keys[3])) {
-      player.setImage(new Image("/images/player/still.png"));
+      player.setImage(still);
     }
   }
 
@@ -305,15 +294,8 @@ public class Main extends Application {
     player.setTranslateY(y);
   }
 
-  public void playPause() {
-    // TODO cache images
-    if(audio.isPlaying()) {
-      audio.pause();
-      ((ImageView) getView().getRoot().lookup("#music")).setImage(new Image("/images/music_off.png"));
-    } else {
-      audio.play();
-      ((ImageView) getView().getRoot().lookup("#music")).setImage(new Image("/images/music_on.png"));
-    }
+  public Status getStatus() {
+    return status;
   }
 
   public static void main(String[] args) {

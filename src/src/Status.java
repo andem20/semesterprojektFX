@@ -32,16 +32,16 @@ public class Status {
 //  "Rentes rente" k = k0 * (1 + P)^n
     population = (int) (startPop * Math.pow(1 + POPGROWTH, (double) getPassedTime() / 500));
 
-    hungerLevel= (float) this.foodSupply / (float) population;
+    hungerLevel= 1 - (float) this.foodSupply / (float) population;
 
-    return hungerLevel <= 0.2;
+    return hungerLevel >= 0.2;
   }
 
   public void printStatus() {
     System.out.println("Days passed: " + getPassedTime());
     System.out.println("Population: " + population);
     System.out.println("Foodsupply: " + foodSupply);
-    System.out.println("Hungerlevel: " + (1 - hungerLevel));
+    System.out.println("Hungerlevel: " + hungerLevel);
   }
 
   public int getPassedTime() {
@@ -50,5 +50,9 @@ public class Status {
 
   public float getHungerLevel() {
     return hungerLevel;
+  }
+
+  public int getPopulation() {
+    return population;
   }
 }
