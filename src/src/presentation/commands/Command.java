@@ -20,15 +20,15 @@
 package src.presentation.commands;
 
 import src.domain.enums.CommandWord;
-import src.domain.enums.SecondWord;
+import src.domain.enums.ParameterWord;
 
 public class Command {
     private final CommandWord commandWord;
-    private final SecondWord secondWord;
+    private final ParameterWord parameterWord;
 
-    public Command(CommandWord commandWord, SecondWord secondWord) {
+    public Command(CommandWord commandWord, ParameterWord parameterWord) {
         this.commandWord = commandWord;
-        this.secondWord = secondWord;
+        this.parameterWord = parameterWord;
     }
 
     public CommandWord getCommandWord()
@@ -36,8 +36,8 @@ public class Command {
         return commandWord;
     }
 
-    public SecondWord getSecondWord() {
-        return secondWord;
+    public ParameterWord getSecondWord() {
+        return parameterWord;
     }
 
     public boolean isUnknown()
@@ -47,7 +47,7 @@ public class Command {
 
     public boolean hasSecondWord()
     {
-        return (secondWord != SecondWord.UNKNOWN);
+        return (parameterWord != ParameterWord.UNKNOWN);
     }
 }
 

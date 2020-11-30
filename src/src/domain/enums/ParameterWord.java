@@ -1,6 +1,6 @@
 package src.domain.enums;
 
-public enum SecondWord {
+public enum ParameterWord {
   EAST("east"),
   WEST("west"),
   NORTH("north"),
@@ -24,14 +24,14 @@ public enum SecondWord {
   // Items
   FERTILIZER(ItemType.FERTILIZER.toString());
 
-  private String secondString;
+  private String parameterString;
 
-  SecondWord(String secondString) {
-    this.secondString = secondString.toLowerCase();
+  ParameterWord(String secondString) {
+    this.parameterString = secondString.toLowerCase();
   }
 
   public String toString() {
-    return secondString;
+    return parameterString;
   }
 }
 

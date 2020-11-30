@@ -7,7 +7,7 @@ import src.domain.Character;
 import src.domain.enums.CommandWord;
 import src.domain.enums.CropType;
 import src.domain.enums.ItemType;
-import src.domain.enums.SecondWord;
+import src.domain.enums.ParameterWord;
 import src.domain.rooms.*;
 
 import java.util.Scanner;
@@ -81,18 +81,18 @@ public class Game {
         farm = new Farm("in the farm");
         field = new Field("in the field");
 
-        hometown.setExit(SecondWord.WEST, school);
-        hometown.setExit(SecondWord.EAST, market);
-        hometown.setExit(SecondWord.SOUTH, field);
-        market.setExit(SecondWord.SOUTH, field);
-        market.setExit(SecondWord.WEST, hometown);
-        market.setExit(SecondWord.NORTH, school);
-        school.setExit(SecondWord.EAST, market);
-        school.setExit(SecondWord.SOUTH, farm);
-        field.setExit(SecondWord.WEST, farm);
-        field.setExit(SecondWord.EAST, market);
-        farm.setExit(SecondWord.NORTH, school);
-        farm.setExit(SecondWord.EAST, field);
+        hometown.setExit(ParameterWord.WEST, school);
+        hometown.setExit(ParameterWord.EAST, market);
+        hometown.setExit(ParameterWord.SOUTH, field);
+        market.setExit(ParameterWord.SOUTH, field);
+        market.setExit(ParameterWord.WEST, hometown);
+        market.setExit(ParameterWord.NORTH, school);
+        school.setExit(ParameterWord.EAST, market);
+        school.setExit(ParameterWord.SOUTH, farm);
+        field.setExit(ParameterWord.WEST, farm);
+        field.setExit(ParameterWord.EAST, market);
+        farm.setExit(ParameterWord.NORTH, school);
+        farm.setExit(ParameterWord.EAST, field);
 
         currentRoom = hometown;
     }
@@ -280,7 +280,7 @@ public class Game {
         parser.showCommands();
         System.out.println();
         System.out.println("Your second words are:");
-        parser.showSeconds();
+        parser.showParameters();
     }
 
     private void goRoom(Command command) {

@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 public class Parser {
     private final CommandWords commands;
-    private final SecondWords seconds;
+    private final ParameterWords parameter;
     private final Scanner reader;
 
     public Parser() {
         commands = new CommandWords();
-        seconds = new SecondWords();
+        parameter = new ParameterWords();
         reader = new Scanner(System.in);
     }
 
     public Command getCommand() {
         String inputLine;
-        String command = null;
-        String second = null;
+        String command;
+        String second;
 
         System.out.print("> "); 
 
@@ -27,14 +27,14 @@ public class Parser {
         command = inputArray[0].toLowerCase();
         second = inputArray.length > 1 ? inputArray[1].toLowerCase() : null;
 
-        return new Command(commands.getCommandWord(command), seconds.getSecondWord(second));
+        return new Command(commands.getCommandWord(command), parameter.getSecondWord(second));
     }
 
     public void showCommands() {
         commands.showAll();
     }
 
-    public void showSeconds() {
-        seconds.showAll();
+    public void showParameters() {
+        parameter.showAll();
     }
 }

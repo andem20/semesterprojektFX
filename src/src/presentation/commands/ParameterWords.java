@@ -1,27 +1,27 @@
 package src.presentation.commands;
 
-import src.domain.enums.SecondWord;
+import src.domain.enums.ParameterWord;
 
 import java.util.HashMap;
 
-public class SecondWords {
-  private final HashMap<String, SecondWord> validCommands;
+public class ParameterWords {
+  private final HashMap<String, ParameterWord> validCommands;
 
-  public SecondWords() {
+  public ParameterWords() {
     validCommands = new HashMap<>();
-    for(SecondWord command : SecondWord.values()) {
-      if(command != SecondWord.UNKNOWN) {
+    for(ParameterWord command : ParameterWord.values()) {
+      if(command != ParameterWord.UNKNOWN) {
         validCommands.put(command.toString(), command);
       }
     }
   }
 
-  public SecondWord getSecondWord(String secondWord) {
-    SecondWord second = validCommands.get(secondWord);
+  public ParameterWord getSecondWord(String secondWord) {
+    ParameterWord second = validCommands.get(secondWord);
     if(second != null) {
       return second;
     } else {
-      return SecondWord.UNKNOWN;
+      return ParameterWord.UNKNOWN;
     }
   }
 

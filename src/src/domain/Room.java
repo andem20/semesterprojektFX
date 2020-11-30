@@ -1,6 +1,6 @@
 package src.domain;
 
-import src.domain.enums.SecondWord;
+import src.domain.enums.ParameterWord;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -14,7 +14,7 @@ public abstract class Room {
         exits = new HashMap<>();
     }
 
-    public void setExit(SecondWord direction, Room neighbor) {
+    public void setExit(ParameterWord direction, Room neighbor) {
         exits.put(direction.toString(), neighbor);
     }
 
