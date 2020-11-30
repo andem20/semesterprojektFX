@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import src.domain.enums.GameSettings;
 import src.presentation.GameOverlay;
 import src.presentation.controllers.*;
 import src.domain.*;
@@ -32,10 +33,9 @@ public class Main extends Application {
   private Character character;
   private HashMap<String, FXController> fxControllers;
   private Stage window;
-  private final int VELOCITY = 3;
   // Key-array for checking if pressed (avoiding delay)
   private final boolean[] keys = new boolean[4];
-  private final int TILESIZE = 60;
+  private final int TILESIZE = GameSettings.TILESIZE.toInt();
   // Array for the graphical elements position
   private Node[][] grid;
   private Status status;
@@ -100,9 +100,10 @@ public class Main extends Application {
         }
 
         // Check win / lose condition
-        if(status.checkStatus()) this.stop();
+//        if(getStatus().checkStatus()) this.stop();
+        getStatus().checkStatus();
 
-        gameOverlay.setStatusText(status.getPopulation(), status.getHungerLevel());
+        gameOverlay.setStatusText(getStatus().getPopulation(), getStatus().getHungerLevel(), getStatus().getDays());
       }
     };
 
@@ -244,7 +245,7 @@ public class Main extends Application {
 
     // Right
     if(keys[0]) {
-      for(int i = 0; i < VELOCITY; i++) {
+      for(int i = 0; i < GameSettings.VELOCITY.toInt(); i++) {
         if((grid[rowTop][right] != null && grid[rowBottom][right] != null) || (x + playerWidth) % TILESIZE < TILESIZE - 1) {
           if(x + playerWidth < viewWidth) {
             x++;
@@ -256,7 +257,7 @@ public class Main extends Application {
 
     // Left
     if(keys[1]) {
-      for(int i = 0; i < VELOCITY; i++) {
+      for(int i = 0; i < GameSettings.VELOCITY.toInt(); i++) {
         if((grid[rowTop][left] != null && grid[rowBottom][left] != null) || x % TILESIZE > 0) {
           if(x > 0) {
             x--;
@@ -268,7 +269,7 @@ public class Main extends Application {
 
     // Down
     if(keys[2]) {
-      for(int i = 0; i < VELOCITY; i++) {
+      for(int i = 0; i < GameSettings.VELOCITY.toInt(); i++) {
         if((grid[bottom][colLeft] != null && grid[bottom][colRight] != null) || (y + playerHeight) % TILESIZE < TILESIZE - 1) {
           if(y + playerHeight < viewHeight) {
             y++;
@@ -280,7 +281,7 @@ public class Main extends Application {
 
     // Up
     if(keys[3]) {
-      for(int i = 0; i < VELOCITY; i++) {
+      for(int i = 0; i < GameSettings.VELOCITY.toInt(); i++) {
         if((grid[top][colLeft] != null && grid[top][colRight] != null) || y % TILESIZE > 0) {
           if(y > 0) {
             y--;

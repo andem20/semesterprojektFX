@@ -40,7 +40,7 @@ public class Field extends Room {
             }
         }
 
-        System.out.println(crop.getName() + " was sowed... They'll be ready in " + timer.getTime() + " days...");
+        System.out.println(crop.getName() + " was sowed... They'll be ready in " + timer.getDays() + " days...");
         crop.setAmount(crop.getAmount() - SEED_AMOUNT);
 
         prevYield = crop;

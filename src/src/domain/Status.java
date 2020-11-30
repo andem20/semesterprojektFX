@@ -1,5 +1,6 @@
 package src.domain;
 
+import src.domain.enums.GameSettings;
 import src.domain.rooms.Market;
 
 import java.util.Map;
@@ -10,7 +11,6 @@ public class Status {
   private int foodSupply;
   private float hungerLevel;
   private final long startTime;
-  private final double POPGROWTH = .7;
 
   public Status(int population) {
     this.population = population;
@@ -29,23 +29,31 @@ public class Status {
 
     this.foodSupply = foodSupply;
 
-//  "Rentes rente" k = k0 * (1 + P)^n
-    population = (int) (startPop * Math.pow(1 + POPGROWTH, (double) getPassedTime() / 500));
+//  "Rentes rente" k = k0 * (1 + p)^n
+    double p = GameSettings.POPGROWTH.toDouble();
+    double n = (getPassedTime() / GameSettings.DAY.toInt()) * .365;
+    population = (int) (startPop * Math.pow(1 + p, n));
 
-    hungerLevel= 1 - (float) this.foodSupply / (float) population;
+    hungerLevel = 1 - (float) this.foodSupply / population;
 
     return hungerLevel >= 0.8;
   }
 
   public void printStatus() {
-    System.out.println("Days passed: " + getPassedTime());
-    System.out.println("Population: " + population);
-    System.out.println("Foodsupply: " + foodSupply);
-    System.out.println("Hungerlevel: " + hungerLevel);
+    System.out.println("Days passed: " + getDays());
+    System.out.println("Population: " + getPopulation());
+    System.out.println("Foodsupply: " + getFoodSupply());
+    System.out.println("Hungerlevel: " + getHungerLevel());
   }
 
-  public int getPassedTime() {
-    return (int) (System.currentTimeMillis() - startTime) / 1000;
+  public double getPassedTime() {
+    // Convert miliseconds to seconds
+    return (System.currentTimeMillis() - startTime) / 1000.0;
+  }
+
+  public int getDays() {
+    // 1 day = 5 seconds
+    return (int) getPassedTime() / GameSettings.DAY.toInt();
   }
 
   public float getHungerLevel() {
@@ -54,5 +62,9 @@ public class Status {
 
   public int getPopulation() {
     return population;
+  }
+
+  public int getFoodSupply() {
+    return foodSupply;
   }
 }

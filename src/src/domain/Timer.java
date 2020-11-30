@@ -1,5 +1,7 @@
 package src.domain;
 
+import src.domain.enums.GameSettings;
+
 import java.util.ArrayList;
 
 public class Timer {
@@ -7,9 +9,11 @@ public class Timer {
     private final long startTime;
     private final String message;
     private final int time;
+    private final int days;
 
-    public Timer(int time, String message) {
-        this.time = time;
+    public Timer(int days, String message) {
+        this.days = days;
+        this.time = days * GameSettings.DAY.toInt();
         this.startTime = System.currentTimeMillis();
         this.message = message;
         timers.add(this);
@@ -20,6 +24,10 @@ public class Timer {
             System.out.println(message);
             timers.remove(this);
         }
+    }
+
+    public int getDays() {
+        return days;
     }
 
     public int getTime() {

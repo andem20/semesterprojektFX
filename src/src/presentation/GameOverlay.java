@@ -25,6 +25,8 @@ public class GameOverlay {
   private final Label popAmount = new Label();
   private final Label hungerLabel = new Label("Hunger level:");
   private final Label hungerAmount = new Label();
+  private final Label daysLabel = new Label("Days: ");
+  private final Label daysAmount = new Label();
 
   public GameOverlay(Main main) {
     this.main = main;
@@ -46,19 +48,19 @@ public class GameOverlay {
     musicIcon.setOnMouseClicked(mouseEvent -> playPause());
     musicIcon.setImage(musicOn);
 
-    // Status
-    popLabel.setStyle("-fx-text-fill: #FFFFFF;");
-    hungerLabel.setStyle("-fx-text-fill: #FFFFFF;");
+    // Add elements
+    hbox.getChildren().addAll(
+        daysLabel, daysAmount,
+        popLabel, popAmount,
+        hungerLabel, hungerAmount,
+        musicIcon);
+
+    hbox.getChildren().forEach(label -> label.setStyle("-fx-text-fill: #FFFFFF;"));
+
+    // Set numbers to bold font
     popAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
     hungerAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
-
-
-    // Add elements
-    hbox.getChildren().add(popLabel);
-    hbox.getChildren().add(popAmount);
-    hbox.getChildren().add(hungerLabel);
-    hbox.getChildren().add(hungerAmount);
-    hbox.getChildren().add(musicIcon);
+    daysAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
   }
 
   public void setContainer(Node container) {
@@ -67,10 +69,15 @@ public class GameOverlay {
     this.container.getChildren().add(hbox);
   }
 
-  public void setStatusText(int population, float hungerLevel) {
-    // Status
+  public void setStatusText(int population, float hungerLevel, int days) {
+    // Update population amount
     popAmount.setText(population + " ");
+
+    // Update hunger level amount
     hungerAmount.setText(Math.round(hungerLevel * 100) + "%");
+
+    // Update days amount
+    daysAmount.setText(days + " ");
   }
 
   public void playPause() {
