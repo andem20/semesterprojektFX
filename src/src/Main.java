@@ -16,9 +16,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import src.controllers.*;
-import src.enums.CropType;
-import src.enums.ItemType;
+import src.presentation.GameOverlay;
+import src.presentation.controllers.*;
+import src.domain.*;
+import src.domain.Character;
+import src.domain.enums.CropType;
+import src.domain.enums.ItemType;
+import src.presentation.FXController;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -96,7 +100,7 @@ public class Main extends Application {
         }
 
         // Check win / lose condition
-        status.checkStatus();
+        if(status.checkStatus()) this.stop();
 
         gameOverlay.setStatusText(status.getPopulation(), status.getHungerLevel());
       }
@@ -110,13 +114,13 @@ public class Main extends Application {
     character = new Character(name, 100);
 
     // Create player's inventory
-    character.addItem(CropType.BEANS.toString(), new src.Crop(0, CropType.BEANS));
-    character.addItem(CropType.MAIZE.toString(), new src.Crop(5, CropType.MAIZE));
-    character.addItem(CropType.WHEAT.toString(), new src.Crop(10, CropType.WHEAT));
-    character.addItem(CropType.CHICKPEAS.toString(), new src.Crop(0, CropType.CHICKPEAS));
-    character.addItem(CropType.RICE.toString(), new src.Crop(0, CropType.RICE));
-    character.addItem(CropType.SORGHUM.toString(), new src.Crop(0, CropType.SORGHUM));
-    character.addItem(ItemType.FERTILIZER.toString(), new src.Item(ItemType.FERTILIZER.toString(), 1, 50));
+    character.addItem(CropType.BEANS.toString(), new Crop(0, CropType.BEANS));
+    character.addItem(CropType.MAIZE.toString(), new Crop(5, CropType.MAIZE));
+    character.addItem(CropType.WHEAT.toString(), new Crop(10, CropType.WHEAT));
+    character.addItem(CropType.CHICKPEAS.toString(), new Crop(0, CropType.CHICKPEAS));
+    character.addItem(CropType.RICE.toString(), new Crop(0, CropType.RICE));
+    character.addItem(CropType.SORGHUM.toString(), new Crop(0, CropType.SORGHUM));
+    character.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 1, 50));
   }
 
   public FXController getCurrent() {

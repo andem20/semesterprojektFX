@@ -16,374 +16,374 @@
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" visible="false" />
@@ -391,7 +391,7 @@
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/fieldpart1.png" />
+            <Image url="@../images/field_empty.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true" />

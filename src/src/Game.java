@@ -1,22 +1,24 @@
 package src;
 
-import src.commands.Command;
-import src.commands.Parser;
-import src.enums.CommandWord;
-import src.enums.CropType;
-import src.enums.ItemType;
-import src.enums.SecondWord;
-import src.rooms.*;
+import src.presentation.commands.Command;
+import src.presentation.commands.Parser;
+import src.domain.*;
+import src.domain.Character;
+import src.domain.enums.CommandWord;
+import src.domain.enums.CropType;
+import src.domain.enums.ItemType;
+import src.domain.enums.SecondWord;
+import src.domain.rooms.*;
 
 import java.util.Scanner;
 
 public class Game {
     private final Parser parser;
-    private src.Room currentRoom;
+    private Room currentRoom;
     private final Status status;
-    private src.Character character;
+    private Character character;
     private final src.GameMap gameMap;
-    private final src.Storyline storyline;
+    private final Storyline storyline;
 
     public Game() {
         createRooms();
@@ -27,7 +29,7 @@ public class Game {
 
         gameMap = new src.GameMap("src/map.txt");
 
-        storyline = new src.Storyline();
+        storyline = new Storyline();
     }
 
     public void play() {
@@ -38,8 +40,8 @@ public class Game {
             Command command = parser.getCommand();
             finished = status.checkStatus() || processCommand(command);
 
-            if(src.Timer.timers.iterator().hasNext()) {
-                src.Timer.timers.iterator().next().updateTimer();
+            if(Timer.timers.iterator().hasNext()) {
+                Timer.timers.iterator().next().updateTimer();
             }
 
             storyline.printStoryline(status.getHungerLevel());
@@ -104,13 +106,13 @@ public class Game {
         character = new Character(scanner.nextLine(), 100);
 
         // Inventory
-        character.addItem(CropType.BEANS.toString(), new src.Crop(0, CropType.BEANS));
-        character.addItem(CropType.MAIZE.toString(), new src.Crop(5, CropType.MAIZE));
-        character.addItem(CropType.WHEAT.toString(), new src.Crop(10, CropType.WHEAT));
-        character.addItem(CropType.CHICKPEAS.toString(), new src.Crop(0, CropType.CHICKPEAS));
-        character.addItem(CropType.RICE.toString(), new src.Crop(0, CropType.RICE));
-        character.addItem(CropType.SORGHUM.toString(), new src.Crop(0, CropType.SORGHUM));
-        character.addItem(ItemType.FERTILIZER.toString(), new src.Item(ItemType.FERTILIZER.toString(), 1, 50));
+        character.addItem(CropType.BEANS.toString(), new Crop(0, CropType.BEANS));
+        character.addItem(CropType.MAIZE.toString(), new Crop(5, CropType.MAIZE));
+        character.addItem(CropType.WHEAT.toString(), new Crop(10, CropType.WHEAT));
+        character.addItem(CropType.CHICKPEAS.toString(), new Crop(0, CropType.CHICKPEAS));
+        character.addItem(CropType.RICE.toString(), new Crop(0, CropType.RICE));
+        character.addItem(CropType.SORGHUM.toString(), new Crop(0, CropType.SORGHUM));
+        character.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 1, 50));
     }
 
     private void printWelcome() {
@@ -164,8 +166,8 @@ public class Game {
             }
 
             Market market = (Market) currentRoom;
-            src.Character buyer = character;
-            src.Character seller = market.getNPC();
+            Character buyer = character;
+            Character seller = market.getNPC();
 
             String success = "added to";
 
@@ -224,10 +226,10 @@ public class Game {
             Field field = (Field) currentRoom;
 
             // Get the specific crop. toUpperCase because of the Enum
-            src.Item item = character.getItem(command.getSecondWord().toString().toUpperCase());
+            Item item = character.getItem(command.getSecondWord().toString().toUpperCase());
 
-            if(item instanceof src.Crop) {
-                field.sow((src.Crop) item, new src.Timer(5, "Your crops are ready to harvest!"));
+            if(item instanceof Crop) {
+                field.sow((Crop) item, new Timer(5, "Your crops are ready to harvest!"));
                 return;
             }
 
@@ -290,7 +292,7 @@ public class Game {
 
         String direction = command.getSecondWord().toString();
 
-        src.Room nextRoom = currentRoom.getExit(direction);
+        Room nextRoom = currentRoom.getExit(direction);
 
         if(nextRoom == null) {
             System.out.println("There is no door!");
