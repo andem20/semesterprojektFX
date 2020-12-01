@@ -13,7 +13,7 @@
             <Image url="@../images/player/moving1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="420.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="480.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/door.png" />
          </image>
@@ -23,101 +23,46 @@
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
    </Label>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="325.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cobblestone.png" />
-         </image>
-      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #333333;" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true" />
 
    </children>
 </AnchorPane>
