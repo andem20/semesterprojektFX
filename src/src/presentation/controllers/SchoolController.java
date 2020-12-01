@@ -16,17 +16,25 @@ public class SchoolController extends FXController {
     public void update() {
         Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
         Bounds exitBounds = getMain().getView().lookup("#exit").getBoundsInParent();
+        Bounds boardBounds = getMain().getView().lookup("#board").getBoundsInParent();
 
         Label help = (Label) getMain().getView().lookup("#help");
+        Label board = (Label) getMain().getView().lookup("#lecture");
 
         if(playerBounds.intersects(exitBounds)) {
             helpMessage("Press 'F' to exit.", help);
         } else {
             help.setVisible(false);
         }
+        //TODO: exitbounds for market, hometown and farm (doorSouth, doorNorth and doorEast) - find exitBounds
+
+        if (playerBounds.intersects(boardBounds)) {
+            helpMessage("lecture", board);
+        } else {
+            board.setVisible(false);
+        } //TODO: get lectures from School.class one at a time
     }
-//TO DO: exitbounds for market, hometown and farm (doorSouth, doorNorth and doorEast) - find exitBounds
-    // going into school from map does not function - FIX!
+
 
     @Override
     public void onKeyPressed(KeyCode keyCode) {
