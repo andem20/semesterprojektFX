@@ -17,7 +17,7 @@ public class Game {
     private Room currentRoom;
     private final Status status;
     private Character character;
-    private final src.GameMap gameMap;
+    private final GameMap gameMap;
     private final Storyline storyline;
 
     public Game() {
@@ -27,7 +27,7 @@ public class Game {
         parser = new Parser();
         status = new Status(100);
 
-        gameMap = new src.GameMap("src/map.txt");
+        gameMap = new GameMap("src/map.txt");
 
         storyline = new Storyline();
     }

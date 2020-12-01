@@ -16,23 +16,23 @@ public class MapController extends FXController {
   public void update() {
     Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
     Bounds villageBounds = getMain().getView().lookup("#village").getBoundsInParent();
-    Bounds farmBounds = getMain().getView().lookup("#field").getBoundsInParent();
+    Bounds fieldBounds = getMain().getView().lookup("#field").getBoundsInParent();
     Bounds marketBounds = getMain().getView().lookup("#market").getBoundsInParent();
     Bounds schoolBounds = getMain().getView().lookup("#school").getBoundsInParent();
-    //Bounds fieldBounds = getMain().getView().lookup("#farm").getBoundsInParent();
+    Bounds farmBounds = getMain().getView().lookup("#farm").getBoundsInParent();
 
     Label help = (Label) getMain().getView().lookup("#help");
 
     if(playerBounds.intersects(villageBounds)) {
       helpMessage("Press 'F' to enter village.", help);
-    } else if(playerBounds.intersects(farmBounds)) {
+    } else if(playerBounds.intersects(fieldBounds)) {
       helpMessage("Press 'F' to enter field.", help);
     } else if (playerBounds.intersects(marketBounds)) {
       helpMessage("Press 'F' to enter market", help);
     } else if (playerBounds.intersects(schoolBounds)) {
       helpMessage("Press 'F' to enter school", help);
-    //} else if (playerBounds.intersects(fieldBounds)) {
-    //  helpMessage("Press 'F' to enter farm", help);
+    } else if (playerBounds.intersects(farmBounds)) {
+      helpMessage("Press 'F' to enter farm", help);
     } else {
       help.setVisible(false);
     }
@@ -42,10 +42,10 @@ public class MapController extends FXController {
   public void onKeyPressed(KeyCode keyCode) {
     Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
     Bounds villageBounds = getMain().getView().lookup("#village").getBoundsInParent();
-    Bounds farmBounds = getMain().getView().lookup("#field").getBoundsInParent();
+    Bounds fieldBounds = getMain().getView().lookup("#field").getBoundsInParent();
     Bounds marketBounds = getMain().getView().lookup("#market").getBoundsInParent();
     Bounds schoolBounds = getMain().getView().lookup("#school").getBoundsInParent();
-    //Bounds fieldBounds = getMain().getView().lookup("#farm").getBoundsInParent();
+    Bounds farmBounds = getMain().getView().lookup("#farm").getBoundsInParent();
 
     if(keyCode == KeyCode.F && playerBounds.intersects(villageBounds)) {
       getMain().setView("village");
@@ -53,7 +53,7 @@ public class MapController extends FXController {
       getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
     }
 
-    if(keyCode == KeyCode.F && playerBounds.intersects(farmBounds)) {
+    if(keyCode == KeyCode.F && playerBounds.intersects(fieldBounds)) {
       getMain().setView("field");
       getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
       getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
@@ -70,10 +70,10 @@ public class MapController extends FXController {
       getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
     }
 
-    //if (keyCode == KeyCode.F && playerBounds.intersects(fieldBounds)) {
-    //  getMain().setView("farm");
-    //  getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
-    //  getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
-  //  }
+    if (keyCode == KeyCode.F && playerBounds.intersects(farmBounds)) {
+      getMain().setView("farm");
+      getMain().getCharacter().setX((int) getMain().getView().lookup("#exit").getLayoutX());
+      getMain().getCharacter().setY((int) getMain().getView().lookup("#exit").getLayoutY());
+    }
   }
 }
