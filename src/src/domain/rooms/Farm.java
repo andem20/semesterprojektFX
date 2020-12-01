@@ -1,19 +1,19 @@
 package src.domain.rooms;
 
-import src.domain.Character;
 import src.domain.Room;
+import src.domain.characters.Wife;
 
 public class Farm extends Room {
 
-    private final Character family;
+    private final Wife wife;
 
     public Farm(String description) {
         super(description);
 
-        this.family = new Character("wife");
+        this.wife = new Wife("wife");
     }
 
-    public void talkWithWife() {
-        System.out.println("Hello darling! are you back already?");
+    public Wife getWife() {
+        return wife;
     }
 }

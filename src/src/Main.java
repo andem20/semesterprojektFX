@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import src.domain.characters.Player;
 import src.domain.enums.GameSettings;
 import src.presentation.GameOverlay;
 import src.presentation.controllers.*;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 
 public class Main extends Application {
   private FXController current;
-  private Character character;
+  private Player character;
   private HashMap<String, FXController> fxControllers;
   private Stage window;
   // Key-array for checking if pressed (avoiding delay)
@@ -112,7 +113,7 @@ public class Main extends Application {
   }
 
   private void createCharacter(String name) {
-    character = new Character(name, 100);
+    character = new Player(name, 100);
 
     // Create player's inventory
     character.addItem(CropType.BEANS.toString(), new Crop(0, CropType.BEANS));
@@ -132,7 +133,7 @@ public class Main extends Application {
     this.current = current;
   }
 
-  public Character getCharacter() {
+  public Player getCharacter() {
     return character;
   }
 
@@ -297,6 +298,10 @@ public class Main extends Application {
     // Update rendered player's position
     player.setTranslateX(x);
     player.setTranslateY(y);
+  }
+
+  public GameOverlay getGameOverlay() {
+    return gameOverlay;
   }
 
   public Status getStatus() {

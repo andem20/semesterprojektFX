@@ -27,6 +27,8 @@ public class GameOverlay {
   private final Label hungerAmount = new Label();
   private final Label daysLabel = new Label("Days: ");
   private final Label daysAmount = new Label();
+  // Character label
+  private final Label characterLabel = new Label();
 
   public GameOverlay(Main main) {
     this.main = main;
@@ -48,6 +50,10 @@ public class GameOverlay {
     musicIcon.setOnMouseClicked(mouseEvent -> playPause());
     musicIcon.setImage(musicOn);
 
+    characterLabel.setId("characterLabel");
+    characterLabel.setStyle("-fx-background-color: #333333; -fx-background-radius: 10;-fx-text-fill: #FFFFFF");
+    characterLabel.setVisible(false);
+
     // Add elements
     hbox.getChildren().addAll(
         daysLabel, daysAmount,
@@ -67,6 +73,7 @@ public class GameOverlay {
     this.container = (AnchorPane) container;
     AnchorPane.setRightAnchor(hbox, 0.0);
     this.container.getChildren().add(hbox);
+    this.container.getChildren().add(characterLabel);
   }
 
   public void setStatusText(int population, float hungerLevel, int days) {
@@ -78,6 +85,15 @@ public class GameOverlay {
 
     // Update days amount
     daysAmount.setText(days + " ");
+  }
+
+  public void setCharacterLabel(String message) {
+    characterLabel.setVisible(true);
+    characterLabel.setText(message);
+  }
+
+  public Label getCharacterLabel() {
+    return characterLabel;
   }
 
   public void playPause() {
