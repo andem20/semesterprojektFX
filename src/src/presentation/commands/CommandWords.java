@@ -1,5 +1,5 @@
 package src.presentation.commands;
-import src.domain.enums.CommandWord;
+import src.enums.CommandWord;
 
 import java.util.HashMap;
 

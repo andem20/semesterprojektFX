@@ -1,6 +1,6 @@
 package src.presentation.commands;
 
-import src.domain.enums.ParameterWord;
+import src.enums.ParameterWord;
 
 import java.util.HashMap;
 

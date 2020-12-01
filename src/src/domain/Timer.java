@@ -1,6 +1,6 @@
 package src.domain;
 
-import src.domain.enums.GameSettings;
+import src.enums.GameSettings;
 
 import java.util.ArrayList;
 
@@ -19,11 +19,13 @@ public class Timer {
         timers.add(this);
     }
 
-    public void updateTimer(){
+    public String updateTimer(){
         if((System.currentTimeMillis() - startTime) / 1000 >= time) {
-            System.out.println(message);
             timers.remove(this);
+            return message;
         }
+
+        return null;
     }
 
     public int getDays() {

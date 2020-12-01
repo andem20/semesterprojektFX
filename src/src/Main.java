@@ -17,13 +17,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import src.domain.characters.Player;
-import src.domain.enums.GameSettings;
+import src.enums.GameSettings;
 import src.presentation.GameOverlay;
 import src.presentation.controllers.*;
 import src.domain.*;
-import src.domain.Character;
-import src.domain.enums.CropType;
-import src.domain.enums.ItemType;
+import src.enums.CropType;
+import src.enums.ItemType;
 import src.presentation.FXController;
 
 import java.io.IOException;

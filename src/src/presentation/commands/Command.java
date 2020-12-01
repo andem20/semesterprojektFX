@@ -19,8 +19,8 @@
 
 package src.presentation.commands;
 
-import src.domain.enums.CommandWord;
-import src.domain.enums.ParameterWord;
+import src.enums.CommandWord;
+import src.enums.ParameterWord;
 
 public class Command {
     private final CommandWord commandWord;

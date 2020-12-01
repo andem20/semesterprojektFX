@@ -30,29 +30,19 @@ public class Storyline {
         "Sincerely Team 3");
   }
 
-  // TODO decrease level when hungerlevel rises.
-  public void printStoryline(double hungerLevel) {
-    if(hungerLevel >= 0.4 && level == 1) printStory();
-
-    if(hungerLevel >= 0.5 && level == 2) printStory();
-
-    if(hungerLevel >= 0.7 && level == 3) printStory();
-
-    if(hungerLevel <= 0.8 && level == 4) printStory();
-  }
-
-  public void printStory() {
-    System.out.println("________________________________________________");
-    System.out.println(getStory(level));
-    System.out.println("________________________________________________");
-    level++;
-  }
-
   public void addStory(String story) {
     storyline.add(story);
   }
 
-  public String getStory(int level) {
-    return storyline.get(level - 1);
+  public String getStory() {
+    return storyline.get(getLevel() - 1);
+  }
+
+  public int getLevel() {
+    return level;
+  }
+
+  public void increaseLevel() {
+    this.level++;
   }
 }

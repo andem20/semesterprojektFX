@@ -1,6 +1,6 @@
 package src.domain;
 
-import src.domain.enums.ParameterWord;
+import src.enums.ParameterWord;
 
 import java.util.HashMap;
 import java.util.Set;

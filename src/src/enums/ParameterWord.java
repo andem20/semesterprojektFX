@@ -1,4 +1,4 @@
-package src.domain.enums;
+package src.enums;
 
 public enum ParameterWord {
   EAST("east"),

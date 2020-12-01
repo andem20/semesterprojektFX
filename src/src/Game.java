@@ -4,10 +4,10 @@ import src.presentation.commands.Command;
 import src.presentation.commands.Parser;
 import src.domain.*;
 import src.domain.Character;
-import src.domain.enums.CommandWord;
-import src.domain.enums.CropType;
-import src.domain.enums.ItemType;
-import src.domain.enums.ParameterWord;
+import src.enums.CommandWord;
+import src.enums.CropType;
+import src.enums.ItemType;
+import src.enums.ParameterWord;
 import src.domain.rooms.*;
 
 import java.util.Scanner;
@@ -41,10 +41,13 @@ public class Game {
             finished = status.checkStatus() || processCommand(command);
 
             if(Timer.timers.iterator().hasNext()) {
-                Timer.timers.iterator().next().updateTimer();
+                String timerMessage = Timer.timers.iterator().next().updateTimer();
+                if(timerMessage != null) {
+                    System.out.println(timerMessage);
+                }
             }
 
-            storyline.printStoryline(status.getHungerLevel());
+            printStoryline(status.getHungerLevel());
 
             if(status.getHungerLevel() >= 1.0) {
                 System.out.println();
@@ -203,7 +206,7 @@ public class Game {
             case MAP : gameMap.showMap(); break;
             case COINS : System.out.println("Coins: " + character.getCoins()); break;
             case DAYS : System.out.println(status.getPassedTime() + " days has passed."); break;
-            case STATUS : status.printStatus(); break;
+            case STATUS : printStatus(); break;
             case FIELDHEALTH : {
                 if(currentRoom instanceof Field) {
                     System.out.println("Fieldhealth: " + ((Field) currentRoom).getFieldHealth() * 100 + "%");
@@ -229,7 +232,9 @@ public class Game {
             Item item = character.getItem(command.getSecondWord().toString().toUpperCase());
 
             if(item instanceof Crop) {
-                field.sow((Crop) item, new Timer(5, "Your crops are ready to harvest!"));
+                System.out.println(
+                    field.sow((Crop) item, new Timer(5, "Your crops are ready to harvest!"))
+                );
                 return;
             }
 
@@ -242,7 +247,7 @@ public class Game {
 
     private void harvest() {
         if(currentRoom instanceof Field) {
-            ((Field) currentRoom).harvest();
+            System.out.println(((Field) currentRoom).harvest());
             return;
         }
 
@@ -251,7 +256,10 @@ public class Game {
 
     private void fertilize() {
         if(currentRoom instanceof Field) {
-            ((Field) currentRoom).fertilize(character.getItem(ItemType.FERTILIZER.toString()));
+            Field field = ((Field) currentRoom);
+            System.out.println(
+                field.fertilize(character.getItem(ItemType.FERTILIZER.toString()))
+            );
             return;
         }
 
@@ -270,6 +278,31 @@ public class Game {
         }
 
         System.out.println("You have to go to the school.");
+    }
+
+    // TODO decrease level when hungerlevel rises.
+    public void printStoryline(double hungerLevel) {
+        if(hungerLevel <= 0.6 && storyline.getLevel() == 1) printStory();
+
+        if(hungerLevel <= 0.5 && storyline.getLevel() == 2) printStory();
+
+        if(hungerLevel <= 0.3 && storyline.getLevel() == 3) printStory();
+
+        if(hungerLevel <= 0.2 && storyline.getLevel() == 4) printStory();
+    }
+
+    public void printStory() {
+        System.out.println("________________________________________________");
+        System.out.println(storyline.getStory());
+        System.out.println("________________________________________________");
+        storyline.increaseLevel();
+    }
+
+    public void printStatus() {
+        System.out.println("Days passed: " + status.getDays());
+        System.out.println("Population: " + status.getPopulation());
+        System.out.println("Foodsupply: " + status.getFoodSupply());
+        System.out.println("Hungerlevel: " + status.getHungerLevel());
     }
 
     private void printHelp() {

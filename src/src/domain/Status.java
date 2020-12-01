@@ -1,6 +1,6 @@
 package src.domain;
 
-import src.domain.enums.GameSettings;
+import src.enums.GameSettings;
 import src.domain.rooms.Market;
 
 import java.util.Map;
@@ -37,13 +37,6 @@ public class Status {
     hungerLevel = 1 - (float) this.foodSupply / population;
 
     return hungerLevel >= 0.8;
-  }
-
-  public void printStatus() {
-    System.out.println("Days passed: " + getDays());
-    System.out.println("Population: " + getPopulation());
-    System.out.println("Foodsupply: " + getFoodSupply());
-    System.out.println("Hungerlevel: " + getHungerLevel());
   }
 
   public double getPassedTime() {

@@ -9,7 +9,7 @@ import src.domain.Crop;
 import src.presentation.FXController;
 import src.Main;
 import src.domain.Timer;
-import src.domain.enums.CropType;
+import src.enums.CropType;
 import src.domain.rooms.Field;
 
 public class FieldController extends FXController {

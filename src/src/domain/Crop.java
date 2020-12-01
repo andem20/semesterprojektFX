@@ -1,6 +1,6 @@
 package src.domain;
 
-import src.domain.enums.CropType;
+import src.enums.CropType;
 
 public class Crop extends Item {
   private final CropType cropType;

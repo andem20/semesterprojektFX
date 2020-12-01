@@ -18,19 +18,17 @@ public class Field extends Room {
         super(description);
     }
 
-    public void sow(Crop crop, Timer timer) {
+    public String sow(Crop crop, Timer timer) {
         this.timer = timer;
         // Check if field is occupied
         if(sowed) {
-            System.out.println("You have to harvest your crops before you can sow again.");
             Timer.timers.remove(timer);
-            return;
+            return "You have to harvest your crops before you can sow again.";
         }
 
         // Check if we have enough crops
         if(crop.getAmount() < SEED_AMOUNT) {
-            System.out.println("You need " + SEED_AMOUNT + " " + crop.getName() + "!");
-            return;
+            return "You need " + SEED_AMOUNT + " " + crop.getName() + "!";
         }
 
         // Check if we are sowing the same crop
@@ -40,40 +38,40 @@ public class Field extends Room {
             }
         }
 
-        System.out.println(crop.getName() + " was sowed... They'll be ready in " + timer.getDays() + " days...");
         crop.setAmount(crop.getAmount() - SEED_AMOUNT);
 
         prevYield = crop;
         sowed = true;
+
+        return crop.getName() + " was sowed... They'll be ready in " + timer.getDays() + " days...";
     }
 
-    public void harvest() {
+    public String harvest() {
         if(!sowed) {
-            System.out.println("You haven't sowed anything!");
-            return;
+            return "You haven't sowed anything!";
         }
 
         if(isReadyCrops()) {
             int yield = (int) ((SEED_AMOUNT * prevYield.yield) * fieldHealth);
             prevYield.setAmount(prevYield.getAmount() + yield);
-            System.out.println("You harvested " + yield + " " + prevYield.getName());
             sowed = false;
-            return;
+            return "You harvested " + yield + " " + prevYield.getName();
         }
 
-        System.out.println("Crops not ready yet!");
+        return "Crops not ready yet!";
     }
 
-    public void fertilize(Item fertilizer) {
+    public String fertilize(Item fertilizer) {
         // Check if we have enough fertilizer
         if(fertilizer.getAmount() < 1) {
-            System.out.println("You need don't have enough fertilizer!");
-            return;
+            return "You need don't have enough fertilizer!";
         }
 
         fertilizer.setAmount(fertilizer.getAmount() - 1);
         fieldHealth *= 1.5;
         fieldHealth = Math.min(1, fieldHealth);
+
+        return "Fertilizer was spread on the field.";
     }
 
     public double getFieldHealth() {

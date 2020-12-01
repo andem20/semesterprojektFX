@@ -4,8 +4,8 @@ import src.domain.Character;
 import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;
-import src.domain.enums.CropType;
-import src.domain.enums.ItemType;
+import src.enums.CropType;
+import src.enums.ItemType;
 
 import java.util.Map;
 

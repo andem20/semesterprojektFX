@@ -1,4 +1,4 @@
-package src.domain.enums;
+package src.enums;
 
 public enum CropType {
   WHEAT(6, 3, 0.5),
