@@ -1,15 +1,25 @@
 package src.presentation.controllers;
 
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.control.Label;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import src.domain.rooms.Farm;
 import src.presentation.FXController;
 import src.Main;
 
 public class FarmController extends FXController {
 
+  private Farm farm;
+
+
   public FarmController(Main main) {
     super(main);
+
+    farm = new Farm("farm");
+
   }
 
   @Override
@@ -34,8 +44,9 @@ public class FarmController extends FXController {
 
     if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
       getMain().setView("map");
-      getMain().getCharacter().setX(9 * 60);
-      getMain().getCharacter().setY(120);
+      getMain().getCharacter().setX((int) getMain().getView().lookup("#farm").getLayoutX());
+      getMain().getCharacter().setY((int) getMain().getView().lookup("#farm").getLayoutY());
+
     }
   }
 }

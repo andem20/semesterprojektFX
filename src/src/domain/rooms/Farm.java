@@ -10,6 +10,10 @@ public class Farm extends Room {
     public Farm(String description) {
         super(description);
 
-        this.family = new Character("family");
+        this.family = new Character("wife");
+    }
+
+    public void talkWithWife() {
+        System.out.println("Hello darling! are you back already?");
     }
 }
