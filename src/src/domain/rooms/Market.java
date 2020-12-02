@@ -17,7 +17,7 @@ public class Market extends Room {
   public Market(String description) {
     super(description);
 
-    NPC = new Character("seller", 5000);
+    NPC = new Character("Seller", 5000);
     NPC.addItem(CropType.BEANS.toString(), new Crop(10, CropType.BEANS));
     NPC.addItem(CropType.MAIZE.toString(), new Crop(10, CropType.MAIZE));
     NPC.addItem(CropType.WHEAT.toString(), new Crop(10, CropType.WHEAT));
@@ -33,15 +33,9 @@ public class Market extends Room {
     return NPC;
   }
 
-  public void showStock() {
-    System.out.println("+--------------------+");
-    System.out.printf("| Market Coins: %-4s |\n", NPC.getCoins());
-    NPC.showInventory();
-  }
-
   private void addTax() {
     for(Map.Entry<String, Item> entry : NPC.getInventory().entrySet()) {
-      entry.getValue().price += TAX;
+      entry.getValue().setPrice(entry.getValue().getPrice() + TAX);
     }
   }
 }

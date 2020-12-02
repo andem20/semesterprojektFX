@@ -80,9 +80,8 @@ public class Main extends Application {
 
       @Override
       public void handle(long l) {
-        // Find player and bring it to the front
+        // Get the player model
         Node player = getView().lookup("#player");
-        player.toFront();
 
         // Animating player model every 250 ms
         double loopTimer = ((l - start) / 1e9) % 0.5;
@@ -196,15 +195,17 @@ public class Main extends Application {
 
   public void setGrid() {
     // Could be calculated after how many tiles an imageview takes up
-    // Collect all nodes in an 2d array
+    // Collect all ImageViews in an 2d array
     grid = new Node[(int) getView().getHeight() / TILESIZE][(int) getView().getWidth() / TILESIZE];
-    getView().getRoot().getChildrenUnmodifiable().forEach(node -> {
-      if((node.getId() == null || !node.getId().equals("player")) && node instanceof ImageView) {
-        int row = (int) node.getLayoutY() / TILESIZE;
-        int col = (int) node.getLayoutX() / TILESIZE;
-        grid[row][col] = node;
-      }
-    });
+    getView().getRoot().getChildrenUnmodifiable().stream()
+        .filter(node -> (node.getId() == null || !node.getId().equals("player")) && node instanceof ImageView)
+        .forEach(node -> {
+          if(!node.isDisabled()) {
+            int row = (int) node.getLayoutY() / TILESIZE;
+            int col = (int) node.getLayoutX() / TILESIZE;
+            grid[row][col] = node;
+          }
+        });
   }
 
   public void animatePlayer(double timer, ImageView player, double duration) {

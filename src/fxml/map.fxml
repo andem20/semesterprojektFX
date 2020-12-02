@@ -9,11 +9,6 @@
 
 <AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #6bb226;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/player/moving1.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/tiles/leftupper.png" />
@@ -331,6 +326,11 @@
       <ImageView fx:id="farm" fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/house.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player/moving1.png" />
          </image>
       </ImageView>
    </children>

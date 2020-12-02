@@ -9,11 +9,6 @@
 
 <AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url('/images/schoolBackground.png');" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/player/moving1.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
          <image>
             <Image url="@../images/schoolDoor.png" />
@@ -500,5 +495,10 @@
          </image>
       </ImageView>
       <Pane fx:id="board" layoutX="600.0" prefHeight="60.0" prefWidth="240.0" style="-fx-background-image: url('\images\board.png');" />
+      <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player/moving1.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

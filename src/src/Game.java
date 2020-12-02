@@ -10,6 +10,8 @@ import src.enums.ItemType;
 import src.enums.ParameterWord;
 import src.domain.rooms.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Game {
@@ -160,12 +162,12 @@ public class Game {
         return wantToQuit;
     }
 
-    private boolean trade(Command command) {
+    private void trade(Command command) {
         if(currentRoom instanceof Market) {
 
             if(!command.hasSecondWord()) {
                 System.out.println(command.getCommandWord() + " what?");
-                return false;
+                return;
             }
 
             Market market = (Market) currentRoom;
@@ -180,12 +182,45 @@ public class Game {
                 success = "removed from";
             }
 
-            return buyer.trade(seller, command.getSecondWord().toString().toUpperCase(), success);
+            Item sellerItem = seller.getItem(command.getSecondWord().toString().toUpperCase());
+            Item buyerItem = buyer.getItem(command.getSecondWord().toString().toUpperCase());
+
+            System.out.print("Amount: ");
+            Scanner scanner = new Scanner(System.in);
+
+            String input = scanner.nextLine();
+
+            if(input.isEmpty() || !input.matches("([0-9])\\w*")) {
+                System.out.println("You have to specify an amount!");
+                return;
+            }
+
+            int amount = Integer.parseInt(input);
+
+//    Check amount
+            if(amount > sellerItem.getAmount()) {
+                System.out.println("There is only " + sellerItem.getAmount() + " " + sellerItem.getName() + " available.");
+                return;
+            }
+
+//    Check total price
+            if(amount * sellerItem.getPrice() > buyer.getCoins()) {
+                System.out.println("Insufficient funds!");
+                return;
+            }
+
+            buyer.addItem(buyerItem, amount);
+            buyer.removeCoins(sellerItem.getPrice() * amount);
+            seller.removeItem(sellerItem, amount);
+            seller.addCoins(sellerItem.getPrice() * amount);
+
+            System.out.print(amount + " " + sellerItem.getName() + " was " + success +" your inventory.");
+            System.out.println();
+
+            return;
         }
 
         System.out.println("You have to go to the market!");
-
-        return false;
     }
 
     private void show(Command command) {
@@ -195,10 +230,13 @@ public class Game {
         }
 
         switch(command.getSecondWord()){
-            case INVENTORY : character.showInventory(); break;
+            case INVENTORY : showInventory(character.getInventory()); break;
             case STOCK : {
                 if(currentRoom instanceof Market) {
-                    ((Market) currentRoom).showStock();
+                    Character NPC = ((Market) currentRoom).getNPC();
+                    System.out.println("+--------------------+");
+                    System.out.printf("| Market Coins: %-4s |\n", NPC.getCoins());
+                    showInventory(NPC.getInventory());
                 } else {
                     System.out.println("You have to go to the market to see the stock.");
                 }
@@ -217,6 +255,41 @@ public class Game {
 
             default : System.out.println("I don't know what you mean...");
         }
+    }
+
+    public void showInventory(HashMap<String, Item> inventory) {
+        int width = 0;
+
+        // calculate width for formatting
+        for(Map.Entry<String, Item> entry : inventory.entrySet()) {
+            width = Math.max(width, entry.getValue().getName().length() + Integer.toString(entry.getValue().getAmount()).length());
+        }
+
+        // Create top line
+        for(int i = 0; i < width+21; i++) {
+            System.out.print((i == 0 || i == width+20 ? "+" : "-"));
+        }
+
+        System.out.println();
+
+        System.out.printf("|  %-" + width + "s: %-7s: %-4s |%n", "Item", "Amount", "Price");
+        System.out.printf("|  %-" + width + "s  %-14s |%n", "", "", "");
+        // Print inventory formatted
+        for(Map.Entry<String, Item> entry : inventory.entrySet()) {
+            if(entry.getValue().getAmount() > 0) {
+                String itemName = entry.getValue().getName();
+                int amount = entry.getValue().getAmount();
+                int price = entry.getValue().getPrice();
+                System.out.printf("|  %-" + width + "s: %-7s: %-5s |%n", itemName, amount, price);
+            }
+        }
+
+        // Create bottom line
+        for(int i = 0; i < width+21; i++) {
+            System.out.print((i == 0 || i == width+20 ? "+" : "-"));
+        }
+
+        System.out.println();
     }
 
     private void sow(Command command) {
@@ -270,9 +343,9 @@ public class Game {
         if(currentRoom instanceof School) {
 
             School school = (School) currentRoom;
-            school.teach(character.getKnowledgeLevel());
+            System.out.println(school.teach());
 
-            character.incKnowledgeLevel();
+            school.increaseLevel();
 
             return;
         }

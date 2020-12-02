@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class School extends Room {
 
   private final ArrayList<String> knowledges;
+  private int level = 1;
 
   public School(String description) {
     super(description);
@@ -44,15 +45,19 @@ public class School extends Room {
     );
   }
 
-  public void teach(int knowledgeLevel) {
-    System.out.println(getKnowledge(knowledgeLevel));
+  public String teach() {
+    return getKnowledge();
   }
 
-  public String getKnowledge(int knowledgeLevel) {
-    return knowledges.get((knowledgeLevel - 1) % knowledges.size());
+  public String getKnowledge() {
+    return knowledges.get((level - 1) % knowledges.size());
   }
 
   public ArrayList<String> getKnowledges() {
     return knowledges;
+  }
+
+  public void increaseLevel() {
+    level++;
   }
 }

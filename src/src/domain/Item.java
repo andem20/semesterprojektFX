@@ -3,7 +3,7 @@ package src.domain;
 public class Item {
   private final String name;
   private int amount;
-  public int price;
+  private int price;
 
   public Item(String name, int amount, int price) {
     this.name = name;
@@ -21,5 +21,13 @@ public class Item {
 
   public void setAmount(int amount) {
     this.amount = amount;
+  }
+
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
   }
 }
