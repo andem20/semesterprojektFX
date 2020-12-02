@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import src.domain.Crop;
 import src.presentation.FXController;
-import src.Main;
+import src.GUI;
 import src.domain.Timer;
 import src.enums.CropType;
 import src.domain.rooms.Field;
@@ -17,8 +17,8 @@ public class FieldController extends FXController {
   private final Field field;
   private final Image[] fieldImages = new Image[5];
 
-  public FieldController(Main main) {
-    super(main);
+  public FieldController(GUI GUI) {
+    super(GUI);
 
     field = new Field("Field");
 
@@ -31,13 +31,13 @@ public class FieldController extends FXController {
 
   @Override
   public void update() {
-    Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
-    Bounds exitBounds = getMain().getView().lookup("#exit").getBoundsInParent();
-    Bounds field1 = getMain().getView().lookup("#field1").getBoundsInParent();
-    Bounds field2 = getMain().getView().lookup("#field2").getBoundsInParent();
-    Bounds field3 = getMain().getView().lookup("#field3").getBoundsInParent();
+    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
+    Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
+    Bounds field1 = getGUI().getView().lookup("#field1").getBoundsInParent();
+    Bounds field2 = getGUI().getView().lookup("#field2").getBoundsInParent();
+    Bounds field3 = getGUI().getView().lookup("#field3").getBoundsInParent();
 
-    Label help = (Label) getMain().getView().lookup("#help");
+    Label help = (Label) getGUI().getView().lookup("#help");
     help.setVisible(false);
 
     if(field.isSowed()) {
@@ -66,18 +66,18 @@ public class FieldController extends FXController {
 
   @Override
   public void onKeyPressed(KeyCode keyCode) {
-    Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
-    Bounds exitBounds = getMain().getView().lookup("#exit").getBoundsInParent();
-    Bounds field1 = getMain().getView().lookup("#field1").getBoundsInParent();
-    Bounds field2 = getMain().getView().lookup("#field2").getBoundsInParent();
-    Bounds field3 = getMain().getView().lookup("#field3").getBoundsInParent();
+    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
+    Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
+    Bounds field1 = getGUI().getView().lookup("#field1").getBoundsInParent();
+    Bounds field2 = getGUI().getView().lookup("#field2").getBoundsInParent();
+    Bounds field3 = getGUI().getView().lookup("#field3").getBoundsInParent();
 
 
     if(keyCode == KeyCode.F) {
       if(playerBounds.intersects(exitBounds)) {
-        getMain().setView("map");
-        getMain().getCharacter().setX((int) getMain().getView().lookup("#field").getLayoutX());
-        getMain().getCharacter().setY((int) getMain().getView().lookup("#field").getLayoutY());
+        getGUI().setView("map");
+        getGUI().getCharacter().setX((int) getGUI().getView().lookup("#field").getLayoutX());
+        getGUI().getCharacter().setY((int) getGUI().getView().lookup("#field").getLayoutY());
       }
 
       if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
@@ -94,7 +94,7 @@ public class FieldController extends FXController {
   }
 
   private void setFieldImage(Image image) {
-    getMain().getView().getRoot().getChildrenUnmodifiable().stream().filter(node ->
+    getGUI().getView().getRoot().getChildrenUnmodifiable().stream().filter(node ->
         node instanceof ImageView && node.getId() == null
     ).forEach(node -> {
       ImageView imageView = (ImageView) node;

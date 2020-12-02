@@ -28,7 +28,7 @@ import src.presentation.FXController;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class Main extends Application {
+public class GUI extends Application {
   private FXController current;
   private Player character;
   private HashMap<String, FXController> fxControllers;

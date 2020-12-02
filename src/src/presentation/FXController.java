@@ -3,26 +3,26 @@ package src.presentation;
 
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import src.Main;
+import src.GUI;
 
 public abstract class FXController {
-  private final Main main;
+  private final GUI GUI;
 
-  public FXController(Main main) {
-    this.main = main;
+  public FXController(GUI GUI) {
+    this.GUI = GUI;
   }
 
   public abstract void update();
 
   public abstract void onKeyPressed(KeyCode keyCode);
 
-  public Main getMain() {
-    return main;
+  public GUI getGUI() {
+    return GUI;
   }
 
   public void helpMessage(String msg, Label label) {
-    label.setTranslateX(getMain().getCharacter().getX());
-    label.setTranslateY(getMain().getCharacter().getY() - 30);
+    label.setTranslateX(getGUI().getCharacter().getX());
+    label.setTranslateY(getGUI().getCharacter().getY() - 30);
     label.toFront();
     label.setText(msg);
     label.setVisible(true);

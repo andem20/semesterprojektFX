@@ -8,14 +8,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import src.Main;
+import src.GUI;
 import src.domain.Audio;
 
 public class GameOverlay {
   private AnchorPane container;
   private final HBox hbox = new HBox();
   private final Audio audio;
-  private final Main main;
+  private final GUI GUI;
   // Imageicon
   private final ImageView musicIcon = new ImageView();
   private final Image musicOn = new Image("/images/music_on.png");
@@ -30,8 +30,8 @@ public class GameOverlay {
   // Character label
   private final Label characterLabel = new Label();
 
-  public GameOverlay(Main main) {
-    this.main = main;
+  public GameOverlay(GUI GUI) {
+    this.GUI = GUI;
 
     // Load music
     audio = new Audio("soundtrack.wav");

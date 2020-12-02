@@ -4,20 +4,20 @@ import javafx.geometry.Bounds;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import src.presentation.FXController;
-import src.Main;
+import src.GUI;
 
 public class VillageController extends FXController {
 
-  public VillageController(Main main) {
-    super(main);
+  public VillageController(GUI GUI) {
+    super(GUI);
   }
 
   @Override
   public void update() {
-    Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
-    Bounds exitBounds = getMain().getView().lookup("#exit").getBoundsInParent();
+    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
+    Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
 
-    Label help = (Label) getMain().getView().lookup("#help");
+    Label help = (Label) getGUI().getView().lookup("#help");
 
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
@@ -29,13 +29,13 @@ public class VillageController extends FXController {
 
   @Override
   public void onKeyPressed(KeyCode keyCode) {
-    Bounds playerBounds = getMain().getView().lookup("#player").getBoundsInParent();
-    Bounds switchSceneBounds = getMain().getView().lookup("#exit").getBoundsInParent();
+    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
+    Bounds switchSceneBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
 
     if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
-      getMain().setView("map");
-      getMain().getCharacter().setX((int) getMain().getView().lookup("#village").getLayoutX());
-      getMain().getCharacter().setY((int) getMain().getView().lookup("#village").getLayoutY());
+      getGUI().setView("map");
+      getGUI().getCharacter().setX((int) getGUI().getView().lookup("#village").getLayoutX());
+      getGUI().getCharacter().setY((int) getGUI().getView().lookup("#village").getLayoutY());
     }
   }
 }
