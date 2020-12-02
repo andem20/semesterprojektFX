@@ -9,7 +9,7 @@ import src.domain.rooms.Market;
 
 public class MarketController extends FXController {
 
-    private Market market;
+    private final Market market;
 
     public MarketController(Main main) {
         super(main);

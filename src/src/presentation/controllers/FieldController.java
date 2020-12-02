@@ -14,7 +14,7 @@ import src.domain.rooms.Field;
 
 public class FieldController extends FXController {
 
-  private Field field;
+  private final Field field;
   private final Image[] fieldImages = new Image[5];
 
   public FieldController(Main main) {

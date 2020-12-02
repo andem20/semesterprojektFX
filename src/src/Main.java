@@ -76,7 +76,7 @@ public class Main extends Application {
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
-      long start = System.nanoTime();
+      final long start = System.nanoTime();
 
       @Override
       public void handle(long l) {

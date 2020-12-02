@@ -13,7 +13,7 @@ import src.domain.Audio;
 
 public class GameOverlay {
   private AnchorPane container;
-  private HBox hbox = new HBox();
+  private final HBox hbox = new HBox();
   private final Audio audio;
   private final Main main;
   // Imageicon

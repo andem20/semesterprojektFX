@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Player extends Character {
 
-  private ArrayList<String> wifeMessages = new ArrayList<>();
+  private final ArrayList<String> wifeMessages = new ArrayList<>();
 
   public Player(String name, int coins) {
     super(name, coins);

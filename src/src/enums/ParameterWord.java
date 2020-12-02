@@ -24,7 +24,7 @@ public enum ParameterWord {
   // Items
   FERTILIZER(ItemType.FERTILIZER.toString());
 
-  private String parameterString;
+  private final String parameterString;
 
   ParameterWord(String secondString) {
     this.parameterString = secondString.toLowerCase();

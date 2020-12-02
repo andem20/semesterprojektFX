@@ -14,7 +14,7 @@ public enum CommandWord {
     FERTILIZE("fertilize"),
     LEARN("learn");
 
-    private String commandString;
+    private final String commandString;
 
     CommandWord(String commandString) {
         this.commandString = commandString;

@@ -9,7 +9,7 @@ import src.Main;
 
 public class FarmController extends FXController {
 
-  private Farm farm;
+  private final Farm farm;
   private int messageIndex = 0;
 
   public FarmController(Main main) {

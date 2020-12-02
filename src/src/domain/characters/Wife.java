@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Wife extends Character {
 
-  private ArrayList<String> responses = new ArrayList<>();
+  private final ArrayList<String> responses = new ArrayList<>();
 
   public Wife(String name) {
     super(name);
