@@ -50,8 +50,10 @@ public class GameOverlay {
     musicIcon.setOnMouseClicked(mouseEvent -> playPause());
     musicIcon.setImage(musicOn);
 
+    // Character label
     characterLabel.setId("characterLabel");
-    characterLabel.setStyle("-fx-background-color: #333333; -fx-background-radius: 10;-fx-text-fill: #FFFFFF");
+    characterLabel.setPadding(new Insets(5));
+    characterLabel.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10;-fx-text-fill: #000000");
     characterLabel.setVisible(false);
 
     // Add elements

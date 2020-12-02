@@ -23,7 +23,6 @@ public abstract class FXController {
   public void helpMessage(String msg, Label label) {
     label.setTranslateX(getGUI().getCharacter().getX());
     label.setTranslateY(getGUI().getCharacter().getY() - 30);
-    label.toFront();
     label.setText(msg);
     label.setVisible(true);
   }

@@ -43,6 +43,7 @@ public class FarmController extends FXController {
     Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
     Bounds switchSceneBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
     Bounds wifeBounds = getGUI().getView().lookup("#wife").getBoundsInParent();
+    Label help = (Label) getGUI().getView().lookup("#help");
 
     if(keyCode == KeyCode.F) {
       if(playerBounds.intersects(switchSceneBounds)) {

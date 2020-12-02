@@ -405,12 +405,6 @@
    <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/door.png"/>
    </ImageView>
-   <Label fx:id="help" layoutX="1.0" layoutY="1.0" style="-fx-background-color: #333333; -fx-background-radius: 10;"
-          text="Label" textFill="WHITE">
-      <padding>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-      </padding>
-   </Label>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/cobblestone.png"/>
    </ImageView>
@@ -432,4 +426,10 @@
    <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/player/moving1.png"/>
    </ImageView>
+   <Label fx:id="help" layoutX="1.0" layoutY="1.0" style="-fx-background-color: #333333; -fx-background-radius: 10;"
+          text="Label" textFill="WHITE">
+      <padding>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+      </padding>
+   </Label>
 </AnchorPane>
