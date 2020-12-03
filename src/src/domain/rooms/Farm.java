@@ -1,19 +1,19 @@
 package src.domain.rooms;
 
 import src.domain.Room;
-import src.domain.characters.Wife;
+import src.domain.characters.Spouse;
 
 public class Farm extends Room {
 
-    private final Wife wife;
+    private final Spouse spouse;
 
     public Farm(String description) {
         super(description);
 
-        this.wife = new Wife("wife");
+        this.spouse = new Spouse("wife");
     }
 
-    public Wife getWife() {
-        return wife;
+    public Spouse getWife() {
+        return spouse;
     }
 }

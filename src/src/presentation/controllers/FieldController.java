@@ -1,21 +1,29 @@
 package src.presentation.controllers;
 
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import src.domain.Crop;
+import src.domain.Item;
+import src.domain.Timer;
 import src.presentation.FXController;
 import src.GUI;
-import src.domain.Timer;
-import src.enums.CropType;
 import src.domain.rooms.Field;
 
 public class FieldController extends FXController {
 
   private final Field field;
   private final Image[] fieldImages = new Image[5];
+  private Crop selectedCrop = null;
 
   public FieldController(GUI GUI) {
     super(GUI);
@@ -71,6 +79,8 @@ public class FieldController extends FXController {
     Bounds field1 = getGUI().getView().lookup("#field1").getBoundsInParent();
     Bounds field2 = getGUI().getView().lookup("#field2").getBoundsInParent();
     Bounds field3 = getGUI().getView().lookup("#field3").getBoundsInParent();
+    VBox cropsList = (VBox) getGUI().getView().lookup("#cropsList");
+    cropsList.getParent().setVisible(false);
 
 
     if(keyCode == KeyCode.F) {
@@ -81,12 +91,10 @@ public class FieldController extends FXController {
       }
 
       if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
-        // TODO show crops are growing
         if(!field.isSowed()) {
-          setFieldImage(fieldImages[1]);
-          field.sow(new Crop(5, CropType.MAIZE), new Timer(10, "Your crops are ready"));
+          sow();
         } else if(field.isReadyCrops()) {
-          field.harvest();
+          System.out.println(field.harvest());
           setFieldImage(fieldImages[0]);
         }
       }
@@ -99,6 +107,45 @@ public class FieldController extends FXController {
     ).forEach(node -> {
       ImageView imageView = (ImageView) node;
       if(imageView.getImage() != null) imageView.setImage(image);
+    });
+  }
+
+  private void sow() {
+    // Show list of available crops
+    VBox cropsList = (VBox) getGUI().getView().lookup("#cropsList");
+    Parent parent = cropsList.getParent();
+    cropsList.getChildren().clear();
+    parent.setLayoutX(getGUI().getCharacter().getX());
+    parent.setLayoutY(getGUI().getCharacter().getY() + 40);
+    parent.setVisible(true);
+
+    for(Item crop : getGUI().getCharacter().getInventory().values()){
+      if(crop instanceof Crop && crop.getAmount() > 0) {
+        Label label = new Label(crop.getName());
+        label.setTextFill(Color.WHITE);
+        label.setCursor(Cursor.HAND);
+        label.setPrefWidth(100);
+        label.setPadding(new Insets(5));
+        label.setOnMouseClicked(mouseEvent -> {
+          cropsList.getChildren().forEach(node -> node.setStyle(""));
+          selectedCrop = (Crop) crop;
+          label.setStyle("-fx-background-color: #359b1d; -fx-text-fill: #FFFFFF;-fx-background-radius: 5;");
+        });
+        cropsList.getChildren().add(label);
+      }
+    }
+
+    Button sowButton = (Button) getGUI().getView().lookup("#sowButton");
+    sowButton.setCursor(Cursor.HAND);
+    sowButton.setOnAction(actionEvent -> {
+      cropsList.getParent().setVisible(false);
+      if(selectedCrop != null) {
+        setFieldImage(fieldImages[1]);
+        System.out.println(field.sow(selectedCrop, new Timer(10, "Your crops are ready")));
+        selectedCrop = null;
+      } else {
+        System.out.println("No crop seleceted!!!");
+      }
     });
   }
 }

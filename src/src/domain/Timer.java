@@ -1,5 +1,6 @@
 package src.domain;
 
+import src.GUI;
 import src.enums.GameSettings;
 
 import java.util.ArrayList;

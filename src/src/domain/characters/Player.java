@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 public class Player extends Character {
 
-  private final ArrayList<String> wifeMessages = new ArrayList<>();
+  private final ArrayList<String> spouseMessages = new ArrayList<>();
 
   public Player(String name, int coins) {
     super(name, coins);
 
-    wifeMessages.add("How are you?");
-    wifeMessages.add("When is supper!!!???");
+    spouseMessages.add("How are you?");
+    spouseMessages.add("When is supper!!!???");
   }
 
   public ArrayList<String> getWifeMessages() {
-    return wifeMessages;
+    return spouseMessages;
   }
 }

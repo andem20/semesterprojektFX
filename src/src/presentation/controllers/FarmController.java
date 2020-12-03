@@ -31,7 +31,7 @@ public class FarmController extends FXController {
     } else if(playerBounds.intersects(wifeBounds)) {
       helpMessage("Press 'F' to talk with wife.", help);
     } else {
-      getGUI().getGameOverlay().getCharacterLabel().setVisible(false);
+      getGUI().getGameOverlay().getConversationLabel().setVisible(false);
       getGUI().getView().lookup("#wifeLabel").setVisible(false);
       help.setVisible(false);
     }
@@ -58,10 +58,10 @@ public class FarmController extends FXController {
 //        Print all message options from player
 //        Make possible to choose message
 
-        getGUI().getGameOverlay().setCharacterLabel(getGUI().getCharacter().getWifeMessages().get(messageIndex));
+        getGUI().getGameOverlay().setConversationLabel(getGUI().getCharacter().getWifeMessages().get(messageIndex));
 
-        getGUI().getGameOverlay().getCharacterLabel().setTranslateX(getGUI().getCharacter().getX());
-        getGUI().getGameOverlay().getCharacterLabel().setTranslateY(getGUI().getCharacter().getY());
+        getGUI().getGameOverlay().getConversationLabel().setTranslateX(getGUI().getCharacter().getX());
+        getGUI().getGameOverlay().getConversationLabel().setTranslateY(getGUI().getCharacter().getY() - getGUI().getGameOverlay().getConversationLabel().getHeight());
 
         ((Label) getGUI().getView().lookup("#wifeLabel")).setText(farm.getWife().getResponse(messageIndex));
         getGUI().getView().lookup("#wifeLabel").setVisible(true);

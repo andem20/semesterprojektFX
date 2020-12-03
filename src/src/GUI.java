@@ -18,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import src.domain.characters.Player;
 import src.enums.GameSettings;
-import src.presentation.GameOverlay;
+import src.presentation.gameoverlay.GameOverlay;
 import src.presentation.controllers.*;
 import src.domain.*;
 import src.enums.CropType;
@@ -67,7 +67,7 @@ public class GUI extends Application {
     // Gameoverlay
     gameOverlay = new GameOverlay(this);
 
-    setView("map");
+    setView("field");
 
     window.show();
 
@@ -95,14 +95,18 @@ public class GUI extends Application {
 
         // Updating timers
         if(Timer.timers.iterator().hasNext()) {
-          Timer.timers.iterator().next().updateTimer();
+          String timerMessage = Timer.timers.iterator().next().updateTimer();
+          if(timerMessage != null) {
+            getGameOverlay().getMessagesBox().addMessage(timerMessage);
+            getGameOverlay().updateMessages();
+          }
         }
 
         // Check win / lose condition
 //        if(getStatus().checkStatus()) this.stop();
         getStatus().checkStatus();
 
-        gameOverlay.setStatusText(getStatus().getPopulation(), getStatus().getHungerLevel(), getStatus().getDays());
+        gameOverlay.getStatusBar().setStatusText(getStatus().getPopulation(), getStatus().getHungerLevel(), getStatus().getDays());
       }
     };
 
@@ -157,6 +161,14 @@ public class GUI extends Application {
 
       // Game overlay
       gameOverlay.setContainer(getView().getRoot());
+
+      // Hide messages
+      getView().setOnMouseClicked(mouseEvent -> {
+        if(!getGameOverlay().getStatusBar().getMessagesImage().isHover()) {
+          getGameOverlay().getMessagesBox().setVisible(false);
+          getGameOverlay().updateMessages();
+        }
+      });
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -177,7 +189,7 @@ public class GUI extends Application {
         case A -> keys[1] = true;
         case S -> keys[2] = true;
         case W -> keys[3] = true;
-        case P -> gameOverlay.playPause();
+        case P -> gameOverlay.getStatusBar().playPause();
       }
 
       getCurrent().onKeyPressed(keyEvent.getCode());
