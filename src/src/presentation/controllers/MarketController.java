@@ -78,7 +78,7 @@ public class MarketController extends FXController {
 
   private void showInventory(int action) {
     Character buyer = action == 1 ? market.getNPC() : getGUI().getCharacter();
-    Character seller = action == 1 ? getGUI().getCharacter() :  market.getNPC();
+    Character seller = action == 1 ? getGUI().getCharacter() : market.getNPC();
 
     HBox marketInventory = (HBox) getGUI().getView().lookup("#marketInventory");
     marketInventory.getParent().setVisible(true);
@@ -110,19 +110,23 @@ public class MarketController extends FXController {
 
         Button actionButton = createActionButton((action == 0 ? "Buy" : "Sell"));
         actionButton.setOnMouseClicked(mouseEvent -> {
-          buyer.getItem(item.getKey()).increaseAmount();
-          buyer.removeCoins(item.getValue().getPrice());
+          String message = "Insufficient funds!";
+          if(buyer.getCoins() >= item.getValue().getPrice()) {
+            buyer.getItem(item.getKey()).increaseAmount();
+            buyer.removeCoins(item.getValue().getPrice());
 
-          item.getValue().decreaseAmount();
-          seller.addCoins(item.getValue().getPrice());
+            item.getValue().decreaseAmount();
+            seller.addCoins(item.getValue().getPrice());
 
-          String message = item.getValue().getName() + " was " + (action == 0 ? "added" : "removed") + " your inventory.";
+            message = item.getValue().getName() + " was " + (action == 0 ? "added" : "removed") + " your inventory.";
+          }
 
           getGUI().getGameOverlay().getMessagesBox().addMessage(message);
           getGUI().getGameOverlay().updateMessages();
           getGUI().getGameOverlay().setShortMessage(message);
           getGUI().getGameOverlay().showShortMessage();
 
+          // Update inventory
           showInventory(action);
         });
 

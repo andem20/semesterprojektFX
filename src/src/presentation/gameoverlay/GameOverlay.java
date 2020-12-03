@@ -8,6 +8,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import src.GUI;
 import src.domain.Item;
+import src.enums.GameSettings;
 
 import java.util.List;
 import java.util.Map;
@@ -105,7 +106,11 @@ public class GameOverlay {
 
   public void updateMessages() {
     messages.getChildren().clear();
-    List<Message> filteredMessages = messages.getMessages().stream().filter(message -> !message.isSeen()).limit(10).collect(Collectors.toList());
+    List<Message> filteredMessages = messages.getMessages().stream()
+                                        .filter(message -> !message.isSeen())
+                                        .limit(GameSettings.MAX_MESSAGES.toInt())
+                                        .collect(Collectors.toList());
+
     statusBar.setMessageCounter(filteredMessages.size());
     filteredMessages.forEach(message -> {
         Label messageLabel = new Label(message.getContent());
