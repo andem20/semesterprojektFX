@@ -5,7 +5,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -94,8 +93,7 @@ public class FieldController extends FXController {
         if(!field.isSowed()) {
           sow();
         } else if(field.isReadyCrops()) {
-          System.out.println(field.harvest());
-          setFieldImage(fieldImages[0]);
+          harvest();
         }
       }
     }
@@ -141,11 +139,20 @@ public class FieldController extends FXController {
       cropsList.getParent().setVisible(false);
       if(selectedCrop != null) {
         setFieldImage(fieldImages[1]);
-        System.out.println(field.sow(selectedCrop, new Timer(10, "Your " + selectedCrop.getName() + " are ready")));
+        field.sow(selectedCrop, new Timer(10, "Your " + selectedCrop.getName() + " are ready"));
         selectedCrop = null;
       } else {
         System.out.println("No crop seleceted!!!");
       }
     });
+  }
+
+  private void harvest() {
+    String harvest = field.harvest();
+    getGUI().getGameOverlay().getMessagesBox().addMessage(harvest);
+    getGUI().getGameOverlay().updateMessages();
+    getGUI().getGameOverlay().setShortMessage(harvest);
+    getGUI().getGameOverlay().showShortMessage();
+    setFieldImage(fieldImages[0]);
   }
 }

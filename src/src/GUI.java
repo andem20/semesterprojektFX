@@ -67,12 +67,13 @@ public class GUI extends Application {
     // Gameoverlay
     gameOverlay = new GameOverlay(this);
 
-    setView("field");
+    setView("market");
 
     window.show();
 
     // Positioning player the right place on "map"
-    getCharacter().setY(120);
+//    getCharacter().setY(120);
+    getCharacter().setX(400);
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {

@@ -5,6 +5,7 @@ import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;
 import src.enums.CropType;
+import src.enums.GameSettings;
 import src.enums.ItemType;
 
 import java.util.Map;
@@ -12,7 +13,6 @@ import java.util.Map;
 public class Market extends Room {
 
   public static Character NPC;
-  private final int TAX = 3;
 
   public Market(String description) {
     super(description);
@@ -35,7 +35,7 @@ public class Market extends Room {
 
   private void addTax() {
     for(Map.Entry<String, Item> entry : NPC.getInventory().entrySet()) {
-      entry.getValue().setPrice(entry.getValue().getPrice() + TAX);
+      entry.getValue().setPrice(entry.getValue().getPrice() + GameSettings.TAX.toInt());
     }
   }
 }

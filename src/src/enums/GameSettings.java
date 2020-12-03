@@ -6,7 +6,8 @@ public enum GameSettings {
   DAY(1),
   // https://www.economist.com/special-report/2020/03/26/africas-population-will-double-by-2050
   // SSA growth percentage = 2.5% pr. year
-  POPGROWTH(0.025);
+  POPGROWTH(0.025),
+  TAX(3);
 
   private final double value;
 

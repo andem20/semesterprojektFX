@@ -8,14 +8,14 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Messages extends VBox {
 
-  private final ArrayList<Message> messages;
+  private final LinkedList<Message> messages;
 
   public Messages() {
-    messages = new ArrayList<>();
+    messages = new LinkedList<>();
 
     setBackground(
         new Background(
@@ -34,14 +34,14 @@ public class Messages extends VBox {
   }
 
   public void addMessage(String content) {
-    messages.add(new Message(content));
+    messages.addFirst(new Message(content));
   }
 
   public void removeMessage(Message message) {
     messages.remove(message);
   }
 
-  public ArrayList<Message> getMessages() {
+  public LinkedList<Message> getMessages() {
     return messages;
   }
 }

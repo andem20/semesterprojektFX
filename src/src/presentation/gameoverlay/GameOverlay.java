@@ -9,8 +9,10 @@ import javafx.scene.paint.Color;
 import src.GUI;
 import src.domain.Item;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class GameOverlay {
   private GUI gui;
@@ -97,15 +99,18 @@ public class GameOverlay {
     return inventoryBox;
   }
 
+  public void showInventoryBox() {
+    inventoryBox.setVisible(true);
+  }
+
   public void updateMessages() {
     messages.getChildren().clear();
-    statusBar.setMessageCounter((int) messages.getMessages().stream().filter(message -> !message.isSeen()).count());
-    for(Message message : messages.getMessages()) {
-      if(!message.isSeen()) {
+    List<Message> filteredMessages = messages.getMessages().stream().filter(message -> !message.isSeen()).limit(10).collect(Collectors.toList());
+    statusBar.setMessageCounter(filteredMessages.size());
+    filteredMessages.forEach(message -> {
         Label messageLabel = new Label(message.getContent());
         messages.getChildren().add(messageLabel);
-      }
-    }
+    });
   }
 
   public Messages getMessagesBox() {
@@ -117,12 +122,12 @@ public class GameOverlay {
   }
 
   public void showShortMessage() {
-    shortMessage.setVisible(true);
 
     AnimationTimer timer = new AnimationTimer() {
       private final Long startTime = System.nanoTime();
       @Override
       public void handle(long l) {
+        shortMessage.setVisible(true);
         if((l - startTime) / 1e9 >= 4) {
           shortMessage.setVisible(false);
           this.stop();

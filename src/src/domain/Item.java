@@ -23,6 +23,13 @@ public class Item {
     this.amount = amount;
   }
 
+  public void increaseAmount() {
+    this.amount++;
+  }
+  public void decreaseAmount() {
+    this.amount--;
+  }
+
   public int getPrice() {
     return price;
   }
