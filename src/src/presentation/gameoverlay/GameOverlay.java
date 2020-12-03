@@ -1,9 +1,11 @@
 package src.presentation.gameoverlay;
 
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import src.GUI;
 import src.domain.Item;
 
@@ -19,6 +21,7 @@ public class GameOverlay {
   private final VBox inventoryBox;
   // Messages
   private Messages messages;
+  private Label shortMessage;
 
   public GameOverlay(GUI gui) {
 
@@ -48,6 +51,22 @@ public class GameOverlay {
         updateMessages();
       }
     });
+
+    shortMessage = new Label();
+    shortMessage.setBackground(
+        new Background(
+            new BackgroundFill(
+                new Color(1, 1, 1, 0.6),
+                new CornerRadii(5), Insets.EMPTY
+            )
+        )
+    );
+
+    shortMessage.setPadding(new Insets(5));
+
+    shortMessage.setLayoutX(570);
+    shortMessage.setLayoutY(30);
+    shortMessage.setVisible(false);
   }
 
   public void setContainer(Node container) {
@@ -56,7 +75,8 @@ public class GameOverlay {
     anchorPane.getChildren().addAll(
         statusBar,
         conversationLabel,
-        messages
+        messages,
+        shortMessage
     );
   }
 
@@ -90,5 +110,26 @@ public class GameOverlay {
 
   public Messages getMessagesBox() {
     return messages;
+  }
+
+  public void setShortMessage(String content) {
+    shortMessage.setText(content);
+  }
+
+  public void showShortMessage() {
+    shortMessage.setVisible(true);
+
+    AnimationTimer timer = new AnimationTimer() {
+      private final Long startTime = System.nanoTime();
+      @Override
+      public void handle(long l) {
+        if((l - startTime) / 1e9 >= 4) {
+          shortMessage.setVisible(false);
+          this.stop();
+        }
+      }
+    };
+
+    timer.start();
   }
 }

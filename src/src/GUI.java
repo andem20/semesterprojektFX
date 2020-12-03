@@ -99,6 +99,8 @@ public class GUI extends Application {
           if(timerMessage != null) {
             getGameOverlay().getMessagesBox().addMessage(timerMessage);
             getGameOverlay().updateMessages();
+            getGameOverlay().setShortMessage(timerMessage);
+            getGameOverlay().showShortMessage();
           }
         }
 

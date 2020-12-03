@@ -11,19 +11,14 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Font;
 import src.domain.Audio;
 
 public class StatusBar extends HBox {
   private final Audio audio;
   private final MusicIcon musicIcon;
-  // Status
-  private final Label popLabel = new Label("Population:");
   private final Label popAmount = new Label();
-  private final Label hungerLabel = new Label("Hunger level:");
   private final Label hungerAmount = new Label();
-  private final Label daysLabel = new Label("Days: ");
   private final Label daysAmount = new Label();
   // Message counter
   private final Label messageCounter = new Label("0");
@@ -62,6 +57,10 @@ public class StatusBar extends HBox {
     messageCounter.setVisible(false);
 
     // Add elements
+    // Status
+    Label popLabel = new Label("Population:");
+    Label hungerLabel = new Label("Hunger level:");
+    Label daysLabel = new Label("Days: ");
     getChildren().addAll(
         messagesImage, messageCounter,
         daysLabel, daysAmount,

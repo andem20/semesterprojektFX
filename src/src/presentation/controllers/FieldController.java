@@ -141,7 +141,7 @@ public class FieldController extends FXController {
       cropsList.getParent().setVisible(false);
       if(selectedCrop != null) {
         setFieldImage(fieldImages[1]);
-        System.out.println(field.sow(selectedCrop, new Timer(10, "Your crops are ready")));
+        System.out.println(field.sow(selectedCrop, new Timer(10, "Your " + selectedCrop.getName() + " are ready")));
         selectedCrop = null;
       } else {
         System.out.println("No crop seleceted!!!");
