@@ -11,6 +11,7 @@ import src.enums.ParameterWord;
 import src.domain.rooms.*;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -304,9 +305,12 @@ public class Game {
             // Get the specific crop. toUpperCase because of the Enum
             Item item = character.getItem(command.getSecondWord().toString().toUpperCase());
 
+            LinkedList<Crop> crops = new LinkedList<>();
+
             if(item instanceof Crop) {
+                crops.add((Crop) item);
                 System.out.println(
-                    field.sow((Crop) item, new Timer(5, "Your crops are ready to harvest!"))
+                    field.sow(crops, new Timer(5, "Your crops are ready to harvest!"))
                 );
                 return;
             }

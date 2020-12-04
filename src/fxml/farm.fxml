@@ -6,70 +6,84 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #228B22;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url('/images/farm_background.png');" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true">
+      <image>
+         <Image url="@../images/tiles/leftupper.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true">
+      <image>
+         <Image url="@../images/tiles/straight.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true">
+      <image>
+         <Image url="@../images/tiles/rightlower.png" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true">
+      <image>
+         <Image url="@../images/tiles/leftlower.png" />
+      </image>
+   </ImageView>
     <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
         <Image url="@../images/door.png" />
     </ImageView>
     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="60.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="60.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
-    </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="120.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="120.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true">
       <image>
-         <Image url="@../images/FarmTile.png" />
+         <Image url="@../images/tiles/straight.png" />
       </image></ImageView>
     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+        <Image url="@../images/tiles/rightupper.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="480.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/rightupper.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="720.0" layoutY="300.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="900.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="240.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png" />
     </ImageView>
-    <ImageView fitHeight="60.0" fitWidth="60.0" layoutY="180.0" pickOnBounds="true">
-        <Image url="@../images/FarmTile.png" />
-    </ImageView>
-    <ImageView fx:id="wife" disable="true" fitHeight="40.0" fitWidth="40.0" layoutX="322.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../images/player/still.png" />
+    <ImageView fx:id="spouse" disable="true" fitHeight="65.0" fitWidth="65.0" layoutX="298.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../images/spouse.png" />
     </ImageView>
     <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/player/moving1.png" />
@@ -79,7 +93,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
         </padding>
     </Label>
-      <Label fx:id="wifeLabel" layoutX="330.0" layoutY="146.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" textFill="BLACK">
+      <Label fx:id="spouseLabel" layoutX="307.0" layoutY="267.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" textFill="BLACK">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>

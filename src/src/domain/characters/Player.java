@@ -15,7 +15,7 @@ public class Player extends Character {
     spouseMessages.add("When is supper!!!???");
   }
 
-  public ArrayList<String> getWifeMessages() {
+  public ArrayList<String> getSpouseMessages() {
     return spouseMessages;
   }
 }

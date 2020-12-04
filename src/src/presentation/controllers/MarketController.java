@@ -36,9 +36,9 @@ public class MarketController extends FXController {
     Label help = (Label) getGUI().getView().lookup("#help");
 
     if(playerBounds.intersects(exitBounds)) {
-      helpMessage("Press 'F' to exit", help);
+      helpMessage("Press 'F' to exit.", help);
     } else if(playerBounds.intersects(sellerBounds)) {
-      helpMessage("Press 'E' to sell or 'R' buy", help);
+      helpMessage("Press 'E' to sell.\nPress 'R' to buy.", help);
     } else {
       help.setVisible(false);
     }

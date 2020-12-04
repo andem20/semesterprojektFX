@@ -10,10 +10,10 @@ public class Farm extends Room {
     public Farm(String description) {
         super(description);
 
-        this.spouse = new Spouse("wife");
+        this.spouse = new Spouse("Spouse");
     }
 
-    public Spouse getWife() {
+    public Spouse getSpouse() {
         return spouse;
     }
 }

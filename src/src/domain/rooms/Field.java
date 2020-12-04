@@ -4,21 +4,24 @@ import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;
 import src.domain.Timer;
+import src.enums.CropType;
+import src.enums.GameSettings;
+
+import java.util.LinkedList;
 
 public class Field extends Room {
 
     private double fieldHealth = 1;
-    private Crop prevYield = null;
+    private final LinkedList<Crop> prevYield = new LinkedList<>();
     private boolean sowed = false;
     private final int SEED_AMOUNT = 5;
     private Timer timer;
 
-    //TODO vejrgenerator
     public Field(String description) {
         super(description);
     }
 
-    public String sow(Crop crop, Timer timer) {
+    public String sow(LinkedList<Crop> crops, Timer timer) {
         this.timer = timer;
         // Check if field is occupied
         if(sowed) {
@@ -27,23 +30,31 @@ public class Field extends Room {
         }
 
         // Check if we have enough crops
-        if(crop.getAmount() < SEED_AMOUNT) {
-            return "You need " + SEED_AMOUNT + " " + crop.getName() + "!";
+        if(crops.stream().anyMatch(c -> c.getAmount() < GameSettings.SEED_AMOUNT.toInt())) {
+            return "You need " + SEED_AMOUNT + " " + crops.get(0).getName() + "!";
         }
 
-        // Check if we are sowing the same crop
-        if(prevYield != null) {
-            if(crop.getName().equals(prevYield.getName())) {
-                fieldHealth *= 0.6;
+        // Check if we are sowing the same crop and with pulses
+        if(prevYield.size() != 0) {
+            boolean pulses = crops.stream().anyMatch(c -> c.getName().equals("BEANS") || c.getName().equals("CHICKPEAS"));
+            if(crops.stream().anyMatch(c -> prevYield.stream().anyMatch(p -> p.equals(c)))) {
+                if(pulses) {
+                    fieldHealth *= 0.95;
+                } else {
+                    fieldHealth *= 0.6;
+                }
+            } else if(!pulses) {
+                fieldHealth *= 0.85;
             }
         }
 
-        crop.setAmount(crop.getAmount() - SEED_AMOUNT);
+        crops.forEach(c -> c.setAmount(c.getAmount() - GameSettings.SEED_AMOUNT.toInt()));
 
-        prevYield = crop;
+        prevYield.clear();
+        prevYield.addAll(crops);
         sowed = true;
 
-        return crop.getName() + " was sowed... They'll be ready in " + timer.getDays() + " days...";
+        return crops.get(0).getName() + " was sowed... They'll be ready in " + timer.getDays() + " days...";
     }
 
     public String harvest() {
@@ -51,11 +62,18 @@ public class Field extends Room {
             return "You haven't sowed anything!";
         }
 
-        if(isReadyCrops()) {
-            int yield = (int) ((SEED_AMOUNT * prevYield.yield) * fieldHealth);
-            prevYield.setAmount(prevYield.getAmount() + yield);
+        if(isReady()) {
+            String message = "";
+            int i = 0;
+            for(Crop crop : prevYield) {
+                int yield = (int) ((GameSettings.SEED_AMOUNT.toInt() * crop.yield) * fieldHealth) / prevYield.size();
+                crop.setAmount(crop.getAmount() + yield);
+                message += yield + " " + crop.getName() + (i < prevYield.size() - 1 ? " and " : "");
+                i++;
+            }
+
             sowed = false;
-            return "You harvested " + yield + " " + prevYield.getName();
+            return "You harvested " + message;
         }
 
         return "Crops not ready yet!";
@@ -82,7 +100,7 @@ public class Field extends Room {
         return sowed;
     }
 
-    public boolean isReadyCrops() {
+    public boolean isReady() {
         return !Timer.timers.contains(timer);
     }
 

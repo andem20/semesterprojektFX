@@ -21,13 +21,13 @@ public class GameOverlay {
   // Character label
   private final Label conversationLabel;
   // Inventory
-  private final VBox inventoryBox;
+  private final Inventory inventoryBox;
   // Messages
-  private Messages messages;
-  private Label shortMessage;
+  private final Messages messages;
+  private final Label shortMessage;
 
   public GameOverlay(GUI gui) {
-
+    this.gui = gui;
     statusBar = new StatusBar();
 
     // Conversation label
@@ -73,17 +73,21 @@ public class GameOverlay {
   }
 
   public void setContainer(Node container) {
+    inventoryBox.setVisible(false);
     AnchorPane anchorPane = (AnchorPane) container;
     AnchorPane.setRightAnchor(statusBar, 0.0);
     anchorPane.getChildren().addAll(
         statusBar,
         conversationLabel,
         messages,
-        shortMessage
+        shortMessage,
+        inventoryBox
     );
   }
 
   public void setConversationLabel(String message) {
+    conversationLabel.setTranslateX(gui.getCharacter().getX());
+    conversationLabel.setTranslateY(gui.getCharacter().getY() - conversationLabel.getHeight());
     conversationLabel.setVisible(true);
     conversationLabel.setText(message);
   }
@@ -96,12 +100,15 @@ public class GameOverlay {
     return statusBar;
   }
 
-  public VBox getInventoryBox() {
+  public Inventory getInventoryBox() {
     return inventoryBox;
   }
 
-  public void showInventoryBox() {
-    inventoryBox.setVisible(true);
+  public void toggleInventoryBox() {
+    getInventoryBox().update();
+    inventoryBox.setTranslateX(gui.getCharacter().getX() + 20);
+    inventoryBox.setTranslateY(gui.getCharacter().getY() + 20);
+    inventoryBox.setVisible(!inventoryBox.isVisible());
   }
 
   public void updateMessages() {

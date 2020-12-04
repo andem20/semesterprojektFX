@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import src.domain.characters.Player;
 import src.enums.GameSettings;
@@ -67,13 +68,13 @@ public class GUI extends Application {
     // Gameoverlay
     gameOverlay = new GameOverlay(this);
 
-    setView("market");
+    setView("map");
 
     window.show();
 
     // Positioning player the right place on "map"
-//    getCharacter().setY(120);
-    getCharacter().setX(400);
+    getCharacter().setY(120);
+//    getCharacter().setX(300);
 
     // Gameloop
     AnimationTimer timer = new AnimationTimer() {
@@ -187,12 +188,16 @@ public class GUI extends Application {
 
   public void setKeyInput() {
     getView().setOnKeyPressed(keyEvent -> {
+
+      if(keyEvent.getCode() != KeyCode.I) getGameOverlay().getInventoryBox().setVisible(false);
+
       switch(keyEvent.getCode()) {
         case D -> keys[0] = true;
         case A -> keys[1] = true;
         case S -> keys[2] = true;
         case W -> keys[3] = true;
-        case P -> gameOverlay.getStatusBar().playPause();
+        case P -> getGameOverlay().getStatusBar().playPause();
+        case I -> getGameOverlay().toggleInventoryBox();
       }
 
       getCurrent().onKeyPressed(keyEvent.getCode());

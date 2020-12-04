@@ -28,11 +28,11 @@ public class MapController extends FXController {
     } else if(playerBounds.intersects(fieldBounds)) {
       helpMessage("Press 'F' to enter field.", help);
     } else if (playerBounds.intersects(marketBounds)) {
-      helpMessage("Press 'F' to enter market", help);
+      helpMessage("Press 'F' to enter market.", help);
     } else if (playerBounds.intersects(schoolBounds)) {
-      helpMessage("Press 'F' to enter school", help);
+      helpMessage("Press 'F' to enter school.", help);
     } else if (playerBounds.intersects(farmBounds)) {
-      helpMessage("Press 'F' to enter farm", help);
+      helpMessage("Press 'F' to enter farm.", help);
     } else {
       help.setVisible(false);
     }

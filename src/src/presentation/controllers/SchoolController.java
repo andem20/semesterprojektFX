@@ -28,8 +28,8 @@ public class SchoolController extends FXController {
         }
         //TODO: exitbounds for market, hometown and farm (doorSouth, doorNorth and doorEast) - find exitBounds
 
-        if (playerBounds.intersects(boardBounds)) {
-            helpMessage("lecture", board);
+        if(playerBounds.intersects(boardBounds)) {
+            helpMessage("Press 'E' to lecture.", help);
         } else {
             board.setVisible(false);
         } //TODO: get lectures from School.class one at a time

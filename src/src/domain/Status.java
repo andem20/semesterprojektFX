@@ -31,7 +31,7 @@ public class Status {
 
 //  "Rentes rente" k = k0 * (1 + p)^n
     double p = GameSettings.POPGROWTH.toDouble();
-    double n = (getPassedTime() / GameSettings.DAY.toInt()) * .365;
+    double n = (getPassedTime() / GameSettings.DAY.toInt()) / 365;
     population = (int) (startPop * Math.pow(1 + p, n));
 
     hungerLevel = 1 - (float) this.foodSupply / population;

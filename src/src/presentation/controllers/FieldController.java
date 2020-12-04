@@ -14,15 +14,19 @@ import javafx.scene.paint.Color;
 import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Timer;
+import src.enums.ItemType;
 import src.presentation.FXController;
 import src.GUI;
 import src.domain.rooms.Field;
+
+import java.util.LinkedList;
 
 public class FieldController extends FXController {
 
   private final Field field;
   private final Image[] fieldImages = new Image[5];
-  private Crop selectedCrop = null;
+  private final LinkedList<Crop> selectedCrops = new LinkedList<>();
+  private int fertilizerAmount;
 
   public FieldController(GUI GUI) {
     super(GUI);
@@ -47,6 +51,8 @@ public class FieldController extends FXController {
     Label help = (Label) getGUI().getView().lookup("#help");
     help.setVisible(false);
 
+    fertilizerAmount = getGUI().getCharacter().getItem(ItemType.FERTILIZER.toString()).getAmount();
+
     if(field.isSowed()) {
       int fieldImageNum = (int) (field.getTimer().getCurrentTime() / (field.getTimer().getTime() / 3)) + 1;
       setFieldImage(fieldImages[fieldImageNum]);
@@ -61,11 +67,13 @@ public class FieldController extends FXController {
     // TODO show "harvest crops" when crops are ready
     if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
       if(field.isSowed()) {
-        if(field.isReadyCrops()) {
-          helpMessage("Press 'F' to harvest crops.", help);
+        if(field.isReady()) {
+          helpMessage("Press 'E' to harvest crops." +
+              (fertilizerAmount > 0 ? "\nPress 'F' to use fertilizer." : "") + "\nPress 'R' to see fieldhealth.", help);
         }
        } else {
-        helpMessage("Press 'F' to sow seeds.", help);
+        helpMessage("Press 'E' to sow seeds" +
+            (fertilizerAmount > 0 ? "\nPress 'F' to use fertilizer." : "") + "\nPress 'R' to see fieldhealth.", help);
       }
     }
   }
@@ -81,6 +89,7 @@ public class FieldController extends FXController {
     VBox cropsList = (VBox) getGUI().getView().lookup("#cropsList");
     cropsList.getParent().setVisible(false);
 
+    getGUI().getGameOverlay().getConversationLabel().setVisible(false);
 
     if(keyCode == KeyCode.F) {
       if(playerBounds.intersects(exitBounds)) {
@@ -90,12 +99,22 @@ public class FieldController extends FXController {
       }
 
       if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
+        if(fertilizerAmount > 0) fertilize();
+      }
+    }
+
+    if(keyCode == KeyCode.E) {
+      if(playerBounds.intersects(field1) || playerBounds.intersects(field2) || playerBounds.intersects(field3)) {
         if(!field.isSowed()) {
           sow();
-        } else if(field.isReadyCrops()) {
+        } else if(field.isReady()) {
           harvest();
         }
       }
+    }
+
+    if(keyCode == KeyCode.R) {
+      getGUI().getGameOverlay().setConversationLabel("Fieldhealth is " + (int) (field.getFieldHealth() * 100) + "%");
     }
   }
 
@@ -118,17 +137,30 @@ public class FieldController extends FXController {
     parent.setVisible(true);
 
     for(Item crop : getGUI().getCharacter().getInventory().values()){
-      if(crop instanceof Crop && crop.getAmount() > 0) {
+      if(crop instanceof Crop && crop.getAmount() >= 5) {
         Label label = new Label(crop.getName());
         label.setTextFill(Color.WHITE);
         label.setCursor(Cursor.HAND);
         label.setPrefWidth(100);
+        label.setId(crop.getName());
         label.setPadding(new Insets(5));
         label.setOnMouseClicked(mouseEvent -> {
-          cropsList.getChildren().forEach(node -> node.setStyle(""));
-          selectedCrop = (Crop) crop;
-          label.setStyle("-fx-background-color: #359b1d; -fx-text-fill: #FFFFFF;-fx-background-radius: 5;");
+          if(!selectedCrops.contains(crop)) {
+            selectedCrops.addFirst((Crop) crop);
+          } else {
+            selectedCrops.remove(crop);
+          }
+
+          if(selectedCrops.size() > 2) selectedCrops.removeLast();
+          cropsList.getChildren().forEach(node -> {
+            if(selectedCrops.stream().anyMatch(c -> c.getName().equals(node.getId()))) {
+              node.setStyle("-fx-background-color: #359b1d; -fx-text-fill: #FFFFFF;-fx-background-radius: 5;");
+            } else {
+              node.setStyle("");
+            }
+          });
         });
+
         cropsList.getChildren().add(label);
       }
     }
@@ -137,12 +169,10 @@ public class FieldController extends FXController {
     sowButton.setCursor(Cursor.HAND);
     sowButton.setOnAction(actionEvent -> {
       cropsList.getParent().setVisible(false);
-      if(selectedCrop != null) {
+      if(selectedCrops.size() > 0) {
         setFieldImage(fieldImages[1]);
-        field.sow(selectedCrop, new Timer(10, "Your " + selectedCrop.getName() + " are ready"));
-        selectedCrop = null;
-      } else {
-        System.out.println("No crop seleceted!!!");
+        field.sow(selectedCrops, new Timer(10, "Your crops are ready"));
+        selectedCrops.clear();
       }
     });
   }
@@ -154,5 +184,13 @@ public class FieldController extends FXController {
     getGUI().getGameOverlay().setShortMessage(harvest);
     getGUI().getGameOverlay().showShortMessage();
     setFieldImage(fieldImages[0]);
+  }
+
+  private void fertilize() {
+    String message = field.fertilize(getGUI().getCharacter().getItem(ItemType.FERTILIZER.toString()));
+    getGUI().getGameOverlay().getMessagesBox().addMessage(message);
+    getGUI().getGameOverlay().updateMessages();
+    getGUI().getGameOverlay().setShortMessage(message);
+    getGUI().getGameOverlay().showShortMessage();
   }
 }
