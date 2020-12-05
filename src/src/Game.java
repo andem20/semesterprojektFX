@@ -119,6 +119,7 @@ public class Game {
         character.addItem(CropType.RICE.toString(), new Crop(0, CropType.RICE));
         character.addItem(CropType.SORGHUM.toString(), new Crop(0, CropType.SORGHUM));
         character.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 1, 50));
+        character.addItem(ItemType.APPLE.toString(), new Item(ItemType.APPLE.toString(), 0, 20));
     }
 
     private void printWelcome() {

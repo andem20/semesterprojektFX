@@ -13,6 +13,7 @@ public class Player extends Character {
 
     spouseMessages.add("How are you?");
     spouseMessages.add("When is supper!!!???");
+    spouseMessages.add("Can I help you with anything?");
   }
 
   public ArrayList<String> getSpouseMessages() {

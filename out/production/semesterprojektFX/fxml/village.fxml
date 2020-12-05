@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url('/images/villagebackground.png');" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="660.0" pickOnBounds="true" preserveRatio="true">
@@ -338,9 +337,14 @@
          <Image url="@../images/item_crop.png" />
       </image>
    </ImageView>
-   <ImageView fx:id="fertilizer" fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="fertilizer" fitHeight="60.0" fitWidth="60.0" layoutX="426.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../images/item_fertilizer.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="apple" fitHeight="60.0" fitWidth="60.0" layoutX="780.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/APPLE.png" />
       </image>
    </ImageView>
    <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
