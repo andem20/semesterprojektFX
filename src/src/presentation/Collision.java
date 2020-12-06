@@ -1,7 +1,6 @@
 package src.presentation;
 
 import javafx.scene.Node;
-import src.domain.characters.Player;
 import src.enums.GameSettings;
 
 public class Collision {
@@ -11,7 +10,7 @@ public class Collision {
   public static void checkCollision(SceneManager sceneManager) {
     Node playerModel = sceneManager.getScene().lookup("#player");
     Node[][] grid = sceneManager.getGrid();
-    boolean[] keys = sceneManager.getKeyInput();
+    boolean[] keys = sceneManager.getKeys();
     
     // Reference for the player coordinates
     int x = sceneManager.getPlayer().getX();

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import src.domain.characters.Player;
 import src.enums.CropType;
@@ -26,10 +25,10 @@ public class SceneManager {
   private FXController controller;
   private Node[][] grid;
   private int TILESIZE = GameSettings.TILESIZE.toInt();
-  private final boolean[] keys = new boolean[4];
   private ImageView playerModel;
   private GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
+  private Input input;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -43,8 +42,11 @@ public class SceneManager {
     initFXML();
 
     gameOverlay = new GameOverlay(this);
+    input = new Input(this);
 
-    setScene("map");
+    setScene("farm");
+
+    getPlayer().setX(300);
 
     stage.show();
   }
@@ -105,46 +107,8 @@ public class SceneManager {
     return grid;
   }
 
-  public boolean[] getKeyInput() {
-    return keys;
-  }
-
-  public void setKeyInput() {
-    getScene().setOnKeyPressed(keyEvent -> {
-
-      if(keyEvent.getCode() != KeyCode.I) getGameOverlay().getInventoryBox().setVisible(false);
-      if(getGameOverlay().getStoryPane().isVisible() && keyEvent.getCode() == KeyCode.SPACE) getGameOverlay().hideStoryPane();
-
-      switch(keyEvent.getCode()) {
-        case D -> keys[0] = true;
-        case A -> keys[1] = true;
-        case S -> keys[2] = true;
-        case W -> keys[3] = true;
-        case P -> getGameOverlay().getStatusBar().playPause();
-        case I -> getGameOverlay().toggleInventoryBox();
-      }
-
-      getController().onKeyPressed(keyEvent.getCode());
-    });
-
-
-
-    getScene().setOnKeyReleased(keyEvent -> {
-      switch(keyEvent.getCode()) {
-        case D -> keys[0] = false;
-        case A -> keys[1] = false;
-        case S -> keys[2] = false;
-        case W -> keys[3] = false;
-      }
-    });
-
-    // Hide messages
-    getScene().setOnMouseClicked(mouseEvent -> {
-      if(!getGameOverlay().getStatusBar().getMessagesImage().isHover()) {
-        getGameOverlay().getMessagesBox().setVisible(false);
-        getGameOverlay().updateMessages();
-      }
-    });
+  public boolean[] getKeys() {
+    return input.getKeys();
   }
 
   public void setScene(String sceneName) {
@@ -152,7 +116,7 @@ public class SceneManager {
     controller = getFXController(sceneName);
     playerModel = (ImageView) getScene().lookup("#player");
     setGrid();
-    setKeyInput();
+    input.setKeyInput();
     gameOverlay.showOverlay();
   }
 

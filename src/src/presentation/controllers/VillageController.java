@@ -41,12 +41,13 @@ public class VillageController extends FXController {
     maizeBounds = maize.getBoundsInParent();
     chickpeasBounds = chickpeas.getBoundsInParent();
     fertilizerBounds = fertilizer.getBoundsInParent();
+    appleBounds = apple.getBoundsInParent();
 
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
-    } else if(playerBounds.intersects(maizeBounds) ||
-              playerBounds.intersects(chickpeasBounds) ||
-              playerBounds.intersects(fertilizerBounds)) {
+    } else if(playerBounds.intersects(maizeBounds) && maize.isVisible() ||
+              playerBounds.intersects(chickpeasBounds) && chickpeas.isVisible() ||
+              playerBounds.intersects(fertilizerBounds) && fertilizer.isVisible()) {
       helpMessage("Press 'E' to collect item.", help);
     } else {
       help.setVisible(false);
@@ -67,28 +68,28 @@ public class VillageController extends FXController {
 
       String message = null;
 
-      if(playerBounds.intersects(maizeBounds)) {
+      if(playerBounds.intersects(maizeBounds) && maize.isVisible()) {
         Item item = getPlayer().getInventory().get(CropType.MAIZE.toString());
         item.setAmount(item.getAmount() + 5);
         message = "5x Maize";
         maize.setVisible(false);
       }
 
-      if(playerBounds.intersects(chickpeasBounds)) {
+      if(playerBounds.intersects(chickpeasBounds) && chickpeas.isVisible()) {
         Item item = getPlayer().getInventory().get(CropType.CHICKPEAS.toString());
         item.setAmount(item.getAmount() + 5);
         message = "5x Chickpeas";
         chickpeas.setVisible(false);
       }
 
-      if(playerBounds.intersects(fertilizerBounds)) {
+      if(playerBounds.intersects(fertilizerBounds) && fertilizer.isVisible()) {
         Item item = getPlayer().getInventory().get(ItemType.FERTILIZER.toString());
         item.setAmount(item.getAmount() + 2);
         message = "2x Fertilizer";
         fertilizer.setVisible(false);
       }
 
-      if(playerBounds.intersects(appleBounds)) {
+      if(playerBounds.intersects(appleBounds) && apple.isVisible()) {
         Item item = getPlayer().getInventory().get(ItemType.APPLE.toString());
         item.setAmount(item.getAmount() + 1);
         message = "1x apple";

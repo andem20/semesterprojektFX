@@ -3,13 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.effect.DropShadow?>
 <AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #c7cd6c;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" visible="false">
       <Image url="@../images/field_empty.png" />
@@ -345,21 +345,19 @@
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
    </Label>
-   <VBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-background-color: #2a7918; -fx-background-radius: 10;"
-         visible="false">
+   <VBox alignment="CENTER_LEFT" spacing="5.0" style="-fx-background-color: #2a7918; -fx-background-radius: 10;" visible="false">
       <effect>
-         <DropShadow color="#0000004d" height="30.0" offsetX="2.0" offsetY="2.0" radius="14.5" width="30.0"/>
+         <DropShadow color="#0000004d" height="30.0" offsetX="2.0" offsetY="2.0" radius="14.5" width="30.0" />
       </effect>
       <padding>
-         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>
-      <Button fx:id="sowButton" mnemonicParsing="false" style="-fx-background-color: #359b1d;" text="Sow selected"
-              textFill="WHITE">
+      <Label text="Choose up to two:" textFill="WHITE" />
+      <VBox fx:id="cropsList" />
+      <Button fx:id="sowButton" mnemonicParsing="false" style="-fx-background-color: #359b1d;" text="Sow selected" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0"/>
+            <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Label text="Choose up to one:" textFill="WHITE"/>
-      <VBox fx:id="cropsList"/>
    </VBox>
 </AnchorPane>

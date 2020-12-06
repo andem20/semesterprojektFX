@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import src.domain.rooms.Farm;
 import src.presentation.FXController;
 import src.presentation.SceneManager;
@@ -17,10 +18,12 @@ public class FarmController extends FXController {
   @FXML private ImageView spouse;
   @FXML private Label help;
   @FXML private Label spouseLabel;
+  @FXML private Pane farmPane;
 
   private Bounds playerBounds;
   private Bounds exitBounds;
   private Bounds spouseBounds;
+  private Bounds farmBounds;
 
   private final Farm farm;
   private int messageIndex = 0;
@@ -36,11 +39,14 @@ public class FarmController extends FXController {
     playerBounds = player.getBoundsInParent();
     exitBounds = exit.getBoundsInParent();
     spouseBounds = spouse.getBoundsInParent();
+    farmBounds = farmPane.getBoundsInParent();
 
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
     } else if(playerBounds.intersects(spouseBounds)) {
       helpMessage("Press 'T' to talk with spouse.", help);
+    } else if(playerBounds.intersects(farmBounds)){
+      helpMessage("Press 'E' to collect manure", help);
     } else {
       getSceneManager().getGameOverlay().getConversationLabel().setVisible(false);
       spouseLabel.setVisible(false);

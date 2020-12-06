@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
 <AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url('/images/farm_background.png');" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true">
@@ -87,11 +89,6 @@
     <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/player/moving1.png" />
     </ImageView>
-    <ImageView fx:id="fertilizer" fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../images/item_fertilizer.png" />
-        </image>
-    </ImageView>
     <Label fx:id="help" layoutX="1.0" layoutY="7.0" style="-fx-background-color: #333333; -fx-background-radius: 10;" text="Label" textFill="WHITE">
         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -102,4 +99,5 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
+   <Pane fx:id="farmPane" layoutX="650.0" layoutY="346.0" prefHeight="72.0" prefWidth="200.0" />
 </AnchorPane>

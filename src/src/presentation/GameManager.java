@@ -7,7 +7,7 @@ import src.domain.Status;
 import src.domain.Storyline;
 import src.domain.Timer;
 import src.domain.characters.Player;
-import src.presentation.gameoverlay.GameOverlay;
+import src.presentation.gameoverlay.StatusBar;
 
 public class GameManager {
 
@@ -42,24 +42,19 @@ public class GameManager {
         sceneManager.getController().update();
 
         Collision.checkCollision(sceneManager);
-//
+
         // Updating timers
         if(Timer.timers.iterator().hasNext()) {
           String timerMessage = Timer.timers.iterator().next().updateTimer();
-          if(timerMessage != null) {
-            sceneManager.getGameOverlay().getMessagesBox().addMessage(timerMessage);
-            sceneManager.getGameOverlay().updateMessages();
-            sceneManager.getGameOverlay().setShortMessage(timerMessage);
-            sceneManager.getGameOverlay().showShortMessage();
-          }
+          if(timerMessage != null) sceneManager.getGameOverlay().updateMessages(timerMessage);
         }
-//
+
 //        // Check win / lose condition
 //        if(getStatus().checkStatus()) this.stop();
           status.checkStatus();
-//
-        sceneManager.getGameOverlay().getStatusBar().setStatusText(status.getPopulation(), status.getHungerLevel(), status.getDays());
-//
+
+        getStatusBar().setStatusText(status.getPopulation(), status.getHungerLevel(), status.getDays());
+
         showStoryline();
       }
     };
@@ -70,17 +65,11 @@ public class GameManager {
   }
 
   public void animatePlayer(double timer, double duration) {
-    boolean[] keys = sceneManager.getKeyInput();
+    boolean[] keys = sceneManager.getKeys();
     if((keys[0] || keys[1] || keys[2] || keys[3])) {
-      if(timer < duration) {
-        sceneManager.getPlayerModel().setImage(moving1);
-      } else {
-        sceneManager.getPlayerModel().setImage(moving2);
-      }
-    }
-
-    if(!(keys[0] || keys[1] || keys[2] || keys[3])) {
-      getSceneManager().getPlayerModel().setImage(still);
+      sceneManager.getPlayerModel().setImage(timer < duration ? moving1 : moving2);
+    } else {
+      sceneManager.getPlayerModel().setImage(still);
     }
   }
 
@@ -88,43 +77,21 @@ public class GameManager {
     return sceneManager.getPlayer();
   }
 
+  public StatusBar getStatusBar() {
+    return sceneManager.getGameOverlay().getStatusBar();
+  }
+
   public void showStoryline() {
-    if(status.getHungerLevel() > 0.6 && storyline.getLevel() == 1) {
-      ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
-      sceneManager.getGameOverlay().showStoryPane();
-      storyline.increaseLevel();
-    }
-
-    if(status.getHungerLevel() <= 0.6 && storyline.getLevel() == 2) {
-      ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
-      sceneManager.getGameOverlay().showStoryPane();
-      storyline.increaseLevel();
-    }
-
-    if(status.getHungerLevel() <= 0.5 && storyline.getLevel() == 3) {
-      ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
-      sceneManager.getGameOverlay().showStoryPane();
-      storyline.increaseLevel();
-    }
-
-    if(status.getHungerLevel() <= 0.3 && storyline.getLevel() == 4) {
-      ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
-      sceneManager.getGameOverlay().showStoryPane();
-      storyline.increaseLevel();
-    }
-
-    if(status.getHungerLevel() <= 0.2 && storyline.getLevel() == 5) {
-      ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
-      sceneManager.getGameOverlay().showStoryPane();
-      storyline.increaseLevel();
-    }
+    if(status.getHungerLevel() > 0.6 && storyline.getLevel() == 1) showStory();
+    if(status.getHungerLevel() <= 0.6 && storyline.getLevel() == 2) showStory();
+    if(status.getHungerLevel() <= 0.5 && storyline.getLevel() == 3) showStory();
+    if(status.getHungerLevel() <= 0.3 && storyline.getLevel() == 4) showStory();
+    if(status.getHungerLevel() <= 0.2 && storyline.getLevel() == 5) showStory();
   }
 
-  public SceneManager getSceneManager() {
-    return sceneManager;
-  }
-
-  public AnimationTimer getGameLoop() {
-    return gameLoop;
+  public void showStory() {
+    ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
+    sceneManager.getGameOverlay().showStoryPane();
+    storyline.increaseLevel();
   }
 }
