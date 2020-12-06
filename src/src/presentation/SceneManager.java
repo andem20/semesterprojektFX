@@ -117,6 +117,7 @@ public class SceneManager {
     playerModel = (ImageView) getScene().lookup("#player");
     setGrid();
     input.setKeyInput();
+    input.setMouseInput();
     gameOverlay.showOverlay();
   }
 

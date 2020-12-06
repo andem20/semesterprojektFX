@@ -20,10 +20,10 @@ public class Input {
       }
 
       switch(keyEvent.getCode()) {
-        case D -> keys[0] = true;
-        case A -> keys[1] = true;
-        case S -> keys[2] = true;
-        case W -> keys[3] = true;
+        case D, RIGHT -> keys[0] = true;
+        case A, LEFT -> keys[1] = true;
+        case S, DOWN -> keys[2] = true;
+        case W, UP -> keys[3] = true;
         case P -> sceneManager.getGameOverlay().getStatusBar().playPause();
         case I -> sceneManager.getGameOverlay().toggleInventoryBox();
       }
@@ -33,10 +33,10 @@ public class Input {
 
     sceneManager.getScene().setOnKeyReleased(keyEvent -> {
       switch(keyEvent.getCode()) {
-        case D -> keys[0] = false;
-        case A -> keys[1] = false;
-        case S -> keys[2] = false;
-        case W -> keys[3] = false;
+        case D, RIGHT -> keys[0] = false;
+        case A, LEFT -> keys[1] = false;
+        case S, DOWN -> keys[2] = false;
+        case W, UP -> keys[3] = false;
       }
     });
   }
