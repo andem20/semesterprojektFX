@@ -18,13 +18,13 @@ public class Market extends Room {
     super(description);
 
     NPC = new Character("Seller", 5000);
-    NPC.addItem(CropType.BEANS.toString(), new Crop(10, CropType.BEANS));
-    NPC.addItem(CropType.MAIZE.toString(), new Crop(10, CropType.MAIZE));
-    NPC.addItem(CropType.WHEAT.toString(), new Crop(10, CropType.WHEAT));
-    NPC.addItem(CropType.CHICKPEAS.toString(), new Crop(10, CropType.CHICKPEAS));
-    NPC.addItem(CropType.RICE.toString(), new Crop(10, CropType.RICE));
-    NPC.addItem(CropType.SORGHUM.toString(), new Crop(10, CropType.SORGHUM));
-    NPC.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 10, 50));
+    NPC.addItemAmount(CropType.BEANS.toString(), 10);
+    NPC.addItemAmount(CropType.MAIZE.toString(), 10);
+    NPC.addItemAmount(CropType.WHEAT.toString(), 10);
+    NPC.addItemAmount(CropType.CHICKPEAS.toString(), 10);
+    NPC.addItemAmount(CropType.RICE.toString(), 10);
+    NPC.addItemAmount(CropType.SORGHUM.toString(), 10);
+    NPC.addItemAmount(ItemType.FERTILIZER.toString(), 10);
 
     addTax();
   }

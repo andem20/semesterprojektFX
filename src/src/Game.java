@@ -119,7 +119,6 @@ public class Game {
         character.addItem(CropType.RICE.toString(), new Crop(0, CropType.RICE));
         character.addItem(CropType.SORGHUM.toString(), new Crop(0, CropType.SORGHUM));
         character.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 1, 50));
-        character.addItem(ItemType.APPLE.toString(), new Item(ItemType.APPLE.toString(), 0, 20));
     }
 
     private void printWelcome() {
@@ -211,9 +210,9 @@ public class Game {
                 return;
             }
 
-            buyer.addItem(buyerItem, amount);
+            buyer.addItemAmount(buyerItem, amount);
             buyer.removeCoins(sellerItem.getPrice() * amount);
-            seller.removeItem(sellerItem, amount);
+            seller.removeItemAmount(sellerItem, amount);
             seller.addCoins(sellerItem.getPrice() * amount);
 
             System.out.print(amount + " " + sellerItem.getName() + " was " + success +" your inventory.");

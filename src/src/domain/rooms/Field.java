@@ -66,9 +66,10 @@ public class Field extends Room {
             String message = "";
             int i = 0;
             for(Crop crop : prevYield) {
-                int yield = (int) ((GameSettings.SEED_AMOUNT.toInt() * crop.yield) * fieldHealth) / prevYield.size();
-                crop.setAmount(crop.getAmount() + yield);
-                message += yield + " " + crop.getName() + (i < prevYield.size() - 1 ? " and " : "");
+                int cropYield = (int) ((GameSettings.SEED_AMOUNT.toInt() * crop.yield) * fieldHealth) / prevYield.size();
+                cropYield *= GameSettings.YIELD_FACTOR.toInt();
+                crop.setAmount(crop.getAmount() + cropYield );
+                message += cropYield + " " + crop.getName() + (i < prevYield.size() - 1 ? " and " : "");
                 i++;
             }
 

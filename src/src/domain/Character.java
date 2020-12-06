@@ -1,5 +1,8 @@
 package src.domain;
 
+import src.enums.CropType;
+import src.enums.ItemType;
+
 import java.util.HashMap;
 
 public class Character {
@@ -13,12 +16,18 @@ public class Character {
     this.name = name;
     this.inventory = new HashMap<>();
     this.coins = coins;
+
+    for(CropType crop : CropType.values()) {
+      addItem(crop.toString(), new Crop(0, crop));
+    }
+
+    for(ItemType item : ItemType.values()) {
+      addItem(item.toString(), new Item(item.toString(), 0, item.getPrice()));
+    }
   }
 
   public Character(String name) {
-    this.name = name;
-    this.inventory = new HashMap<>();
-    this.coins = 0;
+    this(name, 0);
   }
 
   public Item getItem(String name) {
@@ -45,11 +54,16 @@ public class Character {
     return inventory;
   }
 
-  public void addItem(Item item, int amount) {
+  public void addItemAmount(Item item, int amount) {
     item.setAmount(item.getAmount() + amount);
   }
 
-  public void removeItem(Item item, int amount) {
+  public void addItemAmount(String itemType, int amount) {
+    Item item = getItem(itemType);
+    item.setAmount(item.getAmount() + amount);
+  }
+
+  public void removeItemAmount(Item item, int amount) {
     item.setAmount(item.getAmount() - amount);
   }
 

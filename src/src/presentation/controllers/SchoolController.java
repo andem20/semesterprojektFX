@@ -1,25 +1,35 @@
 package src.presentation.controllers;
 
+import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 import src.presentation.FXController;
-import src.GUI;
+import src.presentation.SceneManager;
 
 public class SchoolController extends FXController {
 
-    public SchoolController(GUI GUI) {
-        super(GUI);
+    @FXML private ImageView player;
+    @FXML private Pane board;
+    @FXML private ImageView exit;
+    @FXML private Label help;
+
+    private Bounds playerBounds;
+    private Bounds exitBounds;
+    private Bounds boardBounds;
+
+    public SchoolController(SceneManager sceneManager) {
+        super(sceneManager);
     }
 
     @Override
     public void update() {
-        Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-        Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-        Bounds boardBounds = getGUI().getView().lookup("#board").getBoundsInParent();
-
-        Label help = (Label) getGUI().getView().lookup("#help");
-        Label board = (Label) getGUI().getView().lookup("#lecture");
+        playerBounds = player.getBoundsInParent();
+        exitBounds = exit.getBoundsInParent();
+        boardBounds = board.getBoundsInParent();
 
         if(playerBounds.intersects(exitBounds)) {
             helpMessage("Press 'F' to exit.", help);
@@ -38,13 +48,11 @@ public class SchoolController extends FXController {
 
     @Override
     public void onKeyPressed(KeyCode keyCode) {
-        Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-        Bounds switchSceneBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-
-        if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
-            getGUI().setView("map");
-            getGUI().getCharacter().setX((int) getGUI().getView().lookup("#school").getLayoutX());
-            getGUI().getCharacter().setY((int) getGUI().getView().lookup("#school").getLayoutY());
+        if(keyCode == KeyCode.F && playerBounds.intersects(exitBounds)) {
+            setScene("map");
+            Node schoolExit = getSceneManager().getScene().lookup("#school");
+            getPlayer().setX((int) schoolExit.getLayoutX());
+            getPlayer().setY((int) schoolExit.getLayoutY());
         }
     }
 }

@@ -12,7 +12,7 @@ public class Player extends Character {
     super(name, coins);
 
     spouseMessages.add("How are you?");
-    spouseMessages.add("When is supper!!!???");
+    spouseMessages.add("Do you know what to do?");
     spouseMessages.add("Can I help you with anything?");
   }
 

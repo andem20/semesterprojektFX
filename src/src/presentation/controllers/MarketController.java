@@ -1,39 +1,60 @@
 package src.presentation.controllers;
 
+import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import src.domain.Character;
 import src.domain.Item;
 import src.presentation.FXController;
-import src.GUI;
 import src.domain.rooms.Market;
+import src.presentation.SceneManager;
 
 import java.util.Map;
 
 public class MarketController extends FXController {
 
+  @FXML private ImageView player;
+  @FXML private ImageView seller;
+  @FXML private Label help;
+  @FXML private ImageView exit;
+  @FXML private HBox marketInventory;
+  @FXML private Label description;
+  @FXML private Label coins;
+  @FXML private VBox nameBox;
+  @FXML private VBox amountBox;
+  @FXML private VBox priceBox;
+  @FXML private VBox actionBox;
+
+  private Bounds playerBounds;
+  private Bounds exitBounds;
+  private Bounds sellerBounds;
+  private Bounds marketBounds;
+  private Bounds schoolBounds;
+  private Bounds farmBounds;
+
   private final Market market;
 
-  public MarketController(GUI GUI) {
-    super(GUI);
+  public MarketController(SceneManager sceneManager) {
+    super(sceneManager);
 
     market = new Market("Market");
   }
 
   @Override
   public void update() {
-    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-    Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-    Bounds sellerBounds = getGUI().getView().lookup("#seller").getBoundsInParent();
-
-    Label help = (Label) getGUI().getView().lookup("#help");
+    playerBounds = player.getBoundsInParent();
+    exitBounds = exit.getBoundsInParent();
+    sellerBounds = seller.getBoundsInParent();
 
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
@@ -46,18 +67,14 @@ public class MarketController extends FXController {
 
   @Override
   public void onKeyPressed(KeyCode keyCode) {
-    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-    Bounds switchSceneBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-    Bounds sellerBounds = getGUI().getView().lookup("#seller").getBoundsInParent();
-
-    HBox marketInventory = (HBox) getGUI().getView().lookup("#marketInventory");
     marketInventory.getParent().setVisible(false);
 
     if(keyCode == KeyCode.F) {
-      if(playerBounds.intersects(switchSceneBounds)) {
-        getGUI().setView("map");
-        getGUI().getCharacter().setX((int) getGUI().getView().lookup("#market").getLayoutX());
-        getGUI().getCharacter().setY((int) getGUI().getView().lookup("#market").getLayoutY());
+      if(playerBounds.intersects(exitBounds)) {
+        setScene("map");
+        Node marketExit = getSceneManager().getScene().lookup("#market");
+        getPlayer().setX((int) marketExit.getLayoutX());
+        getPlayer().setY((int) marketExit.getLayoutY());
       }
     }
 
@@ -77,22 +94,14 @@ public class MarketController extends FXController {
   }
 
   private void showInventory(int action) {
-    Character buyer = action == 1 ? market.getNPC() : getGUI().getCharacter();
-    Character seller = action == 1 ? getGUI().getCharacter() : market.getNPC();
+    Character buyer = action == 1 ? market.getNPC() : getPlayer();
+    Character seller = action == 1 ? getPlayer() : market.getNPC();
 
-    HBox marketInventory = (HBox) getGUI().getView().lookup("#marketInventory");
     marketInventory.getParent().setVisible(true);
 
-    Label description = (Label) marketInventory.getParent().lookup("#description");
     description.setText((action == 0 ? "Buy" : "Sell") + " items");
 
-    Label coins = (Label) marketInventory.getParent().lookup("#coins");
     coins.setText((action == 0 ? "Your" : "Market") + " coins: $" + buyer.getCoins());
-
-    VBox nameBox = (VBox) marketInventory.lookup("#name");
-    VBox amountBox = (VBox) marketInventory.lookup("#amount");
-    VBox priceBox = (VBox) marketInventory.lookup("#price");
-    VBox actionBox = (VBox) marketInventory.lookup("#action");
 
     nameBox.getChildren().clear();
     amountBox.getChildren().clear();
@@ -121,10 +130,7 @@ public class MarketController extends FXController {
             message = item.getValue().getName() + " was " + (action == 0 ? "added" : "removed") + " your inventory.";
           }
 
-          getGUI().getGameOverlay().getMessagesBox().addMessage(message);
-          getGUI().getGameOverlay().updateMessages();
-          getGUI().getGameOverlay().setShortMessage(message);
-          getGUI().getGameOverlay().showShortMessage();
+          getSceneManager().getGameOverlay().updateMessages(message);
 
           // Update inventory
           showInventory(action);

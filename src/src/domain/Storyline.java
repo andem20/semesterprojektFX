@@ -10,6 +10,12 @@ public class Storyline {
   public Storyline() {
     this.storyline = new ArrayList<>();
 
+    addStory("Your Journey starts in Sub-saharan africa, in a small remote village.\n" +
+        "You've just inherited your family's farm.\n" +
+        "It's now your job to grow some crops,\n" +
+        "and gather enough food to feed your family and the entire village!\n" +
+        "Your first goal is to reach a hunger level below 60%.");
+
     addStory("Congratulations you have reached level 2!\n" +
         "your next target is a hungerlevel of 0.6\n" +
         "If this seems like a tough task then, we recommend trying to go to school,\n" +

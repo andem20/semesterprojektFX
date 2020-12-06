@@ -8,10 +8,10 @@ public class Crop extends Item {
   public final double nutrition;
 
   public Crop(int amount, CropType cropType) {
-    super(cropType.toString(), amount, cropType.price);
+    super(cropType.toString(), amount, cropType.getPrice());
 
-    this.yield = cropType.yield;
+    this.yield = cropType.getYield();
     this.cropType = cropType;
-    this.nutrition = cropType.nutrition;
+    this.nutrition = cropType.getNutrition();
   }
 }

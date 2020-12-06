@@ -1,37 +1,52 @@
 package src.presentation.controllers;
 
+import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import src.domain.Item;
 import src.enums.CropType;
 import src.enums.ItemType;
 import src.presentation.FXController;
-import src.GUI;
+import src.presentation.SceneManager;
 
 public class VillageController extends FXController {
 
-  public VillageController(GUI GUI) {
-    super(GUI);
+  @FXML private ImageView player;
+  @FXML private ImageView exit;
+  @FXML private ImageView maize;
+  @FXML private ImageView chickpeas;
+  @FXML private ImageView fertilizer;
+  @FXML private ImageView apple;
+  @FXML private Label help;
+
+  private Bounds playerBounds;
+  private Bounds exitBounds;
+  private Bounds maizeBounds;
+  private Bounds chickpeasBounds;
+  private Bounds fertilizerBounds;
+  private Bounds appleBounds;
+
+  public VillageController(SceneManager sceneManager) {
+    super(sceneManager);
   }
 
   @Override
   public void update() {
-    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-    Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-    Bounds maizeBounds = getGUI().getView().lookup("#maize").getBoundsInParent();
-    Bounds chickpeasBounds = getGUI().getView().lookup("#chickpeas").getBoundsInParent();
-    Bounds fertilizerBounds = getGUI().getView().lookup("#fertilizer").getBoundsInParent();
-    Bounds appleBounds = getGUI().getView().lookup("#apple").getBoundsInParent();
-
-    Label help = (Label) getGUI().getView().lookup("#help");
+    playerBounds = player.getBoundsInParent();
+    exitBounds = exit.getBoundsInParent();
+    maizeBounds = maize.getBoundsInParent();
+    chickpeasBounds = chickpeas.getBoundsInParent();
+    fertilizerBounds = fertilizer.getBoundsInParent();
 
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
     } else if(playerBounds.intersects(maizeBounds) ||
               playerBounds.intersects(chickpeasBounds) ||
-              playerBounds.intersects(fertilizerBounds)||
-              playerBounds.intersects(appleBounds)) {
+              playerBounds.intersects(fertilizerBounds)) {
       helpMessage("Press 'E' to collect item.", help);
     } else {
       help.setVisible(false);
@@ -41,17 +56,11 @@ public class VillageController extends FXController {
 
   @Override
   public void onKeyPressed(KeyCode keyCode) {
-    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-    Bounds switchSceneBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-    Bounds maizeBounds = getGUI().getView().lookup("#maize").getBoundsInParent();
-    Bounds chickpeasBounds = getGUI().getView().lookup("#chickpeas").getBoundsInParent();
-    Bounds fertilizerBounds = getGUI().getView().lookup("#fertilizer").getBoundsInParent();
-    Bounds appleBounds = getGUI().getView().lookup("#apple").getBoundsInParent();
-
-    if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
-      getGUI().setView("map");
-      getGUI().getCharacter().setX((int) getGUI().getView().lookup("#village").getLayoutX());
-      getGUI().getCharacter().setY((int) getGUI().getView().lookup("#village").getLayoutY());
+    if(keyCode == KeyCode.F && playerBounds.intersects(exitBounds)) {
+      setScene("map");
+      Node village = getSceneManager().getScene().lookup("#village");
+      getPlayer().setX((int) village.getLayoutX());
+      getPlayer().setY((int) village.getLayoutY());
     }
 
     if(keyCode == KeyCode.E) {
@@ -59,39 +68,36 @@ public class VillageController extends FXController {
       String message = null;
 
       if(playerBounds.intersects(maizeBounds)) {
-        Item item = getGUI().getCharacter().getInventory().get(CropType.MAIZE.toString());
+        Item item = getPlayer().getInventory().get(CropType.MAIZE.toString());
         item.setAmount(item.getAmount() + 5);
         message = "5x Maize";
-        getGUI().getView().lookup("#maize").setVisible(false);
+        maize.setVisible(false);
       }
 
       if(playerBounds.intersects(chickpeasBounds)) {
-        Item item = getGUI().getCharacter().getInventory().get(CropType.CHICKPEAS.toString());
+        Item item = getPlayer().getInventory().get(CropType.CHICKPEAS.toString());
         item.setAmount(item.getAmount() + 5);
         message = "5x Chickpeas";
-        getGUI().getView().lookup("#chickpeas").setVisible(false);
+        chickpeas.setVisible(false);
       }
 
       if(playerBounds.intersects(fertilizerBounds)) {
-        Item item = getGUI().getCharacter().getInventory().get(ItemType.FERTILIZER.toString());
+        Item item = getPlayer().getInventory().get(ItemType.FERTILIZER.toString());
         item.setAmount(item.getAmount() + 2);
         message = "2x Fertilizer";
-        getGUI().getView().lookup("#fertilizer").setVisible(false);
+        fertilizer.setVisible(false);
       }
 
       if(playerBounds.intersects(appleBounds)) {
-        Item item = getGUI().getCharacter().getInventory().get(ItemType.APPLE.toString());
+        Item item = getPlayer().getInventory().get(ItemType.APPLE.toString());
         item.setAmount(item.getAmount() + 1);
         message = "1x apple";
-        getGUI().getView().lookup("#apple").setVisible(false);
+        apple.setVisible(false);
       }
 
       if(message != null) {
         message += " was added to your inventory";
-        getGUI().getGameOverlay().getMessagesBox().addMessage(message);
-        getGUI().getGameOverlay().updateMessages();
-        getGUI().getGameOverlay().setShortMessage(message);
-        getGUI().getGameOverlay().showShortMessage();
+        getSceneManager().getGameOverlay().updateMessages(message);
       }
     }
   }

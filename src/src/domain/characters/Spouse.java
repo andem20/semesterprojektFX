@@ -11,9 +11,9 @@ public class Spouse extends Character {
   public Spouse(String name) {
     super(name);
 
-    responses.add("I'm good, but starving!!!");
-    responses.add("I don't know...");
-    responses.add("I'm hungry, can you get me an apple from village?");
+    responses.add("I'm good, the yield from the fields is not good this year.");
+    responses.add("I don't know... Try go to the school.");
+    responses.add("I'm hungry. Get me an apple from the village.");
   }
 
   public String getResponse(int index) {

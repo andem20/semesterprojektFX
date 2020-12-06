@@ -1,44 +1,49 @@
 package src.presentation.controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.geometry.Bounds;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import src.domain.Item;
 import src.domain.rooms.Farm;
-import src.enums.CropType;
-import src.enums.ItemType;
 import src.presentation.FXController;
-import src.GUI;
+import src.presentation.SceneManager;
 
 public class FarmController extends FXController {
+
+  @FXML private ImageView player;
+  @FXML private ImageView exit;
+  @FXML private ImageView spouse;
+  @FXML private Label help;
+  @FXML private Label spouseLabel;
+
+  private Bounds playerBounds;
+  private Bounds exitBounds;
+  private Bounds spouseBounds;
 
   private final Farm farm;
   private int messageIndex = 0;
 
-  public FarmController(GUI GUI) {
-    super(GUI);
+  public FarmController(SceneManager sceneManager) {
+    super(sceneManager);
 
     farm = new Farm("farm");
   }
 
   @Override
   public void update() {
-    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-    Bounds exitBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-    Bounds spouseBounds = getGUI().getView().lookup("#spouse").getBoundsInParent();
-    Bounds fertilizerBounds = getGUI().getView().lookup("#fertilizer").getBoundsInParent();
+    playerBounds = player.getBoundsInParent();
+    exitBounds = exit.getBoundsInParent();
+    spouseBounds = spouse.getBoundsInParent();
 
-    Label help = (Label) getGUI().getView().lookup("#help");
-
-    if (playerBounds.intersects(exitBounds)) {
+    if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
-    } else if (playerBounds.intersects(spouseBounds)) {
+    } else if(playerBounds.intersects(spouseBounds)) {
       helpMessage("Press 'T' to talk with spouse.", help);
-    } else if (playerBounds.intersects(fertilizerBounds)) {
-      helpMessage("Press 'E' to collect item.", help);
     } else {
-      getGUI().getGameOverlay().getConversationLabel().setVisible(false);
-      getGUI().getView().lookup("#spouseLabel").setVisible(false);
+      getSceneManager().getGameOverlay().getConversationLabel().setVisible(false);
+      spouseLabel.setVisible(false);
       help.setVisible(false);
     }
   }
@@ -46,54 +51,28 @@ public class FarmController extends FXController {
 
   @Override
   public void onKeyPressed(KeyCode keyCode) {
-    Bounds playerBounds = getGUI().getView().lookup("#player").getBoundsInParent();
-    Bounds switchSceneBounds = getGUI().getView().lookup("#exit").getBoundsInParent();
-    Bounds spouseBounds = getGUI().getView().lookup("#spouse").getBoundsInParent();
-    Bounds fertilizerBounds = getGUI().getView().lookup("#fertilizer").getBoundsInParent();
-
-    if (keyCode == KeyCode.F) {
-      if (playerBounds.intersects(switchSceneBounds)) {
-        getGUI().setView("map");
-        getGUI().getCharacter().setX((int) getGUI().getView().lookup("#farm").getLayoutX());
-        getGUI().getCharacter().setY((int) getGUI().getView().lookup("#farm").getLayoutY());
+    if(keyCode == KeyCode.F) {
+      if(playerBounds.intersects(exitBounds)) {
+        setScene("map");
+        Node farmExit = getSceneManager().getScene().lookup("#farm");
+        getPlayer().setX((int) farmExit.getLayoutX());
+        getPlayer().setY((int) farmExit.getLayoutY());
         return;
       }
     }
 
-    if (keyCode == KeyCode.T) {
-      if (playerBounds.intersects(spouseBounds)) {
+    if(keyCode == KeyCode.T) {
+      if(playerBounds.intersects(spouseBounds)) {
 
-        getGUI().getGameOverlay().setConversationLabel(getGUI().getCharacter().getSpouseMessages().get(messageIndex));
+        getSceneManager().getGameOverlay().setConversationLabel(getPlayer().getSpouseMessages().get(messageIndex));
 
-        ((Label) getGUI().getView().lookup("#spouseLabel")).setText(farm.getSpouse().getResponse(messageIndex));
-        getGUI().getView().lookup("#spouseLabel").setVisible(true);
+        spouseLabel.setText(farm.getSpouse().getResponse(messageIndex));
+        spouseLabel.setVisible(true);
 
-        messageIndex = Math.min(messageIndex + 1, getGUI().getCharacter().getSpouseMessages().size() - 1);
+        messageIndex = Math.min(messageIndex + 1, getPlayer().getSpouseMessages().size() - 1);
       } else {
-        getGUI().getView().lookup("#spouseLabel").setVisible(false);
+        spouseLabel.setVisible(false);
       }
-    }
-
-    if (keyCode == KeyCode.E) {
-
-      String message = null;
-
-      if (playerBounds.intersects(fertilizerBounds)) {
-        Item item = getGUI().getCharacter().getInventory().get(ItemType.FERTILIZER.toString());
-        item.setAmount(item.getAmount() + 2);
-        message = "2x Fertilizer";
-        getGUI().getView().lookup("#fertilizer").setVisible(false);
-
-      }
-
-      if (message != null) {
-        message += " was added to your inventory";
-        getGUI().getGameOverlay().getMessagesBox().addMessage(message);
-        getGUI().getGameOverlay().updateMessages();
-        getGUI().getGameOverlay().setShortMessage(message);
-        getGUI().getGameOverlay().showShortMessage();
-      }
-
     }
   }
 }
