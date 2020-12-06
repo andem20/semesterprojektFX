@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import src.domain.rooms.School;
 import src.presentation.FXController;
 import src.presentation.SceneManager;
 
@@ -21,8 +22,12 @@ public class SchoolController extends FXController {
     private Bounds exitBounds;
     private Bounds boardBounds;
 
+    private final School school;
+
     public SchoolController(SceneManager sceneManager) {
         super(sceneManager);
+
+        this.school = new School("School");
     }
 
     @Override
@@ -42,7 +47,7 @@ public class SchoolController extends FXController {
             helpMessage("Press 'E' to lecture.", help);
         } else {
             board.setVisible(false);
-        } //TODO: get lectures from School.class one at a time
+        }
     }
 
 
@@ -53,6 +58,13 @@ public class SchoolController extends FXController {
             Node schoolExit = getSceneManager().getScene().lookup("#school");
             getPlayer().setX((int) schoolExit.getLayoutX());
             getPlayer().setY((int) schoolExit.getLayoutY());
+        }
+
+        if(keyCode == KeyCode.E && playerBounds.intersects(boardBounds)) {
+            getSceneManager().getGameOverlay().getStoryPane().setStyle("-fx-background-color: #333333");
+            getSceneManager().getGameOverlay().getStoryLabel().setText(school.teach());
+            school.increaseLevel();
+            getSceneManager().getGameOverlay().showStoryPane();
         }
     }
 }

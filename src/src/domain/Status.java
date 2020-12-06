@@ -10,7 +10,7 @@ public class Status {
   private final int startPop;
   private int foodSupply;
   private float hungerLevel;
-  private final long startTime;
+  private long startTime;
 
   public Status(int population) {
     this.population = population;

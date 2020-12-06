@@ -29,6 +29,7 @@ public class GameOverlay {
   private final StackPane storyPane = new StackPane();
   private final Label storyLabel = new Label();
   private final Button storyButton = new Button();
+  private long startTime;
 
   public GameOverlay(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
@@ -170,7 +171,6 @@ public class GameOverlay {
     AnchorPane.setBottomAnchor(storyPane, 0.0);
     AnchorPane.setTopAnchor(storyPane, 0.0);
     storyPane.setAlignment(Pos.CENTER);
-    storyPane.setStyle("-fx-background-color: #8b3322;");
 
     VBox storyContainer = new VBox();
     storyContainer.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);

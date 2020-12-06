@@ -50,7 +50,7 @@ public class GameManager {
 
 //        // Check win / lose condition
 //        if(getStatus().checkStatus()) this.stop();
-          status.checkStatus();
+        status.checkStatus();
 
         getStatusBar().setStatusText(status.getPopulation(), status.getHungerLevel(), status.getDays());
 
@@ -89,6 +89,7 @@ public class GameManager {
   }
 
   public void showStory() {
+    sceneManager.getGameOverlay().getStoryPane().setStyle("-fx-background-color: #8b3322;");
     sceneManager.getGameOverlay().getStoryLabel().setText(storyline.getStory());
     sceneManager.getGameOverlay().showStoryPane();
     storyline.increaseLevel();
