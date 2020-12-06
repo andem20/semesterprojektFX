@@ -4,12 +4,11 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 import src.domain.Item;
 import src.enums.GameSettings;
@@ -23,22 +22,19 @@ import java.util.stream.Collectors;
 public class GameOverlay {
   private final SceneManager sceneManager;
   private final StatusBar statusBar;
-  // Character label
-  private final Label conversationLabel;
-  // Inventory
+  private final Label conversationLabel = new Label();
   private final Inventory inventoryBox;
-  // Messages
-  private final Messages messages;
-  private final Label shortMessage;
-  // Story
+  private final Messages messages = new Messages();
+  private final Label shortMessage = new Label();
   private final StackPane storyPane = new StackPane();
+  private final Label storyLabel = new Label();
+  private final Button storyButton = new Button();
 
   public GameOverlay(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
     statusBar = new StatusBar();
 
     // Conversation label
-    conversationLabel = new Label();
     conversationLabel.setId("characterLabel");
     conversationLabel.setPadding(new Insets(5));
     conversationLabel.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10;-fx-text-fill: #000000");
@@ -49,8 +45,6 @@ public class GameOverlay {
     inventoryBox = new Inventory(itemNames);
 
     // Messages
-    messages = new Messages();
-
     getStatusBar().getMessagesImage().setOnMouseClicked(mouseEvent -> {
       messages.setVisible(!messages.isVisible());
       if(messages.isVisible()) {
@@ -62,7 +56,6 @@ public class GameOverlay {
       }
     });
 
-    shortMessage = new Label();
     shortMessage.setBackground(
         new Background(
             new BackgroundFill(
@@ -78,19 +71,7 @@ public class GameOverlay {
     shortMessage.setLayoutY(30);
     shortMessage.setVisible(false);
 
-    AnchorPane.setLeftAnchor(storyPane, 0.0);
-    AnchorPane.setRightAnchor(storyPane, 0.0);
-    AnchorPane.setBottomAnchor(storyPane, 0.0);
-    AnchorPane.setTopAnchor(storyPane, 0.0);
-    storyPane.setAlignment(Pos.CENTER);
-    Label story = new Label();
-    story.setTextFill(Color.WHITE);
-    story.setFont(Font.font("System Bold", FontWeight.BOLD, 20));
-    Button cont = new Button("Continue");
-    cont.setStyle("-fx-background-color: #1b74ce;");
-    storyPane.getChildren().addAll(story);
-    storyPane.setStyle("-fx-background-color: #8b3322;");
-    storyPane.setVisible(false);
+    initStoryline();
   }
 
   public void showOverlay() {
@@ -183,8 +164,48 @@ public class GameOverlay {
     timer.start();
   }
 
+  public void initStoryline() {
+    AnchorPane.setLeftAnchor(storyPane, 0.0);
+    AnchorPane.setRightAnchor(storyPane, 0.0);
+    AnchorPane.setBottomAnchor(storyPane, 0.0);
+    AnchorPane.setTopAnchor(storyPane, 0.0);
+    storyPane.setAlignment(Pos.CENTER);
+    storyPane.setStyle("-fx-background-color: #8b3322;");
+
+    VBox storyContainer = new VBox();
+    storyContainer.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+    storyContainer.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+    storyContainer.setSpacing(20);
+
+    storyLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 20;");
+
+    storyButton.setText("Continue");
+    storyButton.setPadding(new Insets(10, 20, 10, 20));
+    storyButton.setStyle("-fx-background-color: #EEEEEE;-fx-font-weight: bold;");
+    storyButton.setOnMouseClicked(mouseEvent -> hideStoryPane());
+    storyButton.setOnMouseEntered(mouseEvent -> {
+      storyButton.setStyle("-fx-background-color: #DDDDDD;-fx-font-weight: bold;");
+    });
+
+    storyButton.setOnMouseExited(mouseEvent -> {
+      storyButton.setStyle("-fx-background-color: #EEEEEE;-fx-font-weight: bold;");
+    });
+
+    storyButton.setCursor(Cursor.HAND);
+
+    storyContainer.getChildren().addAll(storyLabel, storyButton);
+
+    storyPane.getChildren().addAll(storyContainer);
+    storyPane.setVisible(false);
+
+  }
+
   public StackPane getStoryPane() {
     return storyPane;
+  }
+
+  public Label getStoryLabel() {
+    return storyLabel;
   }
 
   public void showStoryPane() {

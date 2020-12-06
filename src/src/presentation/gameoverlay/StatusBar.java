@@ -16,7 +16,7 @@ import src.domain.Audio;
 
 public class StatusBar extends HBox {
   private final Audio audio;
-  private final MusicIcon musicIcon;
+  private final MusicIcon musicIcon = new MusicIcon();
   private final Label popAmount = new Label();
   private final Label hungerAmount = new Label();
   private final Label daysAmount = new Label();
@@ -41,26 +41,15 @@ public class StatusBar extends HBox {
         )
     );
 
-    musicIcon = new MusicIcon();
     musicIcon.setOnMouseClicked(mouseEvent -> playPause());
 
-    messagesImage.setImage(new Image("/images/mail.png"));
-    messagesImage.setFitWidth(20);
-    messagesImage.setFitHeight(20);
-    messagesImage.setPreserveRatio(true);
-    messagesImage.setCursor(Cursor.HAND);
+    setMessageIcon();
 
-    messageCounter.setTranslateX(-35);
-    messageCounter.setTranslateY(5);
-    messageCounter.setPadding(new Insets(0, 3, 0, 3));
-    messageCounter.setFont(new Font("System Bold", 7));
-    messageCounter.setVisible(false);
-
-    // Add elements
     // Status
     Label popLabel = new Label("Population:");
     Label hungerLabel = new Label("Hunger level:");
     Label daysLabel = new Label("Days: ");
+
     getChildren().addAll(
         messagesImage, messageCounter,
         daysLabel, daysAmount,
@@ -68,6 +57,7 @@ public class StatusBar extends HBox {
         hungerLabel, hungerAmount,
         musicIcon);
 
+    // Set all text to white
     getChildren().forEach(label -> label.setStyle("-fx-text-fill: #FFFFFF;"));
 
     // Set numbers to bold font
@@ -75,7 +65,6 @@ public class StatusBar extends HBox {
     hungerAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
     daysAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
     messageCounter.setStyle("-fx-background-color: #EE0000; -fx-background-radius: 50;-fx-text-fill: #FFFFFF;-fx-font-weight: bold;");
-
   }
 
   public void setStatusText(int population, float hungerLevel, int days) {
@@ -95,6 +84,20 @@ public class StatusBar extends HBox {
       audio.play();
       musicIcon.on();
     }
+  }
+
+  private void setMessageIcon() {
+    messagesImage.setImage(new Image("/images/mail.png"));
+    messagesImage.setFitWidth(20);
+    messagesImage.setFitHeight(20);
+    messagesImage.setPreserveRatio(true);
+    messagesImage.setCursor(Cursor.HAND);
+
+    messageCounter.setTranslateX(-35);
+    messageCounter.setTranslateY(5);
+    messageCounter.setPadding(new Insets(0, 3, 0, 3));
+    messageCounter.setFont(new Font("System Bold", 7));
+    messageCounter.setVisible(false);
   }
 
   public void setMessageCounter(int n) {

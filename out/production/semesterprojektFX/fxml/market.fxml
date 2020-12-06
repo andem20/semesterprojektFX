@@ -92,7 +92,7 @@
                   <Font name="System Bold" size="12.0"/>
                </font>
             </Label>
-            <VBox fx:id="name" spacing="5.0"/>
+            <VBox fx:id="nameBox" spacing="5.0"/>
          </VBox>
          <VBox spacing="5.0">
             <Label text="Amount">
@@ -100,7 +100,7 @@
                   <Font name="System Bold" size="12.0"/>
                </font>
             </Label>
-            <VBox fx:id="amount" spacing="5.0"/>
+            <VBox fx:id="amountBox" spacing="5.0"/>
          </VBox>
          <VBox spacing="5.0">
             <Label text="Price">
@@ -108,7 +108,7 @@
                   <Font name="System Bold" size="12.0"/>
                </font>
             </Label>
-            <VBox fx:id="price" spacing="5.0"/>
+            <VBox fx:id="priceBox" spacing="5.0"/>
          </VBox>
          <VBox spacing="5.0">
             <Label text="Action">
@@ -116,7 +116,7 @@
                   <Font name="System Bold" size="12.0"/>
                </font>
             </Label>
-            <VBox fx:id="action" spacing="5.0"/>
+            <VBox fx:id="actionBox" spacing="5.0"/>
          </VBox>
       </HBox>
    </VBox>

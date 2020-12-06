@@ -12,14 +12,13 @@ import src.presentation.gameoverlay.StatusBar;
 public class GameManager {
 
   private final SceneManager sceneManager;
-  private AnimationTimer gameLoop;
   // Player animation images
   private final Image moving1 = new Image("/images/player/moving1.png");
   private final Image moving2 = new Image("/images/player/moving2.png");
   private final Image still = new Image("/images/player/still.png");
-  // Status
+
   private final Status status;
-  // Storyline
+
   private final Storyline storyline;
 
   public GameManager(SceneManager sceneManager) {
@@ -29,7 +28,7 @@ public class GameManager {
   }
 
   public void play() {
-    gameLoop = new AnimationTimer() {
+    AnimationTimer gameLoop = new AnimationTimer() {
       final long start = System.nanoTime();
 
       @Override
@@ -90,7 +89,7 @@ public class GameManager {
   }
 
   public void showStory() {
-    ((Label) sceneManager.getGameOverlay().getStoryPane().getChildren().get(0)).setText(storyline.getStory());
+    sceneManager.getGameOverlay().getStoryLabel().setText(storyline.getStory());
     sceneManager.getGameOverlay().showStoryPane();
     storyline.increaseLevel();
   }

@@ -15,9 +15,6 @@ public class Input {
     sceneManager.getScene().setOnKeyPressed(keyEvent -> {
 
       if(keyEvent.getCode() != KeyCode.I) sceneManager.getGameOverlay().getInventoryBox().setVisible(false);
-      if(sceneManager.getGameOverlay().getStoryPane().isVisible() && keyEvent.getCode() == KeyCode.SPACE) {
-        sceneManager.getGameOverlay().hideStoryPane();
-      }
 
       switch(keyEvent.getCode()) {
         case D, RIGHT -> keys[0] = true;

@@ -1,7 +1,6 @@
 package src.presentation.gameoverlay;
 
 import javafx.geometry.Insets;
-import javafx.scene.Cursor;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -28,6 +27,7 @@ public class Messages extends VBox {
 
     setPadding(new Insets(5));
 
+    // Positioning right under mail icon
     setLayoutX(570);
     setLayoutY(30);
     setVisible(false);
@@ -35,10 +35,6 @@ public class Messages extends VBox {
 
   public void addMessage(String content) {
     messages.addFirst(new Message(content));
-  }
-
-  public void removeMessage(Message message) {
-    messages.remove(message);
   }
 
   public LinkedList<Message> getMessages() {

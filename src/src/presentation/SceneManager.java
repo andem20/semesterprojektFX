@@ -24,11 +24,11 @@ public class SceneManager {
   private Player player;
   private FXController controller;
   private Node[][] grid;
-  private int TILESIZE = GameSettings.TILESIZE.toInt();
+  private final int TILESIZE = GameSettings.TILESIZE.toInt();
   private ImageView playerModel;
-  private GameOverlay gameOverlay;
+  private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
-  private Input input;
+  private final Input input;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -44,9 +44,9 @@ public class SceneManager {
     gameOverlay = new GameOverlay(this);
     input = new Input(this);
 
-    setScene("farm");
+    setScene("map");
 
-    getPlayer().setX(300);
+    getPlayer().setY(120);
 
     stage.show();
   }
