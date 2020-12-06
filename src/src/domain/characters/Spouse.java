@@ -13,6 +13,7 @@ public class Spouse extends Character {
 
     responses.add("I'm good, but starving!!!");
     responses.add("I don't know...");
+    responses.add("I'm hungry, can you get me an apple from village?");
   }
 
   public String getResponse(int index) {

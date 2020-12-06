@@ -22,6 +22,7 @@ public class VillageController extends FXController {
     Bounds maizeBounds = getGUI().getView().lookup("#maize").getBoundsInParent();
     Bounds chickpeasBounds = getGUI().getView().lookup("#chickpeas").getBoundsInParent();
     Bounds fertilizerBounds = getGUI().getView().lookup("#fertilizer").getBoundsInParent();
+    Bounds appleBounds = getGUI().getView().lookup("#apple").getBoundsInParent();
 
     Label help = (Label) getGUI().getView().lookup("#help");
 
@@ -29,7 +30,8 @@ public class VillageController extends FXController {
       helpMessage("Press 'F' to exit.", help);
     } else if(playerBounds.intersects(maizeBounds) ||
               playerBounds.intersects(chickpeasBounds) ||
-              playerBounds.intersects(fertilizerBounds)) {
+              playerBounds.intersects(fertilizerBounds)||
+              playerBounds.intersects(appleBounds)) {
       helpMessage("Press 'E' to collect item.", help);
     } else {
       help.setVisible(false);
@@ -44,6 +46,7 @@ public class VillageController extends FXController {
     Bounds maizeBounds = getGUI().getView().lookup("#maize").getBoundsInParent();
     Bounds chickpeasBounds = getGUI().getView().lookup("#chickpeas").getBoundsInParent();
     Bounds fertilizerBounds = getGUI().getView().lookup("#fertilizer").getBoundsInParent();
+    Bounds appleBounds = getGUI().getView().lookup("#apple").getBoundsInParent();
 
     if(keyCode == KeyCode.F && playerBounds.intersects(switchSceneBounds)) {
       getGUI().setView("map");
@@ -74,6 +77,13 @@ public class VillageController extends FXController {
         item.setAmount(item.getAmount() + 2);
         message = "2x Fertilizer";
         getGUI().getView().lookup("#fertilizer").setVisible(false);
+      }
+
+      if(playerBounds.intersects(appleBounds)) {
+        Item item = getGUI().getCharacter().getInventory().get(ItemType.APPLE.toString());
+        item.setAmount(item.getAmount() + 1);
+        message = "1x apple";
+        getGUI().getView().lookup("#apple").setVisible(false);
       }
 
       if(message != null) {
