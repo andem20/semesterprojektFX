@@ -39,9 +39,8 @@
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
-   <ImageView fx:id="seller" fitHeight="40.0" fitWidth="40.0" layoutX="478.0" layoutY="238.0" pickOnBounds="true"
-              preserveRatio="true">
-      <Image url="@../images/player/still.png"/>
+   <ImageView fx:id="seller" disable="true" fitHeight="65.0" fitWidth="65.0" layoutX="478.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/seller.png" />
    </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="600.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
@@ -67,56 +66,54 @@
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
    </Label>
-   <VBox layoutX="180.0" layoutY="90.0" spacing="5.0" style="-fx-background-color: #cfe45d; -fx-background-radius: 10;"
-         visible="false">
+   <VBox layoutX="180.0" layoutY="90.0" spacing="5.0" style="-fx-background-color: #cfe45d; -fx-background-radius: 10;" visible="false">
       <padding>
-         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>
       <effect>
-         <DropShadow color="#0000004d" height="30.0" offsetX="2.0" offsetY="2.0" radius="14.5" width="30.0"/>
+         <DropShadow color="#0000004d" height="30.0" offsetX="2.0" offsetY="2.0" radius="14.5" width="30.0" />
       </effect>
       <AnchorPane>
          <Label fx:id="description" text="Label">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Label>
-         <Label fx:id="coins" layoutY="32" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                AnchorPane.topAnchor="0.0"/>
-         <Line endX="100.0" startX="-100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+         <Label fx:id="coins" layoutY="32" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <Line endX="100.0" startX="-100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       </AnchorPane>
       <HBox fx:id="marketInventory" spacing="10.0">
          <VBox spacing="5.0">
             <Label text="Name">
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <VBox fx:id="nameBox" spacing="5.0"/>
+            <VBox fx:id="nameBox" spacing="5.0" />
          </VBox>
          <VBox spacing="5.0">
             <Label text="Amount">
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <VBox fx:id="amountBox" spacing="5.0"/>
+            <VBox fx:id="amountBox" spacing="5.0" />
          </VBox>
          <VBox spacing="5.0">
             <Label text="Price">
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <VBox fx:id="priceBox" spacing="5.0"/>
+            <VBox fx:id="priceBox" spacing="5.0" />
          </VBox>
          <VBox spacing="5.0">
             <Label text="Action">
                <font>
-                  <Font name="System Bold" size="12.0"/>
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <VBox fx:id="actionBox" spacing="5.0"/>
+            <VBox fx:id="actionBox" spacing="5.0" />
          </VBox>
       </HBox>
    </VBox>

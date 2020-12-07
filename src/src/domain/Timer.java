@@ -9,7 +9,6 @@ public class Timer {
     private final String message;
     private final int time;
     private final int days;
-    private long currentTime;
 
     public Timer(int days, String message) {
         this.days = days;
@@ -17,12 +16,10 @@ public class Timer {
         time = days * GameSettings.DAY.toInt();
         startTime = System.nanoTime();
         timers.add(this);
-        currentTime = startTime;
     }
 
-    public String updateTimer(long currentTime){
-        this.currentTime = currentTime;
-        if((currentTime - startTime) / 1e9 >= time) {
+    public String updateTimer(){
+        if((System.nanoTime() - startTime) / 1e9 >= time) {
             timers.remove(this);
             return message;
         }
@@ -39,6 +36,6 @@ public class Timer {
     }
 
     public double getCurrentTime() {
-        return Math.min((currentTime - startTime) / 1e9, time);
+        return Math.min((System.nanoTime() - startTime) / 1e9, time);
     }
 }

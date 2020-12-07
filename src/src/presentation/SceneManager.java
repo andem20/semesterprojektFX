@@ -29,7 +29,6 @@ public class SceneManager {
   private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
   private final Input input;
-  private long globalTime;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -37,7 +36,7 @@ public class SceneManager {
     stage.setTitle("Hunger Game");
     stage.setResizable(false);
 
-    createPlayer("Anders");
+    createPlayer("Player");
 
     initControllers();
     initFXML();
@@ -52,7 +51,7 @@ public class SceneManager {
     stage.show();
   }
 
-  private void initControllers() {
+  public void initControllers() {
     // Create a hashmap of all fxml and corresponding controllers because controllers needs have reference to GUI
     fxControllers = new HashMap<>();
     fxControllers.put("map", new MapController(this));
@@ -63,7 +62,8 @@ public class SceneManager {
     fxControllers.put("market", new MarketController(this));
   }
 
-  private void initFXML() {
+  public void initFXML() {
+    // Preloading all fxml files
     fxmls = new HashMap<>();
     fxControllers.forEach((name, controller) -> {
       try {
@@ -80,7 +80,7 @@ public class SceneManager {
     });
   }
 
-  private void createPlayer(String name) {
+  public void createPlayer(String name) {
     player = new Player(name, 100);
 
     // Create player's inventory
@@ -156,13 +156,5 @@ public class SceneManager {
 
   public AnimationTimer getGameLoop() {
     return gameLoop;
-  }
-
-  public long getGlobalTime() {
-    return globalTime;
-  }
-
-  public void setGlobalTime(long globalTime) {
-    this.globalTime = globalTime;
   }
 }

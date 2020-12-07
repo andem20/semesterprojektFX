@@ -47,7 +47,8 @@ public class VillageController extends FXController {
       helpMessage("Press 'F' to exit.", help);
     } else if(playerBounds.intersects(maizeBounds) && maize.isVisible() ||
               playerBounds.intersects(chickpeasBounds) && chickpeas.isVisible() ||
-              playerBounds.intersects(fertilizerBounds) && fertilizer.isVisible()) {
+              playerBounds.intersects(fertilizerBounds) && fertilizer.isVisible() ||
+              playerBounds.intersects(appleBounds) && apple.isVisible()) {
       helpMessage("Press 'E' to collect item.", help);
     } else {
       help.setVisible(false);

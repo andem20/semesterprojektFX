@@ -12,7 +12,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import src.domain.Audio;
+import src.presentation.Audio;
 
 public class StatusBar extends HBox {
   private final Audio audio;

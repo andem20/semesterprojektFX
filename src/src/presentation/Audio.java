@@ -1,4 +1,4 @@
-package src.domain;
+package src.presentation;
 
 import javax.sound.sampled.*;
 import java.io.File;

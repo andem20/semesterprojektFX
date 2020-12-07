@@ -5,9 +5,9 @@ import src.enums.GameSettings;
 
 public class Collision {
 
-  private static int TILESIZE = GameSettings.TILESIZE.toInt();
+  private static final int TILESIZE = GameSettings.TILESIZE.toInt();
 
-  public static void checkCollision(SceneManager sceneManager) {
+  public static void checkPlayerCollision(SceneManager sceneManager) {
     Node playerModel = sceneManager.getPlayerModel();
     Node[][] grid = sceneManager.getGrid();
     boolean[] keys = sceneManager.getKeys();

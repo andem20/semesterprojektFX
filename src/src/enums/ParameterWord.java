@@ -17,7 +17,6 @@ public enum ParameterWord {
   // Croptypes
   BEANS(CropType.BEANS.toString()),
   MAIZE(CropType.MAIZE.toString()),
-  RICE(CropType.RICE.toString()),
   WHEAT(CropType.WHEAT.toString()),
   SORGUM(CropType.SORGHUM.toString()),
   CHICKPEAS(CropType.CHICKPEAS.toString()),

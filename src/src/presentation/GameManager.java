@@ -6,19 +6,18 @@ import src.domain.Status;
 import src.domain.Storyline;
 import src.domain.Timer;
 import src.domain.characters.Player;
-import src.presentation.gameoverlay.StatusBar;
 
 public class GameManager {
 
-  private final SceneManager sceneManager;
+  private SceneManager sceneManager;
   // Player animation images
   private final Image moving1 = new Image("/images/player/moving1.png");
   private final Image moving2 = new Image("/images/player/moving2.png");
   private final Image still = new Image("/images/player/still.png");
 
-  private final Status status;
+  private Status status;
 
-  private final Storyline storyline;
+  private Storyline storyline;
 
   public GameManager(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
@@ -39,22 +38,22 @@ public class GameManager {
         // Call current controller update method
         sceneManager.getController().update();
 
-        Collision.checkCollision(sceneManager);
+        Collision.checkPlayerCollision(sceneManager);
 
         // Updating timers
         if(Timer.timers.iterator().hasNext()) {
-          String timerMessage = Timer.timers.iterator().next().updateTimer(l);
+          String timerMessage = Timer.timers.iterator().next().updateTimer();
           if(timerMessage != null) sceneManager.getGameOverlay().updateMessages(timerMessage);
         }
 
-//        // Check win / lose condition
-//        if(getStatus().checkStatus()) this.stop();
-        status.checkStatus();
+        // Check win / lose condition
+        if(status.checkStatus()) {
+          showLoseMessage();
+        }
 
-        getStatusBar().setStatusText(status.getPopulation(), status.getHungerLevel(), status.getDays());
+        updateStatusBar();
 
-        showStoryline();
-        sceneManager.setGlobalTime(l);
+        checkStoryline();
       }
     };
 
@@ -76,11 +75,15 @@ public class GameManager {
     return sceneManager.getPlayer();
   }
 
-  public StatusBar getStatusBar() {
-    return sceneManager.getGameOverlay().getStatusBar();
+  private void updateStatusBar() {
+    sceneManager.getGameOverlay().getStatusBar().setStatusText(
+        status.getPopulation(),
+        status.getHungerLevel(),
+        status.getDays()
+    );
   }
 
-  public void showStoryline() {
+  public void checkStoryline() {
     if(status.getHungerLevel() > 0.6 && storyline.getLevel() == 1) showStory();
     if(status.getHungerLevel() <= 0.6 && storyline.getLevel() == 2) showStory();
     if(status.getHungerLevel() <= 0.5 && storyline.getLevel() == 3) showStory();
@@ -93,5 +96,17 @@ public class GameManager {
     sceneManager.getGameOverlay().getStoryLabel().setText(storyline.getStory());
     sceneManager.getGameOverlay().showStoryPane();
     storyline.increaseLevel();
+  }
+
+  private void showLoseMessage() {
+    sceneManager.getGameOverlay().getStoryLabel().setText("YOU LOST!");
+    sceneManager.getGameOverlay().getStoryButton().setText("Try again");
+    sceneManager.getGameOverlay().showStoryPane();
+    sceneManager.getGameOverlay().getStoryButton().setOnMouseClicked(mouseEvent -> {
+      status = new Status(100);
+      storyline = new Storyline();
+      sceneManager = new SceneManager(sceneManager.getStage());
+      play();
+    });
   }
 }

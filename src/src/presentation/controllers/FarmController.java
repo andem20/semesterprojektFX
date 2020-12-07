@@ -31,6 +31,7 @@ public class FarmController extends FXController {
   private final Farm farm;
   private int messageIndex = 0;
   private long manureTime = 0;
+  private double currentTime;
 
   public FarmController(SceneManager sceneManager) {
     super(sceneManager);
@@ -45,14 +46,14 @@ public class FarmController extends FXController {
     spouseBounds = spouse.getBoundsInParent();
     farmBounds = farmPane.getBoundsInParent();
 
+    currentTime = (System.nanoTime() - manureTime) / 1e9;
+
     if(playerBounds.intersects(exitBounds)) {
       helpMessage("Press 'F' to exit.", help);
     } else if(playerBounds.intersects(spouseBounds)) {
       helpMessage("Press 'T' to talk with spouse.", help);
-    } else if(playerBounds.intersects(farmBounds)){
-      if((getSceneManager().getGlobalTime() - manureTime) / 1e9 >= GameSettings.MANURE_COLLECT_TIME.toInt() || manureTime == 0) {
-        helpMessage("Press 'E' to collect manure", help);
-      }
+    } else if(playerBounds.intersects(farmBounds) && (currentTime >= GameSettings.MANURE_COLLECT_TIME.toInt() || manureTime == 0)){
+      helpMessage("Press 'E' to collect manure", help);
     } else {
       getSceneManager().getGameOverlay().getConversationLabel().setVisible(false);
       spouseLabel.setVisible(false);
@@ -90,8 +91,8 @@ public class FarmController extends FXController {
     if(keyCode == KeyCode.E) {
       if(playerBounds.intersects(farmBounds)) {
         String message = null;
-        if((getSceneManager().getGlobalTime() - manureTime) / 1e9 >= GameSettings.MANURE_COLLECT_TIME.toInt() || manureTime == 0) {
-          manureTime = getSceneManager().getGlobalTime();
+        if(currentTime >= GameSettings.MANURE_COLLECT_TIME.toInt() || manureTime == 0) {
+          manureTime = System.nanoTime();
           Item item = getPlayer().getInventory().get(ItemType.FERTILIZER.toString());
           item.setAmount(item.getAmount() + 2);
           message = "2x Fertilizer was added to your inventory";

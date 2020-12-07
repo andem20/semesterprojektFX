@@ -2,11 +2,10 @@ package src.enums;
 
 public enum CropType {
   WHEAT(7, 3, 0.5),
-  RICE(7, 5, 0.5),
-  BEANS(4, 8, 0.9),
+  BEANS(4, 8, 0.8),
   MAIZE(6, 2, 0.3),
   SORGHUM(2, 2, 0.5),
-  CHICKPEAS(4,9, 1.0);
+  CHICKPEAS(4,9, 0.8);
 
   private final int yield;
   private final int price;

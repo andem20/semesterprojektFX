@@ -85,8 +85,10 @@ public class FieldController extends FXController {
     if(playerBounds.intersects(fieldBounds1) || playerBounds.intersects(fieldBounds2) || playerBounds.intersects(fieldBounds3)) {
       if(field.isSowed()) {
         if(field.isReady()) {
-          helpMessage("Press 'E' to harvest crops." +
-              (fertilizerAmount > 0 ? "\nPress 'F' to use fertilizer." : "") + "\nPress 'R' to see fieldhealth.", help);
+          helpMessage("Press 'E' to harvest crops." + "\nPress 'R' to see fieldhealth." +
+              (fertilizerAmount > 0 ? "\nPress 'F' to use fertilizer." : ""), help);
+        } else {
+          helpMessage("Press 'R' to see fieldhealth." + (fertilizerAmount > 0 ? "\nPress 'F' to use fertilizer." : ""), help);
         }
       } else {
         helpMessage("Press 'E' to sow seeds" +
@@ -149,7 +151,7 @@ public class FieldController extends FXController {
 
     for(Item crop : getPlayer().getInventory().values()){
       if(crop instanceof Crop && crop.getAmount() >= 5) {
-        Label label = new Label(crop.getName());
+        Label label = new Label("5x " + crop.getName());
         label.setTextFill(Color.WHITE);
         label.setCursor(Cursor.HAND);
         label.setPrefWidth(100);

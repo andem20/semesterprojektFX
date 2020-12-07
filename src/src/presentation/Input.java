@@ -5,6 +5,7 @@ import javafx.scene.input.KeyCode;
 public class Input {
 
   private final SceneManager sceneManager;
+  // Array for keys controlling movement
   private final boolean[] keys = new boolean[4];
 
   public Input(SceneManager sceneManager) {
@@ -39,7 +40,7 @@ public class Input {
   }
 
   public void setMouseInput() {
-    // Hide messages
+    // Hide messages if clicked outside
     sceneManager.getScene().setOnMouseClicked(mouseEvent -> {
       if(!sceneManager.getGameOverlay().getStatusBar().getMessagesImage().isHover()) {
         sceneManager.getGameOverlay().getMessagesBox().setVisible(false);

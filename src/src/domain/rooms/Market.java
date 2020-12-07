@@ -22,7 +22,6 @@ public class Market extends Room {
     NPC.addItemAmount(CropType.MAIZE.toString(), 10);
     NPC.addItemAmount(CropType.WHEAT.toString(), 10);
     NPC.addItemAmount(CropType.CHICKPEAS.toString(), 10);
-    NPC.addItemAmount(CropType.RICE.toString(), 10);
     NPC.addItemAmount(CropType.SORGHUM.toString(), 10);
     NPC.addItemAmount(ItemType.FERTILIZER.toString(), 10);
 

@@ -211,10 +211,15 @@ public class GameOverlay {
     return storyLabel;
   }
 
+  public Button getStoryButton() {
+    return storyButton;
+  }
+
   public void showStoryPane() {
     storyPane.setVisible(true);
     storyPane.setOpacity(1.0);
     sceneManager.getGameLoop().stop();
+
   }
 
   public void hideStoryPane() {

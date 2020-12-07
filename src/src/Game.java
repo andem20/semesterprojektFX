@@ -44,7 +44,7 @@ public class Game {
             finished = status.checkStatus() || processCommand(command);
 
             if(Timer.timers.iterator().hasNext()) {
-                String timerMessage = Timer.timers.iterator().next().updateTimer(System.nanoTime());
+                String timerMessage = Timer.timers.iterator().next().updateTimer();
                 if(timerMessage != null) {
                     System.out.println(timerMessage);
                 }
@@ -116,7 +116,6 @@ public class Game {
         character.addItem(CropType.MAIZE.toString(), new Crop(5, CropType.MAIZE));
         character.addItem(CropType.WHEAT.toString(), new Crop(10, CropType.WHEAT));
         character.addItem(CropType.CHICKPEAS.toString(), new Crop(0, CropType.CHICKPEAS));
-        character.addItem(CropType.RICE.toString(), new Crop(0, CropType.RICE));
         character.addItem(CropType.SORGHUM.toString(), new Crop(0, CropType.SORGHUM));
         character.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 1, 50));
     }
