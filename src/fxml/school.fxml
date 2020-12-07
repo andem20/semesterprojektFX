@@ -303,6 +303,6 @@
       </padding>
    </Label>
    <ImageView fx:id="teacher" disable="true" fitHeight="65.0" fitWidth="65.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/player/teacherFloor.png" />
+      <Image url="@../images/teacher.png" />
    </ImageView>
 </AnchorPane>
