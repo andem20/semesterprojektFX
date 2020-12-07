@@ -11,11 +11,8 @@
    <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
       <Image url="@../images/schoolDoor.png" />
    </ImageView>
-   <ImageView fx:id="doorWest" fitHeight="60.0" fitWidth="60.0" layoutY="240.0" pickOnBounds="true" rotate="270.0">
-      <Image url="@../images/schoolDoor.png" />
-   </ImageView>
-   <ImageView fx:id="doorSouth" fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="480.0" pickOnBounds="true" rotate="180.0">
-      <Image url="@../images/schoolDoor.png" />
+   <ImageView fx:id="teacher" disable="true" fitHeight="65.0" fitWidth="65.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/teacher.png" />
    </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="60.0" pickOnBounds="true">
       <Image url="@../images/floor.png" />
@@ -167,9 +164,6 @@
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="420.0" layoutY="420.0" pickOnBounds="true">
       <Image url="@../images/floor.png" />
    </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true">
-      <Image url="@../images/floor.png" />
-   </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="540.0" layoutY="120.0" pickOnBounds="true">
       <Image url="@../images/floor.png" />
    </ImageView>
@@ -302,7 +296,4 @@
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
    </Label>
-   <ImageView fx:id="teacher" disable="true" fitHeight="65.0" fitWidth="65.0" layoutX="540.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../images/teacher.png" />
-   </ImageView>
 </AnchorPane>
