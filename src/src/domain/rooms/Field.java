@@ -83,7 +83,7 @@ public class Field extends Room {
     public String fertilize(Item fertilizer) {
         // Check if we have enough fertilizer
         if(fertilizer.getAmount() < 1) {
-            return "You need don't have enough fertilizer!";
+            return "You don't have enough fertilizer!";
         }
 
         fertilizer.setAmount(fertilizer.getAmount() - 1);

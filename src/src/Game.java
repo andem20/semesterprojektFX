@@ -124,12 +124,12 @@ public class Game {
     private void printWelcome() {
         System.out.println();
         System.out.println("Hello " + character.getName() + ", welcome to our game about hunger!");
-        System.out.println("Your Journey starts in Sub-saharan africa, in a small remote village.");
+        System.out.println("Your Journey starts in Sub-Saharan Africa, in a small remote village.");
         System.out.println("You've just inherited your family's farm.");
         System.out.println("It's now your job to grow some crops,");
         System.out.println("and gather enough food to feed your family and the entire village!");
         System.out.println();
-        System.out.println("Start out by typing 'show map' to see where you can go, ");
+        System.out.println("Start out by typing 'show map' to see where you can go, "); //TODO: GUI does not need a map instruction here.
         System.out.println("but watch out!\nTime is ticking and population is growing!");
         System.out.println("See your status by typing 'show status'.");
         System.out.println("If hungerlevel gets over 0.8 you loose the game.");
