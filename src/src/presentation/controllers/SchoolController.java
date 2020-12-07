@@ -17,10 +17,12 @@ public class SchoolController extends FXController {
     @FXML private Pane board;
     @FXML private ImageView exit;
     @FXML private Label help;
+    @FXML private ImageView teacher;
 
     private Bounds playerBounds;
     private Bounds exitBounds;
     private Bounds boardBounds;
+    private Bounds teacherBounds;
 
     private final School school;
 
@@ -35,6 +37,7 @@ public class SchoolController extends FXController {
         playerBounds = player.getBoundsInParent();
         exitBounds = exit.getBoundsInParent();
         boardBounds = board.getBoundsInParent();
+        teacherBounds = teacher.getBoundsInParent();
 
         if(playerBounds.intersects(exitBounds)) {
             helpMessage("Press 'F' to exit.", help);
@@ -44,6 +47,8 @@ public class SchoolController extends FXController {
         //TODO: exitbounds for market, hometown and farm (doorSouth, doorNorth and doorEast) - find exitBounds
 
         if(playerBounds.intersects(boardBounds)) {
+            helpMessage("Press 'E' to lecture.", help);
+        } else if(playerBounds.intersects(teacherBounds)) {
             helpMessage("Press 'E' to lecture.", help);
         } else {
             board.setVisible(false);
@@ -61,6 +66,12 @@ public class SchoolController extends FXController {
         }
 
         if(keyCode == KeyCode.E && playerBounds.intersects(boardBounds)) {
+            getSceneManager().getGameOverlay().getStoryPane().setStyle("-fx-background-color: #333e39");
+            getSceneManager().getGameOverlay().getStoryLabel().setText(school.teach());
+            school.increaseLevel();
+            getSceneManager().getGameOverlay().showStoryPane();
+        }
+        if(keyCode == KeyCode.E && playerBounds.intersects(teacherBounds)) {
             getSceneManager().getGameOverlay().getStoryPane().setStyle("-fx-background-color: #333e39");
             getSceneManager().getGameOverlay().getStoryLabel().setText(school.teach());
             school.increaseLevel();

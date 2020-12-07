@@ -1,6 +1,8 @@
 package src.domain.rooms;
 
 import src.domain.Room;
+import src.domain.characters.Spouse;
+import src.domain.characters.Teacher;
 
 import java.util.ArrayList;
 
@@ -9,9 +11,12 @@ public class School extends Room {
   private final ArrayList<String> knowledges;
   private int level = 1;
 
+  private final Teacher teacher;
+
   public School(String description) {
     super(description);
 
+    this.teacher = new Teacher("Teacher");
     knowledges = new ArrayList<>();
 
     knowledges.add(
