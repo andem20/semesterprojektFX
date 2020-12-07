@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Timer;
+import src.enums.GameSettings;
 import src.enums.ItemType;
 import src.presentation.FXController;
 import src.domain.rooms.Field;
@@ -180,7 +181,7 @@ public class FieldController extends FXController {
       cropsList.getParent().setVisible(false);
       if(selectedCrops.size() > 0) {
         setFieldImage(fieldImages[1]);
-        field.sow(selectedCrops, new Timer(10, "Your crops are ready"));
+        field.sow(selectedCrops, new Timer(GameSettings.HARVEST_TIME.toInt(), "Your crops are ready"));
         selectedCrops.clear();
       }
     });

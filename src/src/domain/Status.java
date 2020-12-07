@@ -16,7 +16,7 @@ public class Status {
     this.population = population;
     this.startPop = population;
     this.foodSupply = 0;
-    this.startTime = System.currentTimeMillis();
+    this.startTime = System.nanoTime();
   }
 
   public boolean checkStatus() {
@@ -40,8 +40,8 @@ public class Status {
   }
 
   public double getPassedTime() {
-    // Convert miliseconds to seconds
-    return (System.currentTimeMillis() - startTime) / 1000.0;
+    // Convert nanoseconds to seconds
+    return (System.nanoTime() - startTime) / 1e9;
   }
 
   public int getDays() {

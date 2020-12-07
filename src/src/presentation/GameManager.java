@@ -1,7 +1,6 @@
 package src.presentation;
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import src.domain.Status;
 import src.domain.Storyline;
@@ -44,7 +43,7 @@ public class GameManager {
 
         // Updating timers
         if(Timer.timers.iterator().hasNext()) {
-          String timerMessage = Timer.timers.iterator().next().updateTimer();
+          String timerMessage = Timer.timers.iterator().next().updateTimer(l);
           if(timerMessage != null) sceneManager.getGameOverlay().updateMessages(timerMessage);
         }
 
@@ -55,6 +54,7 @@ public class GameManager {
         getStatusBar().setStatusText(status.getPopulation(), status.getHungerLevel(), status.getDays());
 
         showStoryline();
+        sceneManager.setGlobalTime(l);
       }
     };
 

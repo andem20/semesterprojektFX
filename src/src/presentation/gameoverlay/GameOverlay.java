@@ -178,6 +178,9 @@ public class GameOverlay {
     storyContainer.setSpacing(20);
 
     storyLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 20;");
+    storyLabel.setWrapText(true);
+    storyLabel.setMaxWidth(740);
+    storyLabel.setLineSpacing(2);
 
     storyButton.setText("Continue");
     storyButton.setPadding(new Insets(10, 20, 10, 20));

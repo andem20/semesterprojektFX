@@ -7,7 +7,10 @@ import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import src.domain.Item;
 import src.domain.rooms.Farm;
+import src.enums.GameSettings;
+import src.enums.ItemType;
 import src.presentation.FXController;
 import src.presentation.SceneManager;
 
@@ -27,6 +30,7 @@ public class FarmController extends FXController {
 
   private final Farm farm;
   private int messageIndex = 0;
+  private long manureTime = 0;
 
   public FarmController(SceneManager sceneManager) {
     super(sceneManager);
@@ -46,7 +50,9 @@ public class FarmController extends FXController {
     } else if(playerBounds.intersects(spouseBounds)) {
       helpMessage("Press 'T' to talk with spouse.", help);
     } else if(playerBounds.intersects(farmBounds)){
-      helpMessage("Press 'E' to collect manure", help);
+      if((getSceneManager().getGlobalTime() - manureTime) / 1e9 >= GameSettings.MANURE_COLLECT_TIME.toInt() || manureTime == 0) {
+        helpMessage("Press 'E' to collect manure", help);
+      }
     } else {
       getSceneManager().getGameOverlay().getConversationLabel().setVisible(false);
       spouseLabel.setVisible(false);
@@ -78,6 +84,20 @@ public class FarmController extends FXController {
         messageIndex = Math.min(messageIndex + 1, getPlayer().getSpouseMessages().size() - 1);
       } else {
         spouseLabel.setVisible(false);
+      }
+    }
+
+    if(keyCode == KeyCode.E) {
+      if(playerBounds.intersects(farmBounds)) {
+        String message = null;
+        if((getSceneManager().getGlobalTime() - manureTime) / 1e9 >= GameSettings.MANURE_COLLECT_TIME.toInt() || manureTime == 0) {
+          manureTime = getSceneManager().getGlobalTime();
+          Item item = getPlayer().getInventory().get(ItemType.FERTILIZER.toString());
+          item.setAmount(item.getAmount() + 2);
+          message = "2x Fertilizer was added to your inventory";
+        }
+
+        if(message != null) getSceneManager().getGameOverlay().updateMessages(message);
       }
     }
   }

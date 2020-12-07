@@ -29,6 +29,7 @@ public class SceneManager {
   private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
   private final Input input;
+  private long globalTime;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -155,5 +156,13 @@ public class SceneManager {
 
   public AnimationTimer getGameLoop() {
     return gameLoop;
+  }
+
+  public long getGlobalTime() {
+    return globalTime;
+  }
+
+  public void setGlobalTime(long globalTime) {
+    this.globalTime = globalTime;
   }
 }

@@ -1,8 +1,6 @@
 package src.domain;
 
-import src.GUI;
 import src.enums.GameSettings;
-
 import java.util.ArrayList;
 
 public class Timer {
@@ -11,17 +9,20 @@ public class Timer {
     private final String message;
     private final int time;
     private final int days;
+    private long currentTime;
 
     public Timer(int days, String message) {
         this.days = days;
-        this.time = days * GameSettings.DAY.toInt();
-        this.startTime = System.currentTimeMillis();
         this.message = message;
+        time = days * GameSettings.DAY.toInt();
+        startTime = System.nanoTime();
         timers.add(this);
+        currentTime = startTime;
     }
 
-    public String updateTimer(){
-        if((System.currentTimeMillis() - startTime) / 1000 >= time) {
+    public String updateTimer(long currentTime){
+        this.currentTime = currentTime;
+        if((currentTime - startTime) / 1e9 >= time) {
             timers.remove(this);
             return message;
         }
@@ -38,6 +39,6 @@ public class Timer {
     }
 
     public double getCurrentTime() {
-        return Math.min((System.currentTimeMillis() - startTime) / 1000.0, time);
+        return Math.min((currentTime - startTime) / 1e9, time);
     }
 }

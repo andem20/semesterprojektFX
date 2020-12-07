@@ -20,7 +20,7 @@ public class School extends Room {
         "Maize and sorghum are the food staples in this area as they are resilient to the local climate.\n" +
         "It is important to keep sowing these cereals to provide food for your people.\n" +
         "However, to keep up with the growing population, you'll need to increase your production. \n" +
-        "This is not an easy task and requires some changes that might cost you more in the beginning, \n" +
+        "This is not an easy task and requires some changes that might cost you more in the beginning," +
         "but will help you build a more sustainable and increased food production in the long term. \n" +
         "Research shows that there is plenty of potential to increase the yields.\n" +
         "I'll encourage you to try sowing and harvesting your first crops and see what happens.\n" +
@@ -55,9 +55,9 @@ public class School extends Room {
         "Did you notice a difference in the hunger levels of your town after sowing some beans?\n" +
         "They grow slower, but are necessary in eradicating hunger in your town.\n" +
         "Additionally, you might have noticed that your soilhealth improved as well?\n" +
-        "That is because pulses provide nutrients, especially phosphor and nitrogen,\n" +
+        "That is because pulses provide nutrients, especially phosphor and nitrogen, " +
         "to the soil and effectively slow down erosion.\n" +
-        "Whe you sow maize or sorghum in rotation with pulses, you'll increase your food security, \n" +
+        "Whe you sow maize or sorghum in rotation with pulses, you'll increase your food security, " +
         "because you can harvest throughout the season. \n" +
         "Try rotating the crops couple of times and see what happens!\n" +
         "See you at the next lecture!"
@@ -66,7 +66,7 @@ public class School extends Room {
         "Hello again!\n" +
         "Welcome to your fifth lecture!\n" +
         "I hope your hungerlevel and soilhealth are on the rise!\n" +
-        "Although pulses improve the level of nutrients in the ground, this might not be enough\n" +
+        "Although pulses improve the level of nutrients in the ground, this might not be enough" +
         "to reach the full potential of your crops.\n" +
         "It is sometimes necessary to use fertilizers as well. \n" +
         "Animal derived fertilizers work wonders to improve the yields and to feed your people.\n" +

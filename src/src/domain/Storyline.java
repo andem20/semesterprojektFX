@@ -14,10 +14,11 @@ public class Storyline {
         "You've just inherited your family's farm.\n" +
         "It's now your job to grow some crops,\n" +
         "and gather enough food to feed your family and the entire village!\n" +
+        "The stock of the market is responsible for the hunger level." +
         "Your first goal is to reach a hunger level below 60%.");
 
     addStory("Congratulations you have reached level 2!\n" +
-        "your next target is a hungerlevel of 0.6\n" +
+        "Your next target is a hungerlevel of 50%.\n" +
         "If this seems like a tough task then, we recommend trying to go to school,\n" +
         "and learn about some new methods and crops");
 
@@ -32,8 +33,7 @@ public class Storyline {
         "You managed to learn about the benefits of growing different crops, rebuilding the soil, \n" +
         "and building a network using the market. \n" +
         "Thank you very much for playing our game and we hope you leave with some new insights and knowledge \n" +
-        "about agriculture in the remote areas of the world \n " +
-        "Sincerely Team 3");
+        "about agriculture in the remote areas of the world.");
   }
 
   public void addStory(String story) {

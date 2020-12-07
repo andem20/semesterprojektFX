@@ -44,7 +44,7 @@ public class Game {
             finished = status.checkStatus() || processCommand(command);
 
             if(Timer.timers.iterator().hasNext()) {
-                String timerMessage = Timer.timers.iterator().next().updateTimer();
+                String timerMessage = Timer.timers.iterator().next().updateTimer(System.nanoTime());
                 if(timerMessage != null) {
                     System.out.println(timerMessage);
                 }
