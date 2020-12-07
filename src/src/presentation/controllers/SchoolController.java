@@ -61,7 +61,7 @@ public class SchoolController extends FXController {
         }
 
         if(keyCode == KeyCode.E && playerBounds.intersects(boardBounds)) {
-            getSceneManager().getGameOverlay().getStoryPane().setStyle("-fx-background-color: #333333");
+            getSceneManager().getGameOverlay().getStoryPane().setStyle("-fx-background-color: #333e39");
             getSceneManager().getGameOverlay().getStoryLabel().setText(school.teach());
             school.increaseLevel();
             getSceneManager().getGameOverlay().showStoryPane();
