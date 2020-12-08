@@ -32,15 +32,6 @@
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="120.0" pickOnBounds="true">
       <Image url="@../images/floor.png" />
    </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="180.0" pickOnBounds="true">
-      <Image url="@../images/floor.png" />
-   </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="180.0" layoutY="180.0" pickOnBounds="true">
-      <Image url="@../images/floor.png" />
-   </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="120.0" layoutY="180.0" pickOnBounds="true">
-      <Image url="@../images/floor.png" />
-   </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" layoutY="240.0" pickOnBounds="true">
       <Image url="@../images/floor.png" />
    </ImageView>
