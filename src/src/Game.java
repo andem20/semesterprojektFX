@@ -30,7 +30,7 @@ public class Game {
         parser = new Parser();
         status = new Status(100);
 
-        gameMap = new GameMap("src/map.txt");
+        gameMap = new GameMap("src/src/map.txt");
 
         storyline = new Storyline();
     }
