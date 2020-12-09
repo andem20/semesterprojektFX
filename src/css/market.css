@@ -1,0 +1,21 @@
+.background {
+    -fx-background-image: url('file:src/images/market_background.png');
+}
+
+.market-trading-box {
+    -fx-background-color: #cfe45d;
+    -fx-background-radius: 10;
+}
+
+Button {
+    -fx-background-color: #2a7918;
+    -fx-padding: 0 5 0 5;
+}
+
+Button:hover {
+    -fx-background-color: #359b1d;
+}
+
+Button:pressed {
+    -fx-background-color: #146e0f;
+}

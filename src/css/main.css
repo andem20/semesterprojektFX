@@ -1,0 +1,11 @@
+#help {
+    -fx-background-color: #333333;
+    -fx-background-radius: 10;
+    -fx-text-fill: #FFFFFF;
+}
+
+Button {
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
