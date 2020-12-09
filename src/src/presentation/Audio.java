@@ -10,7 +10,7 @@ public class Audio {
 
   public Audio(String name) {
     try {
-      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/music/" + name).getAbsoluteFile());
+      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource("/music/" + name));
 
       clip = AudioSystem.getClip();
 

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="semesterprojektFX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/semesterprojektFX_jar</output-path>
+    <root id="archive" name="semesterprojektFX.jar">
+      <element id="module-output" name="semesterprojektFX" />
+      <element id="dir-copy" path="$PATH_TO_FX$/bin" />
+      <element id="extracted-dir" path="$PATH_TO_FX$/lib/javafx-swt.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
