@@ -3,24 +3,19 @@ package src.presentation.controllers;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
 import src.domain.rooms.School;
 import src.presentation.FXController;
 import src.presentation.SceneManager;
 
 public class SchoolController extends FXController {
 
-    @FXML private ImageView player;
     @FXML private ImageView exit;
     @FXML private ImageView exit2;
     @FXML private ImageView exit3;
-    @FXML private Label help;
     @FXML private ImageView teacher;
 
-    private Bounds playerBounds;
     private Bounds exit1Bounds;
     private Bounds exit2Bounds;
     private Bounds exit3Bounds;
@@ -36,18 +31,18 @@ public class SchoolController extends FXController {
 
     @Override
     public void update() {
-        playerBounds = player.getBoundsInParent();
+        updatePlayerBounds();
         exit1Bounds = exit.getBoundsInParent();
         exit2Bounds = exit2.getBoundsInParent();
         exit3Bounds = exit3.getBoundsInParent();
         teacherBounds = teacher.getBoundsInParent();
 
-        if(playerBounds.intersects(exit1Bounds) || playerBounds.intersects(exit2Bounds) || playerBounds.intersects(exit3Bounds)) {
-            helpMessage("Press 'F' to exit.", help);
-        } else if(playerBounds.intersects(teacherBounds)) {
-            helpMessage("Press 'E' to lecture.", help);
+        if(intersectsExit()) {
+            showHelpMessage("Press 'F' to exit.");
+        } else if(getPlayerBounds().intersects(teacherBounds)) {
+            showHelpMessage("Press 'E' to lecture.");
         } else {
-            help.setVisible(false);
+            hideHelpMessage();
         }
     }
 
@@ -55,19 +50,23 @@ public class SchoolController extends FXController {
     @Override
     public void onKeyPressed(KeyCode keyCode) {
         if(keyCode == KeyCode.F) {
-            if((playerBounds.intersects(exit1Bounds) || playerBounds.intersects(exit2Bounds) || playerBounds.intersects(exit3Bounds))) {
+            if(intersectsExit()) {
                 setScene("map");
                 Node schoolExit = getSceneManager().getScene().lookup("#school");
-                getPlayer().setX((int) schoolExit.getLayoutX());
-                getPlayer().setY((int) schoolExit.getLayoutY());
+                getPlayerClass().setX((int) schoolExit.getLayoutX());
+                getPlayerClass().setY((int) schoolExit.getLayoutY());
             }
         }
 
-        if(keyCode == KeyCode.E && playerBounds.intersects(teacherBounds)) {
+        if(keyCode == KeyCode.E && getPlayerBounds().intersects(teacherBounds)) {
             getSceneManager().getGameOverlay().getStoryPane().setStyle("-fx-background-color: #333e39");
             getSceneManager().getGameOverlay().getStoryLabel().setText(school.teach());
             school.increaseLevel();
             getSceneManager().getGameOverlay().showStoryPane();
         }
+    }
+
+    private boolean intersectsExit() {
+        return getPlayerBounds().intersects(exit1Bounds) || getPlayerBounds().intersects(exit2Bounds) || getPlayerBounds().intersects(exit3Bounds);
     }
 }

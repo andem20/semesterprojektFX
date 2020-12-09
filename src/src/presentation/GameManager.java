@@ -11,9 +11,9 @@ public class GameManager {
 
   private SceneManager sceneManager;
   // Player animation images
-  private final Image moving1 = new Image("/images/player/moving1.png");
-  private final Image moving2 = new Image("/images/player/moving2.png");
-  private final Image still = new Image("/images/player/still.png");
+  private final Image moving1 = new Image(getClass().getResource("/images/player/moving1.png").toExternalForm());
+  private final Image moving2 = new Image(getClass().getResource("/images/player/moving2.png").toExternalForm());
+  private final Image still = new Image(getClass().getResource("/images/player/still.png").toExternalForm());
 
   private Status status;
 
@@ -72,7 +72,7 @@ public class GameManager {
   }
 
   public Player getPlayer() {
-    return sceneManager.getPlayer();
+    return sceneManager.getPlayerClass();
   }
 
   private void updateStatusBar() {

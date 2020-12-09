@@ -13,8 +13,8 @@ public class Collision {
     boolean[] keys = sceneManager.getKeys();
     
     // Reference for the player coordinates
-    int x = sceneManager.getPlayer().getX();
-    int y = sceneManager.getPlayer().getY();
+    int x = sceneManager.getPlayerClass().getX();
+    int y = sceneManager.getPlayerClass().getY();
 
     int playerWidth = (int) playerModel.getBoundsInLocal().getWidth();
     int playerHeight = (int) playerModel.getBoundsInLocal().getHeight();
@@ -82,8 +82,8 @@ public class Collision {
     }
 
     // Update character position
-    sceneManager.getPlayer().setX(x);
-    sceneManager.getPlayer().setY(y);
+    sceneManager.getPlayerClass().setX(x);
+    sceneManager.getPlayerClass().setY(y);
     // Update rendered player's position
     playerModel.setTranslateX(x);
     playerModel.setTranslateY(y);

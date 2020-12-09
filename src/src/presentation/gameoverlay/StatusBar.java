@@ -87,7 +87,7 @@ public class StatusBar extends HBox {
   }
 
   private void setMessageIcon() {
-    messagesImage.setImage(new Image("/images/mail.png"));
+    messagesImage.setImage(new Image(getClass().getResource("/images/mail.png").toExternalForm()));
     messagesImage.setFitWidth(20);
     messagesImage.setFitHeight(20);
     messagesImage.setPreserveRatio(true);

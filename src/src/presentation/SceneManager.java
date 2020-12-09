@@ -13,15 +13,17 @@ import src.enums.ItemType;
 import src.presentation.controllers.*;
 import src.presentation.gameoverlay.GameOverlay;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class SceneManager {
 
   private final Stage stage;
   private HashMap<String, FXController> fxControllers;
   private HashMap<String, Scene> fxmls;
-  private Player player;
+  private Player playerClass;
   private FXController controller;
   private Node[][] grid;
   private final int TILESIZE = GameSettings.TILESIZE.toInt();
@@ -29,6 +31,7 @@ public class SceneManager {
   private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
   private final Input input;
+  private final ControllerFactory controllerFactory;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -38,55 +41,55 @@ public class SceneManager {
 
     createPlayer("Player");
 
-    initControllers();
+    controllerFactory = new ControllerFactory(this);
+
+    fxControllers = new HashMap<>();
+
     initFXML();
+//    initControllers();
 
     gameOverlay = new GameOverlay(this);
     input = new Input(this);
 
     setScene("map");
 
-    getPlayer().setY(120);
+    getPlayerClass().setY(120);
 
     stage.show();
-  }
-
-  public void initControllers() {
-    // Create a hashmap of all fxml and corresponding controllers because controllers needs have reference to GUI
-    fxControllers = new HashMap<>();
-    fxControllers.put("map", new MapController(this));
-    fxControllers.put("village", new VillageController( this));
-    fxControllers.put("field", new FieldController( this));
-    fxControllers.put("farm", new FarmController( this));
-    fxControllers.put("school", new SchoolController(this));
-    fxControllers.put("market", new MarketController(this));
   }
 
   public void initFXML() {
     // Preloading all fxml files
     fxmls = new HashMap<>();
-    fxControllers.forEach((name, controller) -> {
+    // Get fxml files in directory
+    File f = new File(getClass().getResource("/fxml").getPath());
+    for(File fxml : f.listFiles()) {
       try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + name +".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml.getName()));
 
-        loader.setController(controller);
+        String name = fxml.getName().split("\\.")[0];
+
+        FXController fxController = controllerFactory.createController(name);
+
+        loader.setController(fxController);
 
         Scene scene = new Scene(loader.load(), 960, 540);
 
+        fxControllers.put(name, fxController);
         fxmls.put(name, scene);
       } catch (IOException e) {
         e.printStackTrace();
       }
-    });
+    }
   }
 
   public void createPlayer(String name) {
-    player = new Player(name, 100);
+    playerClass = new Player(name, 100);
 
     // Create player's inventory
-    player.addItemAmount(CropType.MAIZE.toString(), 5);
-    player.addItemAmount(CropType.WHEAT.toString(), 10);
-    player.addItemAmount(ItemType.FERTILIZER.toString(), 1);
+    playerClass.addItemAmount(CropType.MAIZE.toString(), 5);
+    playerClass.addItemAmount(CropType.WHEAT.toString(), 10);
+    playerClass.addItemAmount(ItemType.FERTILIZER.toString(), 1);
   }
 
   public void setGrid() {
@@ -146,8 +149,8 @@ public class SceneManager {
     return controller;
   }
 
-  public Player getPlayer() {
-    return player;
+  public Player getPlayerClass() {
+    return playerClass;
   }
 
   public void setGameLoop(AnimationTimer gameLoop) {

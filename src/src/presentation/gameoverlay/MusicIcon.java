@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView;
 
 public class MusicIcon extends ImageView {
 
-  private final Image musicOn = new Image("/images/music_on.png");
-  private final Image musicOff = new Image("/images/music_off.png");
+  private final Image musicOn = new Image(getClass().getResource("/images/music_on.png").toExternalForm());
+  private final Image musicOff = new Image(getClass().getResource("/images/music_off.png").toExternalForm());
 
   public MusicIcon() {
     // Music icon

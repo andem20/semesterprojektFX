@@ -7,27 +7,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-image: url('/images/farm_background.png');" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true">
-      <image>
-         <Image url="@../images/tiles/leftupper.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true">
-      <image>
-         <Image url="@../images/tiles/straight.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true">
-      <image>
-         <Image url="@../images/tiles/rightlower.png" />
-      </image>
-   </ImageView>
-   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true">
-      <image>
-         <Image url="@../images/tiles/leftlower.png" />
-      </image>
-   </ImageView>
+<?import java.net.URL?>
+<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../css/farm.css" />
+    </stylesheets>
+    <stylesheets>
+        <URL value="@../css/main.css" />
+    </stylesheets>
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="180.0" pickOnBounds="true">
+        <Image url="@../images/tiles/leftupper.png"/>
+    </ImageView>
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="300.0" pickOnBounds="true">
+        <Image url="@../images/tiles/straight.png"/>
+    </ImageView>
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="300.0" pickOnBounds="true">
+        <Image url="@../images/tiles/rightlower.png"/>
+    </ImageView>
+    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="240.0" layoutY="300.0" pickOnBounds="true">
+        <Image url="@../images/tiles/leftlower.png"/>
+    </ImageView>
     <ImageView fx:id="exit" fitHeight="60.0" fitWidth="60.0" layoutX="300.0" pickOnBounds="true">
         <Image url="@../images/door.png" />
     </ImageView>
@@ -38,9 +37,8 @@
         <Image url="@../images/tiles/straight.png" />
     </ImageView>
     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="300.0" layoutY="180.0" pickOnBounds="true">
-      <image>
-         <Image url="@../images/tiles/straight.png" />
-      </image></ImageView>
+        <Image url="@../images/tiles/straight.png"/>
+    </ImageView>
     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="360.0" layoutY="180.0" pickOnBounds="true">
         <Image url="@../images/tiles/rightupper.png" />
     </ImageView>
@@ -89,12 +87,12 @@
     <ImageView fx:id="player" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/player/moving1.png" />
     </ImageView>
-    <Label fx:id="help" layoutX="1.0" layoutY="7.0" style="-fx-background-color: #333333; -fx-background-radius: 10;" text="Label" textFill="WHITE">
+    <Label fx:id="help">
         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
         </padding>
     </Label>
-      <Label fx:id="spouseLabel" layoutX="307.0" layoutY="267.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="Label" textFill="BLACK">
+      <Label fx:id="spouseLabel" layoutX="307.0" layoutY="267.0" styleClass="conversation">
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>

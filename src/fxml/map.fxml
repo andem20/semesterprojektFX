@@ -7,7 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #619b44;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import java.net.URL?>
+<AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@../css/map.css" />
+   </stylesheets>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+   </stylesheets>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="60.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/tiles/leftupper.png" />
    </ImageView>
@@ -195,25 +202,19 @@
       <Image url="@../images/field_01.png" />
    </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="900.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../images/farm_02.png" />
-      </image>
+      <Image url="@../images/farm_02.png"/>
    </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../images/farm_03.png" />
-      </image>
+      <Image url="@../images/farm_03.png"/>
    </ImageView>
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="900.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../images/farm_04.png" />
-      </image>
+      <Image url="@../images/farm_04.png"/>
    </ImageView>
    <Pane fx:id="field" layoutX="720.0" layoutY="120.0" prefHeight="120.0" prefWidth="120.0" />
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/farm_01.png" />
    </ImageView>
-   <Label fx:id="help" style="-fx-background-color: #333333; -fx-background-radius: 10;" textAlignment="CENTER" textFill="WHITE">
+   <Label fx:id="help">
       <padding>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>

@@ -42,7 +42,7 @@ public class GameOverlay {
     conversationLabel.setVisible(false);
 
     // Inventory
-    Set<Map.Entry<String, Item>> itemNames = sceneManager.getPlayer().getInventory().entrySet();
+    Set<Map.Entry<String, Item>> itemNames = sceneManager.getPlayerClass().getInventory().entrySet();
     inventoryBox = new Inventory(itemNames);
 
     // Messages
@@ -90,8 +90,8 @@ public class GameOverlay {
   }
 
   public void setConversationLabel(String message) {
-    conversationLabel.setTranslateX(sceneManager.getPlayer().getX());
-    conversationLabel.setTranslateY(sceneManager.getPlayer().getY() - conversationLabel.getHeight());
+    conversationLabel.setTranslateX(sceneManager.getPlayerClass().getX());
+    conversationLabel.setTranslateY(sceneManager.getPlayerClass().getY() - conversationLabel.getHeight());
     conversationLabel.setVisible(true);
     conversationLabel.setText(message);
   }
@@ -110,8 +110,8 @@ public class GameOverlay {
 
   public void toggleInventoryBox() {
     getInventoryBox().update();
-    inventoryBox.setTranslateX(sceneManager.getPlayer().getX() + 20);
-    inventoryBox.setTranslateY(sceneManager.getPlayer().getY() + 20);
+    inventoryBox.setTranslateX(sceneManager.getPlayerClass().getX() + 20);
+    inventoryBox.setTranslateY(sceneManager.getPlayerClass().getY() + 20);
     inventoryBox.setVisible(!inventoryBox.isVisible());
   }
 

@@ -2,17 +2,13 @@ package src.presentation.controllers;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
-import javafx.geometry.Insets;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import src.domain.Character;
 import src.domain.Item;
 import src.presentation.FXController;
@@ -23,9 +19,7 @@ import java.util.Map;
 
 public class MarketController extends FXController {
 
-  @FXML private ImageView player;
   @FXML private ImageView seller;
-  @FXML private Label help;
   @FXML private ImageView exit;
   @FXML private HBox marketInventory;
   @FXML private Label description;
@@ -35,7 +29,6 @@ public class MarketController extends FXController {
   @FXML private VBox priceBox;
   @FXML private VBox actionBox;
 
-  private Bounds playerBounds;
   private Bounds exitBounds;
   private Bounds sellerBounds;
   private Bounds marketBounds;
@@ -52,16 +45,16 @@ public class MarketController extends FXController {
 
   @Override
   public void update() {
-    playerBounds = player.getBoundsInParent();
+    updatePlayerBounds();
     exitBounds = exit.getBoundsInParent();
     sellerBounds = seller.getBoundsInParent();
 
-    if(playerBounds.intersects(exitBounds)) {
-      helpMessage("Press 'F' to exit.", help);
-    } else if(playerBounds.intersects(sellerBounds)) {
-      helpMessage("Press 'E' to sell.\nPress 'R' to buy.", help);
+    if(getPlayerBounds().intersects(exitBounds)) {
+      showHelpMessage("Press 'F' to exit.");
+    } else if(getPlayerBounds().intersects(sellerBounds)) {
+      showHelpMessage("Press 'E' to sell.\nPress 'R' to buy.");
     } else {
-      help.setVisible(false);
+      hideHelpMessage();
     }
   }
 
@@ -70,32 +63,32 @@ public class MarketController extends FXController {
     marketInventory.getParent().setVisible(false);
 
     if(keyCode == KeyCode.F) {
-      if(playerBounds.intersects(exitBounds)) {
+      if(getPlayerBounds().intersects(exitBounds)) {
         setScene("map");
         Node marketExit = getSceneManager().getScene().lookup("#market");
-        getPlayer().setX((int) marketExit.getLayoutX());
-        getPlayer().setY((int) marketExit.getLayoutY());
+        getPlayerClass().setX((int) marketExit.getLayoutX());
+        getPlayerClass().setY((int) marketExit.getLayoutY());
       }
     }
 
     // Buy
     if(keyCode == KeyCode.R) {
-      if(playerBounds.intersects(sellerBounds)) {
+      if(getPlayerBounds().intersects(sellerBounds)) {
         showInventory(0);
       }
     }
 
     // Sell
     if(keyCode == KeyCode.E) {
-      if(playerBounds.intersects(sellerBounds)) {
+      if(getPlayerBounds().intersects(sellerBounds)) {
         showInventory(1);
       }
     }
   }
 
   private void showInventory(int action) {
-    Character buyer = action == 1 ? market.getNPC() : getPlayer();
-    Character seller = action == 1 ? getPlayer() : market.getNPC();
+    Character buyer = action == 1 ? market.getNPC() : getPlayerClass();
+    Character seller = action == 1 ? getPlayerClass() : market.getNPC();
 
     marketInventory.getParent().setVisible(true);
 
@@ -117,7 +110,7 @@ public class MarketController extends FXController {
         amountBox.getChildren().add(new Label(Integer.toString(amount)));
         priceBox.getChildren().add(new Label("$" + price));
 
-        Button actionButton = createActionButton((action == 0 ? "Buy" : "Sell"));
+        Button actionButton = new Button((action == 0 ? "Buy" : "Sell"));
         actionButton.setOnMouseClicked(mouseEvent -> {
           String message = "Insufficient funds!";
           if(buyer.getCoins() >= item.getValue().getPrice()) {
@@ -139,28 +132,5 @@ public class MarketController extends FXController {
         actionBox.getChildren().add(actionButton);
       }
     }
-  }
-
-  private Button createActionButton(String action) {
-    Button actionButton = new Button(action);
-    actionButton.setStyle("-fx-background-color: #2a7918; -fx-font-weight: bold;");
-    actionButton.setPadding(new Insets(0, 5, 0, 5));
-    actionButton.setTextFill(Color.WHITE);
-    actionButton.setCursor(Cursor.HAND);
-
-    actionButton.setOnMouseEntered(mouseEvent ->
-        actionButton.setStyle("-fx-background-color: #359b1d; -fx-font-weight: bold;")
-    );
-    actionButton.setOnMouseExited(mouseEvent ->
-        actionButton.setStyle("-fx-background-color: #2a7918; -fx-font-weight: bold;")
-    );
-    actionButton.setOnMousePressed(mouseEvent ->
-        actionButton.setStyle("-fx-background-color: #146e0f; -fx-font-weight: bold;")
-    );
-    actionButton.setOnMouseReleased(mouseEvent ->
-        actionButton.setStyle("-fx-background-color: #2a7918; -fx-font-weight: bold;")
-    );
-
-    return actionButton;
   }
 }
