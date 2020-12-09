@@ -65,9 +65,9 @@ public class GameManager {
   public void animatePlayer(double timer, double duration) {
     boolean[] keys = sceneManager.getKeys();
     if((keys[0] || keys[1] || keys[2] || keys[3])) {
-      sceneManager.getPlayerModel().setImage(timer < duration ? moving1 : moving2);
+      sceneManager.getController().getPlayer().setImage(timer < duration ? moving1 : moving2);
     } else {
-      sceneManager.getPlayerModel().setImage(still);
+      sceneManager.getController().getPlayer().setImage(still);
     }
   }
 

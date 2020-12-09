@@ -10,24 +10,21 @@ import src.domain.characters.Player;
 import src.enums.CropType;
 import src.enums.GameSettings;
 import src.enums.ItemType;
-import src.presentation.controllers.*;
 import src.presentation.gameoverlay.GameOverlay;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class SceneManager {
 
   private final Stage stage;
-  private HashMap<String, FXController> fxControllers;
+  private final HashMap<String, FXController> fxControllers;
   private HashMap<String, Scene> fxmls;
   private Player playerClass;
   private FXController controller;
   private Node[][] grid;
   private final int TILESIZE = GameSettings.TILESIZE.toInt();
-  private ImageView playerModel;
   private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
   private final Input input;
@@ -118,7 +115,6 @@ public class SceneManager {
   public void setScene(String sceneName) {
     stage.setScene(fxmls.get(sceneName));
     controller = getFXController(sceneName);
-    playerModel = (ImageView) getScene().lookup("#player");
     setGrid();
     input.setKeyInput();
     input.setMouseInput();
@@ -131,10 +127,6 @@ public class SceneManager {
 
   public Scene getScene() {
     return stage.getScene();
-  }
-
-  public ImageView getPlayerModel() {
-    return playerModel;
   }
 
   public Stage getStage() {

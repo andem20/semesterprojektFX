@@ -8,7 +8,7 @@ public class Collision {
   private static final int TILESIZE = GameSettings.TILESIZE.toInt();
 
   public static void checkPlayerCollision(SceneManager sceneManager) {
-    Node playerModel = sceneManager.getPlayerModel();
+    Node playerModel = sceneManager.getController().getPlayer();
     Node[][] grid = sceneManager.getGrid();
     boolean[] keys = sceneManager.getKeys();
     

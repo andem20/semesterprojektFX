@@ -54,8 +54,8 @@ public abstract class FXController {
     return playerClass;
   }
 
-  public Label getHelpLabel() {
-    return help;
+  public ImageView getPlayer() {
+    return player;
   }
 
   public Bounds getPlayerBounds() {
