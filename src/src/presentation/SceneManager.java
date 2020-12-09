@@ -15,6 +15,7 @@ import src.presentation.gameoverlay.GameOverlay;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class SceneManager {
 
@@ -60,7 +61,7 @@ public class SceneManager {
     fxmls = new HashMap<>();
     // Get fxml files in directory
     File f = new File(getClass().getResource("/fxml").getPath());
-    for(File fxml : f.listFiles()) {
+    for(File fxml : Objects.requireNonNull(f.listFiles())) {
       try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml.getName()));
 
