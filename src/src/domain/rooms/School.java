@@ -102,4 +102,8 @@ public class School extends Room {
   public void increaseLevel() {
     level++;
   }
+
+  public Teacher getTeacher() {
+    return teacher;
+  }
 }
