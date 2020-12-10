@@ -1,5 +1,6 @@
 package src.domain.rooms;
 
+import src.Game;
 import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;
@@ -13,7 +14,7 @@ public class Field extends Room {
     private double fieldHealth = 1;
     private final LinkedList<Crop> prevYield = new LinkedList<>();
     private boolean sowed = false;
-    private final int SEED_AMOUNT = 5;
+    private final int SEED_AMOUNT = GameSettings.SEED_AMOUNT.toInt();
     private Timer timer;
 
     public Field(String description) {

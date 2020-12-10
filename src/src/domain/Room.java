@@ -7,7 +7,7 @@ import java.util.Set;
 
 public abstract class Room {
     private final String description;
-    public HashMap<String, Room> exits;
+    private final HashMap<String, Room> exits;
 
     public Room(String description) {
         this.description = description;
@@ -16,10 +16,6 @@ public abstract class Room {
 
     public void setExit(ParameterWord direction, Room neighbor) {
         exits.put(direction.toString(), neighbor);
-    }
-
-    public String getShortDescription() {
-        return description;
     }
 
     public String getLongDescription() {
