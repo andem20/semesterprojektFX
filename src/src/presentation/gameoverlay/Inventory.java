@@ -1,6 +1,5 @@
 package src.presentation.gameoverlay;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import src.domain.Item;
@@ -14,9 +13,7 @@ public class Inventory extends VBox {
   public Inventory(Set<Map.Entry<String, Item>> inventory) {
     this.inventory = inventory;
 
-    setStyle("-fx-background-color: #cfe45d; -fx-background-radius: 10;");
-    setPadding(new Insets(5));
-    setSpacing(5);
+    getStyleClass().add("inventory");
   }
 
   public void update() {

@@ -1,7 +1,6 @@
 package src.domain.rooms;
 
 import src.domain.Room;
-import src.domain.characters.Spouse;
 import src.domain.characters.Teacher;
 
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public class School extends Room {
     knowledges = new ArrayList<>();
 
     knowledges.add(
-        "Hello!\n" +
         "Welcome to your first lecture!\n" +
         "Maize and sorghum are the food staples in this area as they are resilient to the local climate.\n" +
         "It is important to keep sowing these cereals to provide food for your people.\n" +
@@ -45,7 +43,6 @@ public class School extends Room {
     );
 
     knowledges.add(
-        "Hello!\n" +
         "Welcome to your third lecture!\n" +
         "Nutrient food is important when fighting hunger.\n" +
         "Pulses are known to be full of nutrients and provide a good source of plant protein to your diet.\n" +
@@ -55,21 +52,19 @@ public class School extends Room {
     );
 
     knowledges.add(
-            "Hello again!\n" +
-            "Welcome to your fourth lecture!\n" +
-            "Did you notice a difference in the hunger levels of your town after sowing some beans?\n" +
-            "They grow slower, but are necessary in eradicating hunger in your town.\n" +
-            "Additionally, you might have noticed that your soilhealth improved as well?\n" +
-            "That is because pulses provide nutrients, especially phosphor and nitrogen, " +
-            "to the soil and effectively slow down erosion.\n" +
-            "When you sow maize or sorghum in rotation with pulses, you'll increase your food security, " +
-            "because you can harvest throughout the season. \n" +
-            "If you then sow pulses along with your maize and sorghum, you can increase the output.\n" +
-            "Try mixing up the crops a couple of times and see what happens!\n" +
-            "See you at the next lecture!"
+        "Welcome to your fourth lecture!\n" +
+        "Did you notice a difference in the hunger levels of your town after sowing some beans?\n" +
+        "They grow slower, but are necessary in eradicating hunger in your town.\n" +
+        "Additionally, you might have noticed that your soilhealth improved as well?\n" +
+        "That is because pulses provide nutrients, especially phosphor and nitrogen, " +
+        "to the soil and effectively slow down erosion.\n" +
+        "When you sow maize or sorghum in rotation with pulses, you'll increase your food security, " +
+        "because you can harvest throughout the season. \n" +
+        "If you then sow pulses along with your maize and sorghum, you can increase the output.\n" +
+        "Try mixing up the crops a couple of times and see what happens!\n" +
+        "See you at the next lecture!"
     );
     knowledges.add(
-        "Hello again!\n" +
         "Welcome to your fifth lecture!\n" +
         "I hope your hungerlevel and soilhealth are on the rise!\n" +
         "Although pulses improve the level of nutrients in the ground, this might not be enough" +
@@ -91,11 +86,11 @@ public class School extends Room {
     return knowledges.get((level - 1) % knowledges.size());
   }
 
-  public ArrayList<String> getKnowledges() {
-    return knowledges;
-  }
-
   public void increaseLevel() {
     level++;
+  }
+
+  public Teacher getTeacher() {
+    return teacher;
   }
 }

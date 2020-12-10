@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<?import java.net.URL?>
 <AnchorPane cache="true" prefHeight="540.0" prefWidth="960.0" styleClass="background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@../css/school.css" />
@@ -232,4 +232,5 @@
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
    </Label>
+   <Label fx:id="teacherLabel" layoutX="599.0" layoutY="62.0" styleClass="conversation-label" text="Label" />
 </AnchorPane>

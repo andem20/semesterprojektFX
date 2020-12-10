@@ -29,7 +29,7 @@ public class SceneManager {
   private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
   private final Input input;
-  private final ControllerFactory controllerFactory;
+  private final FXControllerFactory FXControllerFactory;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -39,12 +39,10 @@ public class SceneManager {
 
     createPlayer("Player");
 
-    controllerFactory = new ControllerFactory(this);
-
+    FXControllerFactory = new FXControllerFactory(this);
     fxControllers = new HashMap<>();
 
     initFXML();
-//    initControllers();
 
     gameOverlay = new GameOverlay(this);
     input = new Input(this);
@@ -60,14 +58,14 @@ public class SceneManager {
     // Preloading all fxml files
     fxmls = new HashMap<>();
     // Get fxml files in directory
-    File f = new File(getClass().getResource("/fxml").getPath());
-    for(File fxml : Objects.requireNonNull(f.listFiles())) {
+    File fxmlDir = new File(getClass().getResource("/fxml").getPath());
+    for(File fxml : Objects.requireNonNull(fxmlDir.listFiles())) {
       try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml.getName()));
 
         String name = fxml.getName().split("\\.")[0];
 
-        FXController fxController = controllerFactory.createController(name);
+        FXController fxController = FXControllerFactory.createController(name);
 
         loader.setController(fxController);
 
@@ -91,7 +89,7 @@ public class SceneManager {
   }
 
   public void setGrid() {
-    // Could be calculated after how many tiles an imageview takes up
+    // Could instead be calculated after how many tiles an imageview takes up
     // Collect all ImageViews in an 2d array
     grid = new Node[(int) getScene().getHeight() / TILESIZE][(int) getScene().getWidth() / TILESIZE];
     getScene().getRoot().getChildrenUnmodifiable().stream()

@@ -2,13 +2,14 @@ package src.presentation.gameoverlay;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import src.domain.Item;
 import src.enums.GameSettings;
@@ -29,7 +30,9 @@ public class GameOverlay {
   private final StackPane storyPane = new StackPane();
   private final Label storyLabel = new Label();
   private final Button storyButton = new Button();
-  private long startTime;
+  private final Image keyboard = new Image(getClass().getResource("/images/keyboard.png").toExternalForm());
+  private ImageView keyboardImage = new ImageView(keyboard);
+  private VBox storyContainer = new VBox();
 
   public GameOverlay(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
@@ -37,8 +40,7 @@ public class GameOverlay {
 
     // Conversation label
     conversationLabel.setId("characterLabel");
-    conversationLabel.setPadding(new Insets(5));
-    conversationLabel.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10;-fx-text-fill: #000000");
+    conversationLabel.getStyleClass().setAll("conversation-label");
     conversationLabel.setVisible(false);
 
     // Inventory
@@ -49,27 +51,19 @@ public class GameOverlay {
     getStatusBar().getMessagesImage().setOnMouseClicked(mouseEvent -> {
       messages.setVisible(!messages.isVisible());
       if(messages.isVisible()) {
-        for(Message message : messages.getMessages()) {
-          message.setSeen(true);
-        }
+        messages.getMessages().forEach(message -> message.setSeen(true));
       } else {
         updateMessages();
       }
     });
 
-    shortMessage.setBackground(
-        new Background(
-            new BackgroundFill(
-                new Color(1, 1, 1, 0.6),
-                new CornerRadii(5), Insets.EMPTY
-            )
-        )
-    );
+    // Helplabel
+    getStatusBar().getHelpLabel().setOnMouseClicked(mouseEvent -> showControlsPane());
 
-    shortMessage.setPadding(new Insets(5));
+    shortMessage.getStyleClass().setAll("short-message");
 
-    shortMessage.setLayoutX(570);
-    shortMessage.setLayoutY(30);
+    shortMessage.setLayoutX(getMessagesBox().getLayoutX());
+    shortMessage.setLayoutY(getMessagesBox().getLayoutY());
     shortMessage.setVisible(false);
 
     initStoryline();
@@ -149,6 +143,7 @@ public class GameOverlay {
   }
 
   public void showShortMessage() {
+    // Show short message for 4 seconds
     shortMessage.setVisible(true);
 
     AnimationTimer timer = new AnimationTimer() {
@@ -172,35 +167,23 @@ public class GameOverlay {
     AnchorPane.setTopAnchor(storyPane, 0.0);
     storyPane.setAlignment(Pos.CENTER);
 
-    VBox storyContainer = new VBox();
     storyContainer.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
     storyContainer.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
     storyContainer.setSpacing(20);
 
-    storyLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-font-size: 20;");
-    storyLabel.setWrapText(true);
-    storyLabel.setMaxWidth(740);
-    storyLabel.setLineSpacing(2);
+    storyLabel.getStyleClass().add("story-label");
 
     storyButton.setText("Continue");
-    storyButton.setPadding(new Insets(10, 20, 10, 20));
-    storyButton.setStyle("-fx-background-color: #EEEEEE;-fx-font-weight: bold;");
+    storyButton.getStyleClass().add("story-button");
+
     storyButton.setOnMouseClicked(mouseEvent -> hideStoryPane());
-    storyButton.setOnMouseEntered(mouseEvent -> {
-      storyButton.setStyle("-fx-background-color: #DDDDDD;-fx-font-weight: bold;");
-    });
 
-    storyButton.setOnMouseExited(mouseEvent -> {
-      storyButton.setStyle("-fx-background-color: #EEEEEE;-fx-font-weight: bold;");
-    });
-
-    storyButton.setCursor(Cursor.HAND);
-
+    keyboardImage.setFitWidth(500);
+    keyboardImage.setPreserveRatio(true);
     storyContainer.getChildren().addAll(storyLabel, storyButton);
 
     storyPane.getChildren().addAll(storyContainer);
     storyPane.setVisible(false);
-
   }
 
   public StackPane getStoryPane() {
@@ -216,6 +199,7 @@ public class GameOverlay {
   }
 
   public void showStoryPane() {
+    storyContainer.getChildren().remove(keyboardImage);
     storyPane.setVisible(true);
     storyPane.setOpacity(1.0);
     sceneManager.getGameLoop().stop();
@@ -229,5 +213,17 @@ public class GameOverlay {
     ft.play();
     ft.onFinishedProperty().setValue(event -> storyPane.setVisible(false));
     sceneManager.getGameLoop().start();
+  }
+
+  private void showControlsPane() {
+    getStoryPane().setStyle("-fx-background-color: #4681c9");
+
+    getStoryLabel().setText(
+        "Move: W, A, S, D / Arrow-keys\n" +
+        "Show inventory: I\n" +
+        "Play/pause sound: P\n" +
+        "Interact: F, E, R, T");
+    showStoryPane();
+    storyContainer.getChildren().add(0, keyboardImage);
   }
 }

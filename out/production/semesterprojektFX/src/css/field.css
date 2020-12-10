@@ -23,3 +23,11 @@
 Button {
     -fx-background-color: #359b1d;
 }
+
+Button:hover {
+    -fx-background-color: #3ba921;
+}
+
+Button:pressed {
+    -fx-background-color: #2c8118;
+}

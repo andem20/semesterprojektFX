@@ -11,9 +11,8 @@ public class Teacher extends Character {
     public Teacher(String name) {
         super(name);
 
-        //responses.add("maybe");
-        //responses.add("maybe2");
-        //responses.add("maybe3");
+        responses.add("Hello student!");
+        responses.add("Today I'll be teaching about\nsustainable farming.");
     }
 
     public String getResponse(int index) {

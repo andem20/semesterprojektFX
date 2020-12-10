@@ -1,11 +1,6 @@
 package src.presentation.gameoverlay;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
 
@@ -16,19 +11,10 @@ public class Messages extends VBox {
   public Messages() {
     messages = new LinkedList<>();
 
-    setBackground(
-        new Background(
-            new BackgroundFill(
-                new Color(1, 1, 1, 0.6),
-                new CornerRadii(5), Insets.EMPTY
-            )
-        )
-    );
-
-    setPadding(new Insets(5));
+    getStyleClass().add("messages");
 
     // Positioning right under mail icon
-    setLayoutX(570);
+    setLayoutX(540);
     setLayoutY(30);
     setVisible(false);
   }

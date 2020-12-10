@@ -3,6 +3,7 @@ package src.presentation.controllers;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import src.domain.rooms.School;
@@ -15,6 +16,7 @@ public class SchoolController extends FXController {
     @FXML private ImageView exit2;
     @FXML private ImageView exit3;
     @FXML private ImageView teacher;
+    @FXML private Label teacherLabel;
 
     private Bounds exit1Bounds;
     private Bounds exit2Bounds;
@@ -22,6 +24,7 @@ public class SchoolController extends FXController {
     private Bounds teacherBounds;
 
     private final School school;
+    private int messageIndex = 0;
 
     public SchoolController(SceneManager sceneManager) {
         super(sceneManager);
@@ -40,8 +43,10 @@ public class SchoolController extends FXController {
         if(intersectsExit()) {
             showHelpMessage("Press 'F' to exit.");
         } else if(getPlayerBounds().intersects(teacherBounds)) {
-            showHelpMessage("Press 'E' to lecture.");
+            showHelpMessage("Press 'E' to lecture.\nPress 'T' to talk with teacher.");
         } else {
+            hideConversationLabel();
+            teacherLabel.setVisible(false);
             hideHelpMessage();
         }
     }
@@ -64,9 +69,33 @@ public class SchoolController extends FXController {
             school.increaseLevel();
             getSceneManager().getGameOverlay().showStoryPane();
         }
+
+        // Teacher interaction
+        if(keyCode == KeyCode.T) {
+            if(getPlayerBounds().intersects(teacherBounds)) {
+                showConversationLabel();
+            } else {
+                teacherLabel.setVisible(false);
+            }
+        }
     }
 
     private boolean intersectsExit() {
         return getPlayerBounds().intersects(exit1Bounds) || getPlayerBounds().intersects(exit2Bounds) || getPlayerBounds().intersects(exit3Bounds);
+    }
+
+    private void hideConversationLabel() {
+        getSceneManager().getGameOverlay().getConversationLabel().setVisible(false);
+    }
+
+    private void showConversationLabel() {
+        hideConversationLabel();
+        if(!getPlayerClass().getTeacherMessages().get(messageIndex).equals("")) {
+            getSceneManager().getGameOverlay().setConversationLabel(getPlayerClass().getTeacherMessages().get(messageIndex));
+        }
+
+        teacherLabel.setText(school.getTeacher().getResponse(messageIndex));
+        teacherLabel.setVisible(true);
+        messageIndex = Math.min(messageIndex + 1, getPlayerClass().getTeacherMessages().size() - 1);
     }
 }

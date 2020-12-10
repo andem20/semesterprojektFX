@@ -2,11 +2,11 @@ package src.presentation;
 
 import src.presentation.controllers.*;
 
-public class ControllerFactory {
+public class FXControllerFactory {
 
   private final SceneManager sceneManager;
 
-  public ControllerFactory(SceneManager sceneManager) {
+  public FXControllerFactory(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
   }
 

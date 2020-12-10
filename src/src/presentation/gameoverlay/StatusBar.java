@@ -1,17 +1,9 @@
 package src.presentation.gameoverlay;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import src.presentation.Audio;
 
 public class StatusBar extends HBox {
@@ -23,23 +15,14 @@ public class StatusBar extends HBox {
   // Message counter
   private final Label messageCounter = new Label("0");
   private final ImageView messagesImage = new ImageView();
+  private final Label helpLabel = new Label("?");
 
   public StatusBar() {
     // Load music
     audio = new Audio("soundtrack.wav");
     audio.setVolume(-15);
 
-    setAlignment(Pos.CENTER_RIGHT);
-    setPadding(new Insets(0, 10, 0, 10));
-    setSpacing(10);
-    setBackground(
-        new Background(
-            new BackgroundFill(
-                new Color(0.2, 0.2, 0.2, 0.6),
-                new CornerRadii(5), Insets.EMPTY
-            )
-        )
-    );
+    getStyleClass().add("status-bar");
 
     musicIcon.setOnMouseClicked(mouseEvent -> playPause());
 
@@ -50,21 +33,21 @@ public class StatusBar extends HBox {
     Label hungerLabel = new Label("Hunger level:");
     Label daysLabel = new Label("Days: ");
 
+    // Helplabel
+    helpLabel.getStyleClass().setAll("help-label");
+
     getChildren().addAll(
         messagesImage, messageCounter,
         daysLabel, daysAmount,
         popLabel, popAmount,
         hungerLabel, hungerAmount,
-        musicIcon);
-
-    // Set all text to white
-    getChildren().forEach(label -> label.setStyle("-fx-text-fill: #FFFFFF;"));
+        musicIcon, helpLabel);
 
     // Set numbers to bold font
-    popAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
-    hungerAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
-    daysAmount.setStyle("-fx-text-fill: #FFFFFF; -fx-font-weight: bold;");
-    messageCounter.setStyle("-fx-background-color: #EE0000; -fx-background-radius: 50;-fx-text-fill: #FFFFFF;-fx-font-weight: bold;");
+    popAmount.getStyleClass().add("status-bar-number");
+    hungerAmount.getStyleClass().add("status-bar-number");
+    daysAmount.getStyleClass().add("status-bar-number");
+    messageCounter.getStyleClass().add("message-counter");
   }
 
   public void setStatusText(int population, float hungerLevel, int days) {
@@ -88,15 +71,13 @@ public class StatusBar extends HBox {
 
   private void setMessageIcon() {
     messagesImage.setImage(new Image(getClass().getResource("/images/mail.png").toExternalForm()));
+    messagesImage.getStyleClass().add("message-icon");
     messagesImage.setFitWidth(20);
     messagesImage.setFitHeight(20);
     messagesImage.setPreserveRatio(true);
-    messagesImage.setCursor(Cursor.HAND);
 
     messageCounter.setTranslateX(-35);
     messageCounter.setTranslateY(5);
-    messageCounter.setPadding(new Insets(0, 3, 0, 3));
-    messageCounter.setFont(new Font("System Bold", 7));
     messageCounter.setVisible(false);
   }
 
@@ -112,5 +93,9 @@ public class StatusBar extends HBox {
 
   public ImageView getMessagesImage() {
     return messagesImage;
+  }
+
+  public Label getHelpLabel() {
+    return helpLabel;
   }
 }
