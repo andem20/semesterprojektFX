@@ -1,10 +1,9 @@
 package src.domain;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Storyline {
-  private final List<String> storyline;
+  private final ArrayList<String> storyline;
   private int level = 1;
 
   public Storyline() {

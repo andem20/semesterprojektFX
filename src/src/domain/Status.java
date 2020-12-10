@@ -10,7 +10,7 @@ public class Status {
   private final int startPop;
   private int foodSupply;
   private float hungerLevel;
-  private long startTime;
+  private final long startTime;
 
   public Status(int population) {
     this.population = population;
@@ -19,11 +19,11 @@ public class Status {
     this.startTime = System.nanoTime();
   }
 
-  public boolean checkStatus() {
+  public boolean update() {
     int foodSupply = 0;
     for(Map.Entry<String, Item> entry : Market.NPC.getInventory().entrySet()) {
       if(entry.getValue().getClass().equals(Crop.class)) {
-        foodSupply += entry.getValue().getAmount() * ((Crop) entry.getValue()).nutrition;
+        foodSupply += entry.getValue().getAmount() * ((Crop) entry.getValue()).getNutrition();
       }
     }
 

@@ -66,7 +66,7 @@ public class Field extends Room {
             String message = "";
             int i = 0;
             for(Crop crop : prevYield) {
-                int cropYield = (int) ((GameSettings.SEED_AMOUNT.toInt() * crop.yield) * fieldHealth) / prevYield.size();
+                int cropYield = (int) ((GameSettings.SEED_AMOUNT.toInt() * crop.getYield()) * fieldHealth) / prevYield.size();
                 cropYield *= GameSettings.YIELD_FACTOR.toInt();
                 crop.setAmount(crop.getAmount() + cropYield );
                 message += cropYield + " " + crop.getName() + (i < prevYield.size() - 1 ? " and " : "");

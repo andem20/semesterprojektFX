@@ -16,22 +16,22 @@ public class ParameterWords {
     }
   }
 
-  public ParameterWord getSecondWord(String secondWord) {
-    ParameterWord second = validCommands.get(secondWord);
-    if(second != null) {
-      return second;
+  public ParameterWord getParameterWord(String parameterWord) {
+    ParameterWord parameter = validCommands.get(parameterWord);
+    if(parameter != null) {
+      return parameter;
     } else {
       return ParameterWord.UNKNOWN;
     }
   }
 
-  public boolean isSecondWord(String aString) {
+  public boolean isParameterWord(String aString) {
     return validCommands.containsKey(aString);
   }
 
   public void showAll() {
-    for(String second : validCommands.keySet()) {
-      System.out.print(second + "  ");
+    for(String parameter : validCommands.keySet()) {
+      System.out.print(parameter + "  ");
     }
 
     System.out.println();

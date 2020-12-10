@@ -1,7 +1,6 @@
 package src.domain.rooms;
 
 import src.domain.Character;
-import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;
 import src.enums.CropType;

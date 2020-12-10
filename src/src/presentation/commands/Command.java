@@ -36,7 +36,7 @@ public class Command {
         return commandWord;
     }
 
-    public ParameterWord getSecondWord() {
+    public ParameterWord getParameterWord() {
         return parameterWord;
     }
 
@@ -45,7 +45,7 @@ public class Command {
         return (commandWord == CommandWord.UNKNOWN);
     }
 
-    public boolean hasSecondWord()
+    public boolean hasParameterWord()
     {
         return (parameterWord != ParameterWord.UNKNOWN);
     }

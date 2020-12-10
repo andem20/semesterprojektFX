@@ -18,11 +18,11 @@ public class Character {
     this.coins = coins;
 
     for(CropType crop : CropType.values()) {
-      addItem(crop.toString(), new Crop(0, crop));
+      addItem(new Crop(0, crop));
     }
 
     for(ItemType item : ItemType.values()) {
-      addItem(item.toString(), new Item(item.toString(), 0, item.getPrice()));
+      addItem(new Item(item.toString(), 0, item.getPrice()));
     }
   }
 
@@ -34,8 +34,8 @@ public class Character {
     return inventory.get(name);
   }
 
-  public void addItem(String name, Item item) {
-    inventory.put(name, item);
+  public void addItem(Item item) {
+    inventory.put(item.getName(), item);
   }
 
   public String getName() {

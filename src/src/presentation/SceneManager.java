@@ -7,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import src.domain.characters.Player;
-import src.enums.CropType;
 import src.enums.GameSettings;
-import src.enums.ItemType;
 import src.presentation.gameoverlay.GameOverlay;
 
 import java.io.File;
@@ -29,7 +27,7 @@ public class SceneManager {
   private final GameOverlay gameOverlay;
   private AnimationTimer gameLoop;
   private final Input input;
-  private final FXControllerFactory FXControllerFactory;
+  private final FXControllerFactory fxControllerFactory;
 
   public SceneManager(Stage stage) {
     this.stage = stage;
@@ -39,7 +37,7 @@ public class SceneManager {
 
     createPlayer("Player");
 
-    FXControllerFactory = new FXControllerFactory(this);
+    fxControllerFactory = new FXControllerFactory(this);
     fxControllers = new HashMap<>();
 
     initFXML();
@@ -54,7 +52,7 @@ public class SceneManager {
     stage.show();
   }
 
-  public void initFXML() {
+  private void initFXML() {
     // Preloading all fxml files
     fxmls = new HashMap<>();
     // Get fxml files in directory
@@ -65,7 +63,7 @@ public class SceneManager {
 
         String name = fxml.getName().split("\\.")[0];
 
-        FXController fxController = FXControllerFactory.createController(name);
+        FXController fxController = fxControllerFactory.createController(name);
 
         loader.setController(fxController);
 
@@ -79,16 +77,11 @@ public class SceneManager {
     }
   }
 
-  public void createPlayer(String name) {
+  private void createPlayer(String name) {
     playerClass = new Player(name, 100);
-
-    // Create player's inventory
-    playerClass.addItemAmount(CropType.MAIZE.toString(), 5);
-    playerClass.addItemAmount(CropType.WHEAT.toString(), 10);
-    playerClass.addItemAmount(ItemType.FERTILIZER.toString(), 1);
   }
 
-  public void setGrid() {
+  private void setGrid() {
     // Could instead be calculated after how many tiles an imageview takes up
     // Collect all ImageViews in an 2d array
     grid = new Node[(int) getScene().getHeight() / TILESIZE][(int) getScene().getWidth() / TILESIZE];

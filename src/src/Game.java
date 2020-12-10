@@ -41,10 +41,10 @@ public class Game {
         boolean finished = false;
         while(!finished) {
             Command command = parser.getCommand();
-            finished = status.checkStatus() || processCommand(command);
+            finished = status.update() || processCommand(command);
 
             if(Timer.timers.iterator().hasNext()) {
-                String timerMessage = Timer.timers.iterator().next().updateTimer();
+                String timerMessage = Timer.timers.iterator().next().update();
                 if(timerMessage != null) {
                     System.out.println(timerMessage);
                 }
@@ -78,20 +78,20 @@ public class Game {
         School school;
         Farm farm;
         Market market;
-        Hometown hometown;
+        Village village;
         Field field;
 
-        hometown = new Hometown("in the hometown");
+        village = new Village("in the hometown");
         market = new Market("in the market");
         school = new School("in the school");
         farm = new Farm("in the farm");
         field = new Field("in the field");
 
-        hometown.setExit(ParameterWord.WEST, school);
-        hometown.setExit(ParameterWord.EAST, market);
-        hometown.setExit(ParameterWord.SOUTH, field);
+        village.setExit(ParameterWord.WEST, school);
+        village.setExit(ParameterWord.EAST, market);
+        village.setExit(ParameterWord.SOUTH, field);
         market.setExit(ParameterWord.SOUTH, field);
-        market.setExit(ParameterWord.WEST, hometown);
+        market.setExit(ParameterWord.WEST, village);
         market.setExit(ParameterWord.NORTH, school);
         school.setExit(ParameterWord.EAST, market);
         school.setExit(ParameterWord.SOUTH, farm);
@@ -100,7 +100,7 @@ public class Game {
         farm.setExit(ParameterWord.NORTH, school);
         farm.setExit(ParameterWord.EAST, field);
 
-        currentRoom = hometown;
+        currentRoom = village;
     }
 
     public void createCharacter() {
@@ -112,12 +112,12 @@ public class Game {
         character = new Character(scanner.nextLine(), 100);
 
         // Inventory
-        character.addItem(CropType.BEANS.toString(), new Crop(0, CropType.BEANS));
-        character.addItem(CropType.MAIZE.toString(), new Crop(5, CropType.MAIZE));
-        character.addItem(CropType.WHEAT.toString(), new Crop(10, CropType.WHEAT));
-        character.addItem(CropType.CHICKPEAS.toString(), new Crop(0, CropType.CHICKPEAS));
-        character.addItem(CropType.SORGHUM.toString(), new Crop(0, CropType.SORGHUM));
-        character.addItem(ItemType.FERTILIZER.toString(), new Item(ItemType.FERTILIZER.toString(), 1, 50));
+        character.addItem(new Crop(0, CropType.BEANS));
+        character.addItem(new Crop(5, CropType.MAIZE));
+        character.addItem(new Crop(10, CropType.WHEAT));
+        character.addItem(new Crop(0, CropType.CHICKPEAS));
+        character.addItem(new Crop(0, CropType.SORGHUM));
+        character.addItem(new Item(ItemType.FERTILIZER.toString(), 1, 50));
     }
 
     private void printWelcome() {
@@ -165,7 +165,7 @@ public class Game {
     private void trade(Command command) {
         if(currentRoom instanceof Market) {
 
-            if(!command.hasSecondWord()) {
+            if(!command.hasParameterWord()) {
                 System.out.println(command.getCommandWord() + " what?");
                 return;
             }
@@ -182,8 +182,8 @@ public class Game {
                 success = "removed from";
             }
 
-            Item sellerItem = seller.getItem(command.getSecondWord().toString().toUpperCase());
-            Item buyerItem = buyer.getItem(command.getSecondWord().toString().toUpperCase());
+            Item sellerItem = seller.getItem(command.getParameterWord().toString().toUpperCase());
+            Item buyerItem = buyer.getItem(command.getParameterWord().toString().toUpperCase());
 
             System.out.print("Amount: ");
             Scanner scanner = new Scanner(System.in);
@@ -224,12 +224,12 @@ public class Game {
     }
 
     private void show(Command command) {
-        if(!command.hasSecondWord()) {
+        if(!command.hasParameterWord()) {
             System.out.println("Show what?");
             return;
         }
 
-        switch(command.getSecondWord()){
+        switch(command.getParameterWord()){
             case INVENTORY : showInventory(character.getInventory()); break;
             case STOCK : {
                 if(currentRoom instanceof Market) {
@@ -294,7 +294,7 @@ public class Game {
 
     private void sow(Command command) {
         if(currentRoom instanceof Field) {
-            if(!command.hasSecondWord()) {
+            if(!command.hasParameterWord()) {
                 System.out.println("Sow what?");
                 return;
             }
@@ -302,7 +302,7 @@ public class Game {
             Field field = (Field) currentRoom;
 
             // Get the specific crop. toUpperCase because of the Enum
-            Item item = character.getItem(command.getSecondWord().toString().toUpperCase());
+            Item item = character.getItem(command.getParameterWord().toString().toUpperCase());
 
             LinkedList<Crop> crops = new LinkedList<>();
 
@@ -393,13 +393,13 @@ public class Game {
     }
 
     private void goRoom(Command command) {
-        if(!command.hasSecondWord()) {
+        if(!command.hasParameterWord()) {
             System.out.println("Go where?");
             System.out.println(currentRoom.getLongDescription());
             return;
         }
 
-        String direction = command.getSecondWord().toString();
+        String direction = command.getParameterWord().toString();
 
         Room nextRoom = currentRoom.getExit(direction);
 
@@ -412,7 +412,7 @@ public class Game {
     }
 
     private boolean quit(Command command) {
-        if(command.hasSecondWord()) {
+        if(command.hasParameterWord()) {
             System.out.println("Quit what?");
             return false;
         } else {

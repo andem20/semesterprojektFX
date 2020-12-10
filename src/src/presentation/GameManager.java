@@ -42,12 +42,12 @@ public class GameManager {
 
         // Updating timers
         if(Timer.timers.iterator().hasNext()) {
-          String timerMessage = Timer.timers.iterator().next().updateTimer();
+          String timerMessage = Timer.timers.iterator().next().update();
           if(timerMessage != null) sceneManager.getGameOverlay().updateMessages(timerMessage);
         }
 
         // Check win / lose condition
-        if(status.checkStatus()) {
+        if(status.update()) {
           showLoseMessage();
         }
 
@@ -62,7 +62,7 @@ public class GameManager {
     gameLoop.start();
   }
 
-  public void animatePlayer(double timer, double duration) {
+  private void animatePlayer(double timer, double duration) {
     boolean[] keys = sceneManager.getKeys();
     if((keys[0] || keys[1] || keys[2] || keys[3])) {
       sceneManager.getController().getPlayer().setImage(timer < duration ? moving1 : moving2);

@@ -125,7 +125,7 @@ public class FarmController extends FXController {
 
   private boolean isFertilizerReady() {
     double time = (System.nanoTime() - fertilizerTime) / 1e9;
-    return (time >= GameSettings.MANURE_COLLECT_TIME.toInt() || fertilizerTime == 0);
+    return (time >= GameSettings.FERTILIZER_COLLECT_TIME.toInt() || fertilizerTime == 0);
   }
 
   private boolean hasApple() {

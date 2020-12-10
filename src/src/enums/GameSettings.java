@@ -10,7 +10,7 @@ public enum GameSettings {
   SEED_AMOUNT(5),
   YIELD_FACTOR(1.5),
   HARVEST_TIME(10),
-  MANURE_COLLECT_TIME(10);
+  FERTILIZER_COLLECT_TIME(100);
 
   private final double value;
 

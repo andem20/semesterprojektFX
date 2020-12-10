@@ -6,7 +6,6 @@ public enum CommandWord {
     HELP("help"),
     UNKNOWN("?"),
     SHOW("show"),
-    INVENTORY("inventory"),
     BUY("buy"),
     SELL("sell"),
     SOW("sow"),

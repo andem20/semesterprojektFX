@@ -1,7 +1,6 @@
 package src.domain.rooms;
 
 import src.domain.Room;
-import src.domain.characters.Spouse;
 import src.domain.characters.Teacher;
 
 import java.util.ArrayList;
@@ -93,10 +92,6 @@ public class School extends Room {
 
   public String getKnowledge() {
     return knowledges.get((level - 1) % knowledges.size());
-  }
-
-  public ArrayList<String> getKnowledges() {
-    return knowledges;
   }
 
   public void increaseLevel() {

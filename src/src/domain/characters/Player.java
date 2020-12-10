@@ -1,6 +1,8 @@
 package src.domain.characters;
 
 import src.domain.Character;
+import src.enums.CropType;
+import src.enums.ItemType;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,11 @@ public class Player extends Character {
 
     teacherMessages.add("Hello");
     teacherMessages.add("");
+
+    // Create player's inventory
+    addItemAmount(CropType.MAIZE.toString(), 5);
+    addItemAmount(CropType.WHEAT.toString(), 10);
+    addItemAmount(ItemType.FERTILIZER.toString(), 1);
   }
 
   public ArrayList<String> getSpouseMessages() {

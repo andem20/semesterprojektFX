@@ -9,13 +9,13 @@ import javafx.scene.input.KeyCode;
 import src.domain.characters.Player;
 
 public abstract class FXController {
+  @FXML ImageView player;
+  @FXML Label help;
+
   private final SceneManager sceneManager;
   private final Scene scene;
   private final Player playerClass;
   private Bounds playerBounds;
-
-  @FXML ImageView player;
-  @FXML Label help;
 
   public FXController(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
@@ -31,10 +31,10 @@ public abstract class FXController {
     return sceneManager;
   }
 
-  public void showHelpMessage(String msg) {
+  public void showHelpMessage(String message) {
     help.setTranslateX(getSceneManager().getPlayerClass().getX());
     help.setTranslateY(getSceneManager().getPlayerClass().getY() - help.getHeight());
-    help.setText(msg);
+    help.setText(message);
     help.setVisible(true);
   }
 

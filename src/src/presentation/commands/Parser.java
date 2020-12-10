@@ -27,7 +27,7 @@ public class Parser {
         command = inputArray[0].toLowerCase();
         second = inputArray.length > 1 ? inputArray[1].toLowerCase() : null;
 
-        return new Command(commands.getCommandWord(command), parameter.getSecondWord(second));
+        return new Command(commands.getCommandWord(command), parameter.getParameterWord(second));
     }
 
     public void showCommands() {

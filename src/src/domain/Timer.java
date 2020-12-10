@@ -18,7 +18,7 @@ public class Timer {
         timers.add(this);
     }
 
-    public String updateTimer(){
+    public String update(){
         if((System.nanoTime() - startTime) / 1e9 >= time) {
             timers.remove(this);
             return message;
