@@ -34,7 +34,7 @@ public class Storyline {
         "You have managed to clear hunger in your town.\n" +
         "You managed to learn about the benefits of growing different crops, rebuilding the soil, " +
         "and building a network using the market. \n" +
-        "Thank you very much for playing our game and we hope you leave with some new insights and knowledge \n" +
+        "Thank you very much for playing our game and we hope you leave with some new insights and knowledge " +
         "about agriculture in the remote areas of the world.");
   }
 

@@ -30,9 +30,8 @@ public class GameOverlay {
   private final StackPane storyPane = new StackPane();
   private final Label storyLabel = new Label();
   private final Button storyButton = new Button();
-  private final Image keyboard = new Image(getClass().getResource("/images/keyboard.png").toExternalForm());
-  private ImageView keyboardImage = new ImageView(keyboard);
-  private VBox storyContainer = new VBox();
+  private final ImageView keyboardImage = new ImageView(new Image(getClass().getResource("/images/keyboard.png").toExternalForm()));
+  private final VBox storyContainer = new VBox();
 
   public GameOverlay(SceneManager sceneManager) {
     this.sceneManager = sceneManager;
@@ -221,7 +220,7 @@ public class GameOverlay {
     getStoryLabel().setText(
         "Move: W, A, S, D / Arrow-keys\n" +
         "Show inventory: I\n" +
-        "Play/pause sound: P\n" +
+        "Play/pause music: P\n" +
         "Interact: F, E, R, T");
     showStoryPane();
     storyContainer.getChildren().add(0, keyboardImage);

@@ -88,7 +88,13 @@ public class GameManager {
     if(status.getHungerLevel() <= 0.6 && storyline.getLevel() == 2) showStory();
     if(status.getHungerLevel() <= 0.5 && storyline.getLevel() == 3) showStory();
     if(status.getHungerLevel() <= 0.3 && storyline.getLevel() == 4) showStory();
-    if(status.getHungerLevel() <= 0.2 && storyline.getLevel() == 5) showStory();
+    if(status.getHungerLevel() <= 0.2 && storyline.getLevel() == 5) {
+      sceneManager.getGameOverlay().getStatusBar().playPause();
+      showStory();
+      sceneManager.getGameOverlay().getStoryButton().setText("Play again");
+      sceneManager.getGameOverlay().getStoryPane().setStyle("-fx-background-color: #418822");
+      setRestartButton();
+    }
   }
 
   public void showStory() {
@@ -99,9 +105,14 @@ public class GameManager {
   }
 
   private void showLoseMessage() {
+    sceneManager.getGameOverlay().getStatusBar().playPause();
     sceneManager.getGameOverlay().getStoryLabel().setText("YOU LOST!");
     sceneManager.getGameOverlay().getStoryButton().setText("Try again");
     sceneManager.getGameOverlay().showStoryPane();
+    setRestartButton();
+  }
+
+  private void setRestartButton() {
     sceneManager.getGameOverlay().getStoryButton().setOnMouseClicked(mouseEvent -> {
       status = new Status(100);
       storyline = new Storyline();

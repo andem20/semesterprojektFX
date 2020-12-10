@@ -4,7 +4,6 @@ import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;
 import src.domain.Timer;
-import src.enums.CropType;
 import src.enums.GameSettings;
 
 import java.util.LinkedList;

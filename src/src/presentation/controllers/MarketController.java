@@ -31,9 +31,6 @@ public class MarketController extends FXController {
 
   private Bounds exitBounds;
   private Bounds sellerBounds;
-  private Bounds marketBounds;
-  private Bounds schoolBounds;
-  private Bounds farmBounds;
 
   private final Market market;
 
