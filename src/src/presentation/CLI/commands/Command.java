@@ -17,7 +17,7 @@
  * @version 2006.03.30
  */
 
-package src.presentation.commands;
+package src.presentation.CLI.commands;
 
 import src.enums.CommandWord;
 import src.enums.ParameterWord;

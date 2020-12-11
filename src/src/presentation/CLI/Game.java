@@ -1,11 +1,11 @@
-package src;
+package src.presentation.CLI;
 
-import src.presentation.commands.Command;
-import src.presentation.commands.Parser;
+import src.domain.characters.Player;
+import src.presentation.CLI.commands.Command;
+import src.presentation.CLI.commands.Parser;
 import src.domain.*;
 import src.domain.Character;
 import src.enums.CommandWord;
-import src.enums.CropType;
 import src.enums.ItemType;
 import src.enums.ParameterWord;
 import src.domain.rooms.*;
@@ -19,13 +19,13 @@ public class Game {
     private final Parser parser;
     private Room currentRoom;
     private final Status status;
-    private Character character;
+    private Player character;
     private final GameMap gameMap;
     private final Storyline storyline;
 
     public Game() {
         createRooms();
-        createCharacter();
+        createPlayer();
 
         parser = new Parser();
         status = new Status(100);
@@ -103,21 +103,13 @@ public class Game {
         currentRoom = village;
     }
 
-    public void createCharacter() {
+    private void createPlayer() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter your name:");
         System.out.print("> ");
 
-        character = new Character(scanner.nextLine(), 100);
-
-        // Inventory
-        character.addItem(new Crop(0, CropType.BEANS));
-        character.addItem(new Crop(5, CropType.MAIZE));
-        character.addItem(new Crop(10, CropType.WHEAT));
-        character.addItem(new Crop(0, CropType.CHICKPEAS));
-        character.addItem(new Crop(0, CropType.SORGHUM));
-        character.addItem(new Item(ItemType.FERTILIZER.toString(), 1, 50));
+        character = new Player(scanner.nextLine(), 100);
     }
 
     private void printWelcome() {
@@ -128,7 +120,7 @@ public class Game {
         System.out.println("It's now your job to grow some crops,");
         System.out.println("and gather enough food to feed your family and the entire village!");
         System.out.println();
-        System.out.println("Start out by typing 'show map' to see where you can go, "); //TODO: GUI does not need a map instruction here.
+        System.out.println("Start out by typing 'show map' to see where you can go, ");
         System.out.println("but watch out!\nTime is ticking and population is growing!");
         System.out.println("See your status by typing 'show status'.");
         System.out.println("If hungerlevel gets over 0.8 you loose the game.");
@@ -356,8 +348,7 @@ public class Game {
         System.out.println("You have to go to the school.");
     }
 
-    // TODO decrease level when hungerlevel rises.
-    public void printStoryline(double hungerLevel) {
+    private void printStoryline(double hungerLevel) {
         if(hungerLevel <= 0.6 && storyline.getLevel() == 1) printStory();
 
         if(hungerLevel <= 0.5 && storyline.getLevel() == 2) printStory();
@@ -367,14 +358,14 @@ public class Game {
         if(hungerLevel <= 0.2 && storyline.getLevel() == 4) printStory();
     }
 
-    public void printStory() {
+    private void printStory() {
         System.out.println("________________________________________________");
         System.out.println(storyline.getStory());
         System.out.println("________________________________________________");
         storyline.increaseLevel();
     }
 
-    public void printStatus() {
+    private void printStatus() {
         System.out.println("Days passed: " + status.getDays());
         System.out.println("Population: " + status.getPopulation());
         System.out.println("Foodsupply: " + status.getFoodSupply());

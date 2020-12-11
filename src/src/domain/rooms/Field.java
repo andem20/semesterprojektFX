@@ -1,6 +1,5 @@
 package src.domain.rooms;
 
-import src.Game;
 import src.domain.Crop;
 import src.domain.Item;
 import src.domain.Room;

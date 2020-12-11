@@ -1,4 +1,4 @@
-package src;
+package src.presentation.CLI;
 
 import java.io.File;
 import java.io.FileNotFoundException;

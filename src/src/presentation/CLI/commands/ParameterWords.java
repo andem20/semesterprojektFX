@@ -1,4 +1,4 @@
-package src.presentation.commands;
+package src.presentation.CLI.commands;
 
 import src.enums.ParameterWord;
 

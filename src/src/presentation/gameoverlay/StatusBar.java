@@ -8,14 +8,17 @@ import src.presentation.Audio;
 
 public class StatusBar extends HBox {
   private final Audio audio;
+  // Music Icon
   private final MusicIcon musicIcon = new MusicIcon();
+  // Status labels
   private final Label popAmount = new Label();
   private final Label hungerAmount = new Label();
   private final Label daysAmount = new Label();
   // Message counter
   private final Label messageCounter = new Label("0");
   private final ImageView messagesImage = new ImageView();
-  private final Label helpLabel = new Label("?");
+  // Help Icon
+  private final Label helpIcon = new Label("?");
 
   public StatusBar() {
     // Load music
@@ -34,14 +37,14 @@ public class StatusBar extends HBox {
     Label daysLabel = new Label("Days: ");
 
     // Helplabel
-    helpLabel.getStyleClass().setAll("help-label");
+    helpIcon.getStyleClass().setAll("help-label");
 
     getChildren().addAll(
         messagesImage, messageCounter,
         daysLabel, daysAmount,
         popLabel, popAmount,
         hungerLabel, hungerAmount,
-        musicIcon, helpLabel);
+        musicIcon, helpIcon);
 
     // Set numbers to bold font
     popAmount.getStyleClass().add("status-bar-number");
@@ -51,11 +54,8 @@ public class StatusBar extends HBox {
   }
 
   public void setStatusText(int population, float hungerLevel, int days) {
-    // Update population amount
     popAmount.setText(population + " ");
-    // Update hunger level amount
     hungerAmount.setText(Math.round(hungerLevel * 100) + "%");
-    // Update days amount
     daysAmount.setText(days + " ");
   }
 
@@ -95,7 +95,7 @@ public class StatusBar extends HBox {
     return messagesImage;
   }
 
-  public Label getHelpLabel() {
-    return helpLabel;
+  public Label getHelpIcon() {
+    return helpIcon;
   }
 }

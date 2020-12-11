@@ -55,7 +55,7 @@ public class GameOverlay {
     });
 
     // Helplabel
-    getStatusBar().getHelpLabel().setOnMouseClicked(mouseEvent -> showControlsPane());
+    getStatusBar().getHelpIcon().setOnMouseClicked(mouseEvent -> showControlsPane());
 
     shortMessage.getStyleClass().setAll("short-message");
 
@@ -157,7 +157,7 @@ public class GameOverlay {
     timer.start();
   }
 
-  public void initStoryline() {
+  private void initStoryline() {
     AnchorPane.setLeftAnchor(storyPane, 0.0);
     AnchorPane.setRightAnchor(storyPane, 0.0);
     AnchorPane.setBottomAnchor(storyPane, 0.0);
