@@ -58,7 +58,6 @@ public class MarketController extends FXController {
   @Override
   public void onKeyPressed(KeyCode keyCode) {
     marketInventory.getParent().setVisible(false);
-    System.out.println(keyCode);
 
     if(keyCode == KeyCode.F) {
       if(getPlayerBounds().intersects(exitBounds)) {
