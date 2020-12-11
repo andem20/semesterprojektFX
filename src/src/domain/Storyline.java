@@ -29,7 +29,7 @@ public class Storyline {
         "You're almost done with ridding the town from hunger!\n " +
         "Keep learning and pushing those numbers and get to level 5 to finish the game!");
 
-    addStory("Congratulations! You've reacheed level 5!\n"+
+    addStory("Congratulations! You've reached level 5!\n"+
         "You have managed to clear hunger in your town.\n" +
         "You managed to learn about the benefits of growing different crops, rebuilding the soil, " +
         "and building a network using the market. \n" +

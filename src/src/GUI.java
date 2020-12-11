@@ -1,9 +1,8 @@
 /**
- * Spillet er opbygget af forskellige rum i form af .fxml-filer.
- * Hvert rum er tildelt sin egen controller som styrer deres individuelle metoder.
- * Et rum skal associeres med sin controller, så når spiller skifter rum, bruges den korrekte controller.
- * Spilleren skal kunne interagere med genstand ved at stille sig op ad den og trykke på en knap.
- * Alle baner er opdelt i 60x60px felter. Hele vinduet er 960x540 = 16x9 felter
+ * The graphics in each "room" is laoded from an individual .fxml-file
+ * Each room is assigned a controller to control their different functionality
+ * The player can interact though the controller
+ * Each room is divided into 60x60 px cell, to manage collision control easier
  */
 
 package src;
