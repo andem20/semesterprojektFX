@@ -1,5 +1,5 @@
 .background {
-    -fx-background-image: url('file:src/images/market_background.png');
+    -fx-background-image: url('../images/market_background.png');
 }
 
 .market-trading-box {

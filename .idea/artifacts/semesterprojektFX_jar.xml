@@ -10,6 +10,7 @@
       <element id="extracted-dir" path="$PATH_TO_FX$/lib/javafx.swing.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/lib/javafx.controls.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PATH_TO_FX$/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="library" level="project" name="lib" />
     </root>
   </artifact>
 </component>

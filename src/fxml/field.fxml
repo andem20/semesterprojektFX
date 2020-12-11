@@ -361,6 +361,6 @@
       <Label text="You need at least 5 of one crop" />
       <Label text="Choose up to two:" />
       <VBox fx:id="cropsList" />
-      <Button fx:id="sowButton" text="Sow selected" />
+      <Button fx:id="sowButton" text="Sow selected" focusTraversable="false" />
    </VBox>
 </AnchorPane>

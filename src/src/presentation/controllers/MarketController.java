@@ -58,6 +58,7 @@ public class MarketController extends FXController {
   @Override
   public void onKeyPressed(KeyCode keyCode) {
     marketInventory.getParent().setVisible(false);
+    System.out.println(keyCode);
 
     if(keyCode == KeyCode.F) {
       if(getPlayerBounds().intersects(exitBounds)) {
@@ -108,6 +109,7 @@ public class MarketController extends FXController {
         priceBox.getChildren().add(new Label("$" + price));
 
         Button actionButton = new Button((action == 0 ? "Buy" : "Sell"));
+        actionButton.setFocusTraversable(false);
         actionButton.setOnMouseClicked(mouseEvent -> {
           String message = "Insufficient funds!";
           if(buyer.getCoins() >= item.getValue().getPrice()) {

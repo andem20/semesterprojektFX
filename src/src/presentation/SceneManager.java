@@ -10,8 +10,10 @@ import src.domain.characters.Player;
 import src.enums.GameSettings;
 import src.presentation.gameoverlay.GameOverlay;
 
+import javax.crypto.spec.PSource;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -56,21 +58,23 @@ public class SceneManager {
     // Preloading all fxml files
     fxmls = new HashMap<>();
     // Get fxml files in directory
-    File fxmlDir = new File(getClass().getResource("/fxml").getPath());
-    for(File fxml : Objects.requireNonNull(fxmlDir.listFiles())) {
+//    System.out.println(new File(getClass().getResource("/fxml").toExternalForm()));
+//    File fxmlDir = new File(getClass().getResource("/fxml").getPath());
+    String[] files = new String[]{"farm", "field", "map", "market", "school", "village"};
+    for(String fxml : files) {
       try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml.getName()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxml + ".fxml"));
 
-        String name = fxml.getName().split("\\.")[0];
+//        String name = fxml.getName().split("\\.")[0];
 
-        FXController fxController = fxControllerFactory.createController(name);
+        FXController fxController = fxControllerFactory.createController(fxml);
 
         loader.setController(fxController);
 
         Scene scene = new Scene(loader.load(), 960, 540);
 
-        fxControllers.put(name, fxController);
-        fxmls.put(name, scene);
+        fxControllers.put(fxml, fxController);
+        fxmls.put(fxml, scene);
       } catch (IOException e) {
         e.printStackTrace();
       }
