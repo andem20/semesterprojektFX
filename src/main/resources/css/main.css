@@ -1,0 +1,99 @@
+#help {
+    -fx-background-color: #333333;
+    -fx-background-radius: 10;
+    -fx-text-fill: #FFFFFF;
+}
+
+Button {
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.conversation-label {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-text-fill: #000000;
+    -fx-padding: 5;
+}
+
+.short-message {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+.story-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-wrap-text: true;
+    -fx-max-width: 740;
+    -fx-line-spacing: 2;
+}
+
+.story-button {
+    -fx-text-fill: #333333;
+    -fx-padding: 10 20 10 20;
+    -fx-background-color: #EEEEEE;
+}
+
+.story-button:hover {
+    -fx-background-color: #DDDDDD;
+}
+
+.story-button:pressed {
+    -fx-background-color: #CCCCCC;
+}
+
+.status-bar {
+    -fx-alignment: center right;
+    -fx-padding: 0 10 0 10;
+    -fx-spacing: 10;
+    -fx-background-color: rgba(50, 50, 50, 0.6);
+    -fx-background-radius: 5;
+}
+
+.status-bar > Label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.status-bar-number {
+    -fx-font-weight: bold;
+}
+
+.message-counter {
+    -fx-background-color: #EE0000;
+    -fx-background-radius: 50;
+    -fx-font-weight: bold;
+    -fx-padding: 0 3 0 3;
+    -fx-font-weight: bold;
+    -fx-font-size: 7;
+}
+
+.message-icon {
+    -fx-cursor: hand;
+}
+
+.messages {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+.inventory {
+    -fx-background-color: #cfe45d;
+    -fx-background-radius: 10;
+    -fx-padding: 5;
+    -fx-spacing: 5;
+}
+
+.help-label {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #444444;
+    -fx-background-radius: 50;
+    -fx-padding: 0 5 0 5;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}

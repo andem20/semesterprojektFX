@@ -1,0 +1,33 @@
+.background {
+    -fx-background-color: #c7cd6c;
+}
+
+.sow-box, .sow-box > Label {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2a7918;
+    -fx-background-radius: 10;
+}
+
+.sow-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-pref-width: 100;
+    -fx-padding: 5;
+    -fx-background-radius: 5;
+}
+
+.sow-label-selected {
+     -fx-background-color: #359b1d;
+ }
+
+Button {
+    -fx-background-color: #359b1d;
+}
+
+Button:hover {
+    -fx-background-color: #3ba921;
+}
+
+Button:pressed {
+    -fx-background-color: #2c8118;
+}
